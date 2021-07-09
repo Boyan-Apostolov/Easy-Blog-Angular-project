@@ -16,7 +16,13 @@
             <li><a>Register</a></li>
         </ul>
         <ul *ngIf="this.isLogged">
-            <li><a><img class="profile-pic" src="{{userPic}}" alt="" /></a></li>
+            <li>
+                <a>
+                    <section class="logo-holder">
+                        <img class="profile-pic" src="{{userPic}}" alt="" />
+                    </section>
+                </a>
+            </li>
             <li><a>Logout</a></li>
         </ul>
     </nav>

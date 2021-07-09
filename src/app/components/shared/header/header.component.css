@@ -14,12 +14,13 @@ nav {
 }
 .logo-holder img {
   border-radius: 50%;
-  height: 100%;
   width: 100%;
+  object-fit: contain;
 }
 header ul {
   display: flex;
   padding: 0px;
+  margin: 0;
   align-items: center;
   list-style-type: none;
 }
