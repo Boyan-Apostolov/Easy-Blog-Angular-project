@@ -1,0 +1,37 @@
+<section class="register-section">
+    <form method="post">
+        <h2>Register</h2>
+        <div class="illustration">
+            <i class="fas fa-user-plus"></i>
+        </div>
+        <div>
+            <input type="text" name="username" placeholder="Username">
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Email">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        <div>
+            <input type="password" name="confirm-password" placeholder="Confirm password">
+        </div>
+        <div class="bio-holder">
+            <label>
+                <p>Tell us a bit about yourself:</p>
+                <textarea name="biography" rows="4" cols="50"></textarea>
+            </label>
+        </div>
+        <div class="pic-holder">
+            <label>
+                <p>Choose a profile picture:</p>
+                <input type='file' id="profile-picture">
+            </label>
+        </div>
+
+        <div>
+            <button class="btn" type="submit">Register</button>
+        </div>
+        <a class="register" routerLink="/auth/login">Already have an account?</a>
+    </form>
+</section>

@@ -1,0 +1,98 @@
+@import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
+
+.btn {
+  background: #214a80;
+  border: none;
+  border-radius: 4px;
+  padding: 11px;
+  box-shadow: none;
+  margin-top: 26px;
+  text-shadow: none;
+  outline: none;
+}
+
+.register-section {
+  height: 100vh;
+  background: #475d62 url("../assets/bg.jpg");
+  background-size: cover;
+  position: relative;
+}
+.register-section h2 {
+  font-family: Helvetica, sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.register-section form {
+  max-width: 320px;
+  width: 90%;
+  background-color: #1e2833;
+  padding: 40px;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.register-section .illustration {
+  text-align: center;
+  padding: 15px 0 20px;
+  font-size: 100px;
+  color: #2980ef;
+  margin: 20px;
+}
+
+.register-section input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #434a52;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  width: 90%;
+  font-size: 16px;
+  height: 30px;
+  margin: 5px;
+}
+.register-section button {
+  color: #fff;
+  background: #3777cc;
+  outline: none;
+  margin: 20px;
+  font-weight: bold;
+  width: 90%;
+}
+.register-section a {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #6f7a85;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.bio-holder,
+.pic-holder {
+  margin-top: 5px;
+}
+.register-section label p {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  color: #6f7a85;
+  text-decoration: none;
+  margin: 0px;
+  padding-left: 7px;
+  font-size: 17px;
+}
+.register-section textarea {
+  background-color: transparent;
+  color: #6f7a85;
+  width: 90%;
+  margin: 5px;
+  font-size: 18px;
+}
