@@ -1,9 +1,12 @@
 @import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
 /* You can add global styles to this file, and also import other style files */
-body {
-  padding: 0px;
-  margin: 0px;
-}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Helvetica", sans-serif;
+}
