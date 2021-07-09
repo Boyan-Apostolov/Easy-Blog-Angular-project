@@ -1,0 +1,23 @@
+<header>
+    <nav>
+        <section class="logo-holder">
+            <img src="../../../../assets/site_logo.png" alt="">
+        </section>
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>Start Writing</a></li>
+            <li><a>Popular blogs</a></li>
+            <li><a>Privacy</a></li>
+            <li><a>About</a></li>
+        </ul>
+
+        <ul *ngIf="!this.isLogged">
+            <li><a>Login</a></li>
+            <li><a>Register</a></li>
+        </ul>
+        <ul *ngIf="this.isLogged">
+            <li><a><img class="profile-pic" src="{{userPic}}" alt="" /></a></li>
+            <li><a>Logout</a></li>
+        </ul>
+    </nav>
+</header>

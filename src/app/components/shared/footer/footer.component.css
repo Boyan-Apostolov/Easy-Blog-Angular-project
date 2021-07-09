@@ -1,0 +1,16 @@
+.footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #1e2833;
+}
+.footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+.footer p {
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  margin: 3px;
+}

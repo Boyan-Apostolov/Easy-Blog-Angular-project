@@ -1,5 +1,3 @@
-@import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
-
 .btn {
   background: #214a80;
   border: none;
@@ -12,7 +10,8 @@
 }
 
 .register-section {
-  height: 100vh;
+  height: 85vh;
+
   background: #475d62 url("../assets/bg.jpg");
   background-size: cover;
   position: relative;
