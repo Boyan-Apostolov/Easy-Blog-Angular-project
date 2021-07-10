@@ -7,9 +7,9 @@
         <p class="text" [innerHTML]="blog.content.substring(0,200)"></p>
 
         <section class="popularity-markers">
-            <i class="fas fa-eye"> {{blog.views.length}}</i>
-            <i class="fas fa-comments"> {{blog.comments.length}}</i>
-            <i class="fas fa-heart"> {{blog.likes.length}}</i>
+            <i class="fas fa-eye"> {{blog.views?.length}}</i>
+            <i class="fas fa-comments"> {{blog.comments?.length}}</i>
+            <i class="fas fa-heart"> {{blog.likes?.length}}</i>
         </section>
 
         <a routerLink="blogs/info/{{blog.id}}">

@@ -1,0 +1,46 @@
+.save-btn {
+  top: 10px;
+  left: 81px;
+  position: absolute;
+  color: blue;
+  font-size: 18px;
+  border: none;
+}
+.save-btn:hover {
+  border: 2px solid #f47d05;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+h3 {
+  font-weight: 500;
+}
+.title-and-img {
+  text-align: center;
+}
+.row {
+  display: inline-block;
+  margin: 20px;
+  text-align: left;
+}
+input {
+  outline: none;
+  border: none;
+  height: 30px;
+  font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #024094;
+}
+
+.editor {
+  width: 65%;
+  position: relative;
+  margin: 20px auto;
+}
+.card {
+  width: 80%;
+  margin: 50px auto;
+  height: 75.36vh;
+}

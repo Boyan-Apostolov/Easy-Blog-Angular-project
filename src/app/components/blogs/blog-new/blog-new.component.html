@@ -1,0 +1,26 @@
+<article class="card">
+    <h3 class="card-title">
+        <h1>Add a new blog!</h1>
+    </h3>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="title-and-img">
+            <div class="row">
+                <h3>Add a title to your blog!</h3>
+                <input type="text" placeholder="I like cats!" name="title" [(ngModel)]="this.blog.title">
+            </div>
+
+            <div class="row">
+                <h3>Add an image your blog!</h3>
+                <input type="text" placeholder="www.cats.com/cat1.png" name="imgUrl" [(ngModel)]="this.blog.imgUrl">
+            </div>
+
+        </div>
+        <section class="editor">
+            <ckeditor [(ngModel)]="this.blog.content" name="ckeditorContent">
+            </ckeditor>
+            <button class="save-btn" type="submit"><i class="fas fa-save"></i></button>
+        </section>
+
+    </form>
+</article>
