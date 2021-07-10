@@ -12,6 +12,7 @@ import {
 @Injectable()
 export class BlogService {
   blogsCollection!: AngularFirestoreCollection<Blog>;
+  blogDoc!: AngularFirestoreDocument<Blog>;
 
   blogs!: Observable<Blog[]>;
   tags: string[] = [];
@@ -61,6 +62,11 @@ export class BlogService {
       createdOn: new Date().toLocaleString(), //Current DateTime
     };
     this.blogsCollection.add(blog);
+  }
+
+  deteleBlog(blog: Blog) {
+    this.blogDoc = this.afs.doc(`blogs/${blog.id}`);
+    this.blogDoc.delete();
   }
 
   getAllTags() {

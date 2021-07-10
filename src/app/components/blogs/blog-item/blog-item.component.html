@@ -12,7 +12,10 @@
             <i class="fas fa-heart"> {{blog.likes?.length}}</i>
         </section>
 
-        <a routerLink="blogs/info/{{blog.id}}">
+        <button (click)="deteleBlog($event,blog)">
+            DELETE
+        </button>
+        <a routerLink="{{blog.id}}">
             <span class="text-orange">Read </span>
             <span class="text-blue">More...</span>
         </a>
