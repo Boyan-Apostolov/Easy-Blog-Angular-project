@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Blog } from '../../models/blog/blog';
+
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -10,10 +11,15 @@ import {
 
 @Injectable()
 export class BlogService {
-  blogs: Observable<Blog[]>;
-  // itemsCollection: AngularFirestoreCollection<Item>;
+  blogs!: Observable<Blog[]>;
+  tags: string[] = [];
+
   constructor(public afs: AngularFirestore) {
-    //this.items = this.afs.collection('items').valueChanges();
+    this.loadAllBlogs();
+    this.loadAllTags();
+  }
+
+  private loadAllBlogs(): void {
     this.blogs = this.afs
       .collection('blogs')
       .snapshotChanges()
@@ -26,6 +32,21 @@ export class BlogService {
           });
         })
       );
+  }
+  private loadAllTags(): void {
+    this.blogs.forEach((blogs) => {
+      blogs.forEach((blog) => {
+        blog.tags.forEach((tag) => {
+          if (this.tags.indexOf(tag) === -1) {
+            this.tags.push(tag);
+          }
+        });
+      });
+    });
+  }
+
+  getAllTags() {
+    return this.tags;
   }
   getAllBlogs() {
     return this.blogs;

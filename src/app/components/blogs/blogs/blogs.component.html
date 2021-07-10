@@ -1,0 +1,28 @@
+<section class="blogs-wrapper">
+    <h1>List of all blogs!</h1>
+
+    <section class="content">
+        <section class="cards">
+            <div class="blog-cards" *ngIf="this.blogs.length > 0">
+                <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>
+            </div>
+            <div *ngIf="this.blogs.length < 0">
+                <hr>
+                <h1>There are currently no blogs to show!</h1>
+            </div>
+        </section>
+        <section class="aside">
+            <aside>
+                <h3>Search by tag</h3>
+                <hr>
+                <ul>
+                    <li *ngFor="let tag of tags">
+                        <a routerLink="/blogs/byTag/{{tag}}">{{tag}}</a>
+                    </li>
+                </ul>
+            </aside>
+        </section>
+    </section>
+
+
+</section>

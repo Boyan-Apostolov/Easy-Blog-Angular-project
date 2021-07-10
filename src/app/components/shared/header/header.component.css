@@ -28,6 +28,7 @@ header ul li a {
   margin: 15px;
   color: #fff;
   font-size: 15px;
+  text-decoration: none;
 }
 .profile-pic {
   width: 80px;

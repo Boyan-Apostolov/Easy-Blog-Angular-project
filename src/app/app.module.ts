@@ -11,11 +11,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { environment } from '../environments/environment';
-import { BlogsComponent } from './components/blogs/blogs.component';
+import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 
 import { BlogService } from './core/services/blog/blog.service';
+import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
+import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, BlogsComponent],
+  declarations: [AppComponent, HomeComponent, BlogsComponent, BlogItemComponent, BlogArticleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
