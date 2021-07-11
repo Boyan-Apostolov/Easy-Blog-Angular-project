@@ -14,7 +14,9 @@ export class BlogNewComponent implements OnInit {
     title: '',
     imgUrl: '',
     content: '',
+    tags: [],
   };
+  tags: string = '';
 
   constructor(private blogService: BlogService, private router: Router) {}
 
@@ -26,10 +28,12 @@ export class BlogNewComponent implements OnInit {
       this.blog.imgUrl != '' &&
       this.blog.content != ''
     ) {
+      this.blog.tags = this.tags.replace(' ', '').split(',');
       this.blogService.addNewBlog(
         this.blog.title,
         this.blog.imgUrl,
-        this.blog.content
+        this.blog.content,
+        this.blog.tags
       );
       this.router.navigateByUrl('blogs');
     }

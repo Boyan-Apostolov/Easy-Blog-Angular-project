@@ -43,3 +43,6 @@ input {
   width: 80%;
   margin: 50px auto;
 }
+.tags-row input {
+  width: 100%;
+}

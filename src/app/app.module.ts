@@ -21,6 +21,8 @@ import { BlogItemComponent } from './components/blogs/blog-item/blog-item.compon
 import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
 import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+
+import { MatChipsModule } from '@angular/material/chips';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'easy-blog'),
     AngularFirestoreModule,
+    MatChipsModule,
   ],
   providers: [BlogService],
   bootstrap: [AppComponent],

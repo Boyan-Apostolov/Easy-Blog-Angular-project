@@ -44,6 +44,7 @@ export class BlogService {
   private loadAllTags(): void {
     this.blogs.forEach((blogs) => {
       blogs.forEach((blog) => {
+        console.log(blog);
         blog.tags?.forEach((tag) => {
           if (this.tags.indexOf(tag) === -1) {
             this.tags.push(tag);
@@ -53,13 +54,19 @@ export class BlogService {
     });
   }
 
-  addNewBlog(title: string, imgUrl: string, content: string) {
+  addNewBlog(
+    title: string,
+    imgUrl: string,
+    content: string,
+    tags: string[] | undefined
+  ) {
     let blog: Blog = {
       title: title,
       imgUrl: imgUrl,
       content: content, //Sanitize
       creatorId: 'default-user', //Get Current User ID
       createdOn: new Date().toLocaleString(), //Current DateTime
+      tags: tags,
     };
     this.blogsCollection.add(blog);
   }
