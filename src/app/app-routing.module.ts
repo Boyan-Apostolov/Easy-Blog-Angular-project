@@ -6,12 +6,14 @@ import { BlogArticleComponent } from './components/blogs/blog-article/blog-artic
 import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component';
 import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 import { HomeComponent } from './components/home/home.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'blogs', component: BlogsComponent },
   { path: 'blogs/blog/:id', component: BlogArticleComponent },
   { path: 'blogs/new', component: BlogNewComponent },
+  { path: 'privacy', component: PrivacyComponent },
   { path: 'auth/login', pathMatch: 'full', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
 ];

@@ -20,6 +20,7 @@ import { BlogService } from './core/services/blog/blog.service';
 import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
 import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
 import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component
     BlogItemComponent,
     BlogArticleComponent,
     BlogNewComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,
