@@ -1,9 +1,9 @@
 .wrapper {
-  height: 84.3vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-top: 50px;
 }
 .easy-span {
   color: #f47d05;

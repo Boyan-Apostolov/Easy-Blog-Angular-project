@@ -7,15 +7,15 @@
         <p class="text" [innerHTML]="blog.content.substring(0,200)"></p>
 
         <section class="popularity-markers">
-            <i class="fas fa-eye"> {{blog.views?.length}}</i>
-            <i class="fas fa-comments"> {{blog.comments?.length}}</i>
-            <i class="fas fa-heart"> {{blog.likes?.length}}</i>
+            <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
+            <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
+            <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
         </section>
 
         <button (click)="deteleBlog($event,blog)">
             DELETE
         </button>
-        <a routerLink="{{blog.id}}">
+        <a routerLink="blog/{{blog.id}}">
             <span class="text-orange">Read </span>
             <span class="text-blue">More...</span>
         </a>
