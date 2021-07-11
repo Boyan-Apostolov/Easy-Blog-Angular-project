@@ -46,6 +46,13 @@ export class BlogArticleComponent implements OnInit {
     this.clearState();
   }
 
+  likeBlog(blog: Blog) {
+    if (!this.blog.likes?.includes('userID')) {
+      blog.likes?.push('userID');
+    }
+    this.blogService.updateBlog(blog);
+  }
+
   clearState() {
     this.editState = false;
   }

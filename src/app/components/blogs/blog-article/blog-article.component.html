@@ -50,7 +50,8 @@
         <a routerLink="../../../users/{{blog.creatorId}}" class="author">
             Author: {{blog.creatorId}}
         </a>
-        <button class="like-btn"><i class="fas fa-heart"></i> Did you like this blog?</button>
+        <button (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you like
+            this blog?</button>
 
         <article class="comments-section">
             <h2>Comments:</h2>
@@ -66,11 +67,6 @@
                 </li>
             </ul>
         </article>
-        <div *ngIf="!this.editState">
 
-        </div>
-        <div *ngIf="this.editState">
-
-        </div>
     </section>
 </section>
