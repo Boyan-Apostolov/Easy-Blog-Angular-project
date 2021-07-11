@@ -9,7 +9,6 @@
     <section class="blog-holder">
 
         <div *ngIf="this.editState && this.blogToEdit.id === blog.id">
-
             <form (ngSubmit)="updateBlog(blog)">
                 <button class="btn delete-btn" (click)="deteleBlog($event,blog)">
                     Delete
@@ -55,7 +54,25 @@
 
         <article class="comments-section">
             <h2>Comments:</h2>
-            <button class="comments-btn">+ Add a comment</button>
+            <button *ngIf="!this.commentingState" (click)="enableCommenting()" class="comments-btn">+ Add a
+                comment</button>
+            <div *ngIf="this.commentingState">
+                <form (ngSubmit)="postComment(blog)">
+                    <div class="posting-comment">
+                        <div class="row">
+                            <h3>Add you comment to this blog!</h3>
+                            <textarea rows="5" cols="30" type="text" placeholder="I like your opinion" name="comment"
+                                #commentInput [(ngModel)]="this.commentToAdd"></textarea>
+                            <section class="comment-buttons">
+                                <button type="submit" class="comments-btn">Post</button>
+                                <button *ngIf="this.commentingState" class="cancel-btn" (click)="clearState()">
+                                    <i class="fas fa-undo">Cancel</i>
+                                </button>
+                            </section>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <ul>
                 <li *ngFor="let comment of blog.comments">
                     <span class="comment-user">

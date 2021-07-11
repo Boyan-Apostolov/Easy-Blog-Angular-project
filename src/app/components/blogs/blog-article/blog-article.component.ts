@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class BlogArticleComponent implements OnInit {
   editState: boolean = false;
+  commentingState: boolean = false;
+
   blogToEdit!: Blog;
+  commentToAdd!: string;
 
   blog!: Blog;
   id: string | null = '';
@@ -50,10 +53,21 @@ export class BlogArticleComponent implements OnInit {
     if (!this.blog.likes?.includes('userID')) {
       blog.likes?.push('userID');
     }
-    this.blogService.updateBlog(blog);
+    this.updateBlog(blog);
+  }
+
+  enableCommenting() {
+    this.commentingState = true;
+  }
+  postComment(blog: Blog) {
+    if (this.commentToAdd != '') {
+      this.blog.comments?.push(`${this.commentToAdd}#@$userID`);
+      this.updateBlog(blog);
+    }
   }
 
   clearState() {
     this.editState = false;
+    this.commentingState = false;
   }
 }
