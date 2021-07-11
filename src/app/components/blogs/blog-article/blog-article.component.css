@@ -1,7 +1,54 @@
+.blog-page {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.save-btn {
+  top: 10px;
+  left: 81px;
+  position: absolute;
+  color: blue;
+  font-size: 18px;
+  border: none;
+}
+.save-btn:hover {
+  border: 2px solid #f47d05;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+h3 {
+  font-weight: 500;
+}
+.title-and-img {
+  text-align: center;
+}
+.row {
+  display: inline-block;
+  margin: 20px;
+  text-align: left;
+}
+input {
+  outline: none;
+  border: none;
+  height: 30px;
+  font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #024094;
+}
+
+.editor {
+  width: 65%;
+  position: relative;
+  margin: 20px auto;
+}
+
 .blog-holder {
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
+  margin: 30px auto;
   width: 80%;
   align-items: center;
 }
@@ -103,5 +150,29 @@ li span {
   border: 1px solid red;
   background-color: white;
   font-size: 18px;
+  padding: 5px 10px;
+}
+.btn {
+  outline: none;
+  border: none;
+  background-color: white;
+}
+.edit-btn {
+  color: #024094;
+  background-color: #f47d05;
+  border: 1px solid #024094;
+  padding: 5px 10px;
+}
+.cancel-btn {
+  color: #f47d05;
+  background-color: #024094;
+  border: 1px solid #f47d05;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+.delete-btn {
+  color: white;
+  background-color: red;
+  border: 1px solid white;
   padding: 5px 10px;
 }

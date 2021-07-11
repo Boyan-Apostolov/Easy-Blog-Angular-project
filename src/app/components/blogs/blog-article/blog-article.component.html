@@ -1,35 +1,77 @@
-<section class="blog-holder">
-    <h1>{{blog.title}}</h1>
+<section class="blog-page">
+    <button class="btn edit-btn" (click)="editBlog($event,blog)">
+        <i class="fas fa-edit">Edit</i>
+    </button>
+    <button *ngIf="this.editState && this.blogToEdit.id === blog.id" class="cancel-btn" (click)="clearState()">
+        <i class="fas fa-undo">Cancel</i>
+    </button>
 
-    <section class="popularity-markers">
-        <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
-        <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
-        <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
+    <section class="blog-holder">
+
+        <div *ngIf="this.editState && this.blogToEdit.id === blog.id">
+
+            <form (ngSubmit)="updateBlog(blog)">
+                <button class="btn delete-btn" (click)="deteleBlog($event,blog)">
+                    Delete
+                </button>
+                <div class="title-and-img">
+                    <div class="row">
+                        <h3>Add a title to your blog!</h3>
+                        <input type="text" placeholder="I like cats!" name="title" [(ngModel)]="this.blog.title">
+                    </div>
+
+                    <div class="row">
+                        <h3>Add an image your blog!</h3>
+                        <input type="text" placeholder="www.cats.com/cat1.png" name="imgUrl"
+                            [(ngModel)]="this.blog.imgUrl">
+                    </div>
+
+                </div>
+                <section class="editor">
+                    <ckeditor [(ngModel)]="this.blog.content" name="ckeditorContent">
+                    </ckeditor>
+                    <button class="save-btn" type="submit"><i class="fas fa-save"></i></button>
+                </section>
+            </form>
+        </div>
+
+        <h1>{{blog.title}}</h1>
+
+        <section class=" popularity-markers">
+            <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
+            <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
+            <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
+        </section>
+        <article class="img-holder">
+            <img [src]="blog.imgUrl" alt="">
+        </article>
+        <article class="blog-content-holder" [innerHTML]="blog.content">
+        </article>
+
+        <a routerLink="../../../users/{{blog.creatorId}}" class="author">
+            Author: {{blog.creatorId}}
+        </a>
+        <button class="like-btn"><i class="fas fa-heart"></i> Did you like this blog?</button>
+
+        <article class="comments-section">
+            <h2>Comments:</h2>
+            <button class="comments-btn">+ Add a comment</button>
+            <ul>
+                <li *ngFor="let comment of blog.comments">
+                    <span class="comment-user">
+                        Written by: {{comment.split('#@$')[1]}}:
+                    </span>
+                    <span class="comment-title">
+                        {{comment.split('#@$')[0]}}
+                    </span>
+                </li>
+            </ul>
+        </article>
+        <div *ngIf="!this.editState">
+
+        </div>
+        <div *ngIf="this.editState">
+
+        </div>
     </section>
-
-    <article class="img-holder">
-        <img [src]="blog.imgUrl" alt="">
-    </article>
-    <article class="blog-content-holder" [innerHTML]="blog.content">
-    </article>
-
-    <a routerLink="../../../users/{{blog.creatorId}}" class="author">
-        Author: {{blog.creatorId}}
-    </a>
-    <button class="like-btn"><i class="fas fa-heart"></i> Did you like this blog?</button>
-
-    <article class="comments-section">
-        <h2>Comments:</h2>
-        <button class="comments-btn">+ Add a comment</button>
-        <ul>
-            <li *ngFor="let comment of blog.comments">
-                <span class="comment-user">
-                    Written by: {{comment.split('#@$')[1]}}:
-                </span>
-                <span class="comment-title">
-                    {{comment.split('#@$')[0]}}
-                </span>
-            </li>
-        </ul>
-    </article>
 </section>

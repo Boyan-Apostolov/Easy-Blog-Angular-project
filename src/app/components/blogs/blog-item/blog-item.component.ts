@@ -12,8 +12,4 @@ export class BlogItemComponent implements OnInit {
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {}
-
-  deteleBlog(event: MouseEvent, blog: Blog) {
-    this.blogService.deteleBlog(blog);
-  }
 }

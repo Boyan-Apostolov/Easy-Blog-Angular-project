@@ -69,6 +69,11 @@ export class BlogService {
     this.blogDoc.delete();
   }
 
+  updateBlog(blog: Blog) {
+    this.blogDoc = this.afs.doc(`blogs/${blog.id}`);
+    this.blogDoc.update(blog);
+  }
+
   getAllTags() {
     return this.tags;
   }
