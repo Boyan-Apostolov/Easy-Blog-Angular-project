@@ -72,6 +72,7 @@ export class BlogService {
   getAllTags() {
     return this.tags;
   }
+
   getAllBlogs() {
     return this.blogs;
   }

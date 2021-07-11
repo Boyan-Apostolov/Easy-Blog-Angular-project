@@ -1,1 +1,35 @@
-<p>ID OF THE CURRENT BLOG IS {{id}}</p>
+<section class="blog-holder">
+    <h1>{{blog.title}}</h1>
+
+    <section class="popularity-markers">
+        <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
+        <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
+        <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
+    </section>
+
+    <article class="img-holder">
+        <img [src]="blog.imgUrl" alt="">
+    </article>
+    <article class="blog-content-holder" [innerHTML]="blog.content">
+    </article>
+
+    <a routerLink="../../../users/{{blog.creatorId}}" class="author">
+        Author: {{blog.creatorId}}
+    </a>
+    <button class="like-btn"><i class="fas fa-heart"></i> Did you like this blog?</button>
+
+    <article class="comments-section">
+        <h2>Comments:</h2>
+        <button class="comments-btn">+ Add a comment</button>
+        <ul>
+            <li *ngFor="let comment of blog.comments">
+                <span class="comment-user">
+                    Written by: {{comment.split('#@$')[1]}}:
+                </span>
+                <span class="comment-title">
+                    {{comment.split('#@$')[0]}}
+                </span>
+            </li>
+        </ul>
+    </article>
+</section>
