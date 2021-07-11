@@ -12,4 +12,11 @@ export class BlogItemComponent implements OnInit {
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {}
+
+  incrementBlogViews(blog: Blog) {
+    if (!this.blog.views?.includes('userID')) {
+      blog.views?.push('userID');
+    }
+    this.blogService.updateBlog(blog);
+  }
 }

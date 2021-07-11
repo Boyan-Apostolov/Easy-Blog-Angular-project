@@ -45,6 +45,7 @@ export class BlogArticleComponent implements OnInit {
     this.blogService.updateBlog(blog);
     this.clearState();
   }
+
   clearState() {
     this.editState = false;
   }
