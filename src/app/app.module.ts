@@ -23,6 +23,8 @@ import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component
 import { PrivacyComponent } from './components/privacy/privacy.component';
 
 import { MatChipsModule } from '@angular/material/chips';
+import { AuthGuard } from './core/guards/auth.guard';
+import { UserService } from './core/services/user/user-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ import { MatChipsModule } from '@angular/material/chips';
     AngularFirestoreModule,
     MatChipsModule,
   ],
-  providers: [BlogService],
+  providers: [BlogService, AuthGuard, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

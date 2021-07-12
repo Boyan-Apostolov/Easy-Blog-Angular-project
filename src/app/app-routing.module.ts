@@ -7,15 +7,51 @@ import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component
 import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 import { HomeComponent } from './components/home/home.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'blogs', component: BlogsComponent },
-  { path: 'blogs/blog/:id', component: BlogArticleComponent },
-  { path: 'blogs/new', component: BlogNewComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  // { path: 'blogs', component: BlogsComponent },
+  // { path: 'blogs/blog/:id', component: BlogArticleComponent },
+  // { path: 'blogs/new', component: BlogNewComponent },
   { path: 'privacy', component: PrivacyComponent },
-  { path: 'auth/login', pathMatch: 'full', component: LoginComponent },
-  { path: 'auth/register', component: RegisterComponent },
+  {
+    path: 'blogs',
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: 'all',
+        component: BlogsComponent,
+        data: { isLogged: null },
+      },
+      {
+        path: 'blog/:id',
+        component: BlogArticleComponent,
+        data: { isLogged: null },
+      },
+      {
+        path: 'new',
+        component: BlogNewComponent,
+        data: { isLogged: true },
+      },
+    ],
+  },
+  {
+    path: 'auth',
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { isLogged: false },
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: { isLogged: false },
+      },
+    ],
+  },
 ];
 
 @NgModule({
