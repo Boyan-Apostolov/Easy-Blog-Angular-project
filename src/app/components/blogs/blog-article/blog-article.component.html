@@ -1,4 +1,4 @@
-<section class="blog-page">
+<section class="blog-page" *ngIf="blog">
     <button class="btn edit-btn" (click)="editBlog($event,blog)">
         <i class="fas fa-edit">Edit</i>
     </button>
@@ -87,3 +87,4 @@
 
     </section>
 </section>
+<h1 *ngIf="!blog">Blog with that ID does not exist!</h1>

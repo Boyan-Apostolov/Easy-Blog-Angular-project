@@ -8,7 +8,7 @@ export class UserService {
 
   get isLogged(): boolean {
     //see if user is logged in
-    return false;
+    return true;
   }
 
   get getUserPic(): string {
