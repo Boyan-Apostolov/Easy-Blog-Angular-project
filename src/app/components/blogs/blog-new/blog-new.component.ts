@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
-import { BlogService } from 'src/app/core/services/blog/blog.service';
-import { Blog } from '../../../core/models/blog/blog';
 import { Router } from '@angular/router';
+
+import { BlogService } from 'src/app/core/services/blog/blog.service';
 
 @Component({
   selector: 'app-blog-new',
