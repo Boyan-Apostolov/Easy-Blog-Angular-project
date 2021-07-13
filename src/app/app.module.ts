@@ -11,6 +11,12 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+  StorageBucket,
+} from '@angular/fire/storage';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
@@ -50,6 +56,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'easy-blog'),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     MatChipsModule,
   ],
   providers: [BlogService, AuthGuard, UserService],

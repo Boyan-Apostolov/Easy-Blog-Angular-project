@@ -1,36 +1,38 @@
 <section class="register-section">
-    <form method="post">
+    <form>
         <h2>Register</h2>
         <div class="illustration">
             <i class="fas fa-user-plus"></i>
         </div>
         <div>
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" #username name="username" placeholder="Username">
         </div>
         <div>
-            <input type="email" name="email" placeholder="Email">
+            <input type="email" #email name="email" placeholder="Email">
         </div>
         <div>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" #password name="password" placeholder="Password">
         </div>
         <div>
-            <input type="password" name="confirm-password" placeholder="Confirm password">
+            <input type="password" #confirmPassword name="confirm-password" placeholder="Confirm password">
         </div>
         <div class="bio-holder">
             <label>
                 <p>Tell us a bit about yourself:</p>
-                <textarea name="biography" rows="4" cols="50"></textarea>
+                <textarea name="biography" #bio rows="4" cols="50"></textarea>
             </label>
         </div>
         <div class="pic-holder">
             <label>
                 <p>Choose a profile picture:</p>
-                <input type='file' id="profile-picture">
+                <input type="file" required id="file" #userPhoto name="image" />
             </label>
         </div>
 
         <div>
-            <button class="btn" type="submit">Register</button>
+            <button class="btn"
+                (click)="onRegister(username.value,email.value,password.value,confirmPassword.value,bio.value,userPhoto)"
+                type="button">Register</button>
         </div>
     </form>
 </section>

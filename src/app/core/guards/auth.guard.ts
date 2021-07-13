@@ -16,9 +16,8 @@ export class AuthGuard implements CanActivateChild {
   ): boolean {
     const isLoggedFromData = childRoute.data.isLogged;
     if (
-      (typeof isLoggedFromData === 'boolean' &&
-        isLoggedFromData === this.userService.isLogged) ||
-      isLoggedFromData == null
+      isLoggedFromData == this.userService.isLogged ||
+      isLoggedFromData == undefined
     ) {
       return true;
     }

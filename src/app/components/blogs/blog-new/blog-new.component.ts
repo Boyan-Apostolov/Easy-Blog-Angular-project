@@ -34,7 +34,7 @@ export class BlogNewComponent implements OnInit {
         this.blog.content,
         this.blog.tags
       );
-      this.router.navigateByUrl('blogs');
+      this.router.navigateByUrl('blogs/all');
     }
   }
 }

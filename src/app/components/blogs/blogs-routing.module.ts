@@ -14,12 +14,10 @@ const routes: Routes = [
       {
         path: 'all',
         component: BlogsComponent,
-        data: { isLogged: null },
       },
       {
         path: 'blog/:id',
         component: BlogArticleComponent,
-        data: { isLogged: null },
       },
       {
         path: 'new',

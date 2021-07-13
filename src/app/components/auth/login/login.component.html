@@ -1,17 +1,17 @@
 <section class="login-section">
-    <form method="post">
+    <form method="get">
         <h2>Login</h2>
         <div class="illustration">
             <i class="fas fa-user-lock"></i>
         </div>
         <div>
-            <input type="email" name="email" placeholder="Email">
+            <input #email type="email" name="email" placeholder="Email">
         </div>
         <div>
-            <input type="password" name="password" placeholder="Password">
+            <input #password type="password" name="password" placeholder="Password">
         </div>
         <div>
-            <button class="login-btn" type="submit">Log In</button>
+            <button class="login-btn" (click)="onLogin(email.value, password.value)" type="btn">Log In</button>
         </div>
     </form>
 </section>

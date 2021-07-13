@@ -35,7 +35,7 @@ export class BlogArticleComponent implements OnInit {
     if (confirm('Are you sure you want to delete this blog?')) {
       this.clearState();
       this.blogService.deteleBlog(blog);
-      this.router.navigateByUrl('blogs');
+      this.router.navigateByUrl('blogs/all');
     }
   }
 
