@@ -12,6 +12,7 @@ import { BlogService } from 'src/app/core/services/blog/blog.service';
   styleUrls: ['./blog-new.component.css'],
 })
 export class BlogNewComponent implements OnInit {
+  error: any;
   fileLink: any;
   downloadURL!: Observable<string>;
 
@@ -42,7 +43,10 @@ export class BlogNewComponent implements OnInit {
 
   onSubmit(blogImg: HTMLInputElement) {
     this.isLoading = true;
-    if (this.blog.title != '' && this.blog.content != '') {
+    if (
+      (this.blog.title != '' && this.blog.content != '') ||
+      blogImg == undefined
+    ) {
       this.uploadImage(this.blog.title, blogImg, 'BlogImages');
       this.subscriptions.push(
         interval(3000)
@@ -55,10 +59,21 @@ export class BlogNewComponent implements OnInit {
               this.blog.content,
               this.blog.tags
             );
+            this.error = {};
             this.isLoading = false;
             this.router.navigateByUrl('blogs/all');
           })
       );
+    } else {
+      this.isLoading = false;
+      this.error = {
+        title: 'Error!',
+        message: 'All fields are required!',
+        class: 'danger',
+      };
+      interval(3000).subscribe(() => {
+        this.error = {};
+      });
     }
   }
 

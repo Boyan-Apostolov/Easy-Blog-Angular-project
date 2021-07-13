@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../../../core/services/blog/blog.service';
 import { Blog } from '../../../core/models/blog/blog';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-blog-article',
@@ -13,11 +14,14 @@ export class BlogArticleComponent implements OnInit {
   editState: boolean = false;
   commentingState: boolean = false;
 
+  error: any;
+
   blogToEdit!: Blog;
   commentToAdd!: string;
 
   blog!: Blog;
   id: string | null = '';
+
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
@@ -45,30 +49,58 @@ export class BlogArticleComponent implements OnInit {
   }
 
   updateBlog(blog: Blog) {
-    this.blogService.updateBlog(blog);
-    this.clearState();
+    if (blog.imgUrl == '' || blog.title == '' || blog.content == '') {
+      this.addAlert('Error', 'All fields are required!', 'danger');
+    } else {
+      this.blogService.updateBlog(blog);
+      this.clearState();
+      this.addAlert('Success', 'Blog updated succesfully!', 'success');
+    }
   }
 
   likeBlog(blog: Blog) {
     if (!this.blog.likes?.includes('userID')) {
       blog.likes?.push('userID');
+      this.updateBlog(blog);
+      this.addAlert('Success', 'Comment liked succesfully!', 'success');
+    } else {
+      this.addAlert(
+        'Error',
+        'You cannot like the blog more than once!',
+        'danger'
+      );
     }
-    this.updateBlog(blog);
   }
 
   enableCommenting() {
     this.commentingState = true;
   }
+
   postComment(blog: Blog) {
     if (this.commentToAdd != '') {
       this.blog.comments?.push(`${this.commentToAdd}#@$userID`);
       this.updateBlog(blog);
       this.commentToAdd = '';
+      this.addAlert('Success', 'Comment added succesfully!', 'success');
+    } else {
+      this.addAlert('Error', 'Comment cannot be empty!', 'danger');
     }
   }
 
   clearState() {
     this.editState = false;
     this.commentingState = false;
+    this.error = {};
+  }
+
+  addAlert(heading: string, message: string, alertClass: string) {
+    this.error = {
+      title: heading,
+      message: message,
+      class: alertClass,
+    };
+    interval(3000).subscribe(() => {
+      this.error = {};
+    });
   }
 }

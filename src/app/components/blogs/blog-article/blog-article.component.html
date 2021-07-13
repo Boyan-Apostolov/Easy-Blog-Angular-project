@@ -1,4 +1,5 @@
 <section class="blog-page" *ngIf="blog">
+    <app-alert [alert]="error" *ngIf="error"></app-alert>
     <button class="btn edit-btn" (click)="editBlog($event,blog)">
         <i class="fas fa-edit">Edit</i>
     </button>

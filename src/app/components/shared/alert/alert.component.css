@@ -1,0 +1,32 @@
+.alert-holder {
+  width: fit-content;
+  right: 30px;
+  position: absolute;
+}
+.alert {
+  right: 30px;
+  top: 110px;
+  position: relative;
+}
+.danger,
+.warning,
+.success {
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
+}
+.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #721c24;
+}
+.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #856404;
+}
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #155724;
+}
