@@ -4,6 +4,7 @@ import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { BlogArticleComponent } from './blog-article/blog-article.component';
 import { BlogNewComponent } from './blog-new/blog-new.component';
+import { BlogsByTagComponent } from './blogs-by-tag/blogs-by-tag.component';
 import { BlogsComponent } from './blogs/blogs.component';
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'blog/:id',
         component: BlogArticleComponent,
+      },
+      {
+        path: 'byTag/:tag',
+        component: BlogsByTagComponent,
       },
       {
         path: 'new',
