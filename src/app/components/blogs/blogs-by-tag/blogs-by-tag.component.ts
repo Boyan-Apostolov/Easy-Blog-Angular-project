@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog/blog';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 
@@ -15,7 +15,8 @@ export class BlogsByTagComponent implements OnInit {
 
   constructor(
     private blogService: BlogService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +29,9 @@ export class BlogsByTagComponent implements OnInit {
     });
 
     this.tags = this.blogService.getAllTags();
+  }
+
+  backToAll() {
+    this.router.navigateByUrl('blogs/all');
   }
 }
