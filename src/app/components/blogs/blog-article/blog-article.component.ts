@@ -63,6 +63,7 @@ export class BlogArticleComponent implements OnInit {
     if (this.commentToAdd != '') {
       this.blog.comments?.push(`${this.commentToAdd}#@$userID`);
       this.updateBlog(blog);
+      this.commentToAdd = '';
     }
   }
 

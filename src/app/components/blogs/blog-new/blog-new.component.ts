@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { interval, Observable, Subscription } from 'rxjs';
 
+import { Router } from '@angular/router';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 
 @Component({
@@ -9,6 +12,11 @@ import { BlogService } from 'src/app/core/services/blog/blog.service';
   styleUrls: ['./blog-new.component.css'],
 })
 export class BlogNewComponent implements OnInit {
+  fileLink: any;
+  downloadURL!: Observable<string>;
+
+  private subscriptions: Array<Subscription> = [];
+
   blog: any = {
     title: '',
     imgUrl: '',
@@ -17,24 +25,56 @@ export class BlogNewComponent implements OnInit {
   };
   tags: string = '';
 
-  constructor(private blogService: BlogService, private router: Router) {}
+  constructor(
+    private storage: AngularFireStorage,
+    private blogService: BlogService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
+  public ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    });
+  }
 
-  onSubmit() {
-    if (
-      this.blog.title != '' &&
-      this.blog.imgUrl != '' &&
-      this.blog.content != ''
-    ) {
-      this.blog.tags = this.tags.replace(' ', '').split(',');
-      this.blogService.addNewBlog(
-        this.blog.title,
-        this.blog.imgUrl,
-        this.blog.content,
-        this.blog.tags
+  onSubmit(blogImg: HTMLInputElement) {
+    if (this.blog.title != '' && this.blog.content != '') {
+      this.uploadImage(this.blog.title, blogImg, 'BlogImages');
+      this.subscriptions.push(
+        interval(3000)
+          .pipe()
+          .subscribe(() => {
+            this.blog.tags = this.tags.replace(' ', '').split(',');
+            this.blogService.addNewBlog(
+              this.blog.title,
+              (this.blog.imgUrl = this.fileLink),
+              this.blog.content,
+              this.blog.tags
+            );
+            this.router.navigateByUrl('blogs/all');
+          })
       );
-      this.router.navigateByUrl('blogs/all');
     }
+  }
+
+  uploadImage(fileName: string, image: HTMLInputElement, path: string) {
+    const file = image.files![0];
+    const filePath = `${path}/${fileName}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`${path}/${fileName}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe((url) => {
+            if (url) {
+              this.fileLink = url;
+            }
+          });
+        })
+      )
+      .subscribe();
   }
 }

@@ -2,7 +2,7 @@
     <h3 class="card-title">
         <h1>Add a new blog!</h1>
     </h3>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit(imgUrl)">
 
         <div class="title-and-img">
             <div class="row">
@@ -12,7 +12,7 @@
 
             <div class="row">
                 <h3>Add an image your blog!</h3>
-                <input type="text" placeholder="www.cats.com/cat1.png" name="imgUrl" [(ngModel)]="this.blog.imgUrl">
+                <input type="file" required id="file" #imgUrl name="image" />
             </div>
 
             <div class="tags-row">
