@@ -2,8 +2,8 @@
     <h3 class="card-title">
         <h1>Add a new blog!</h1>
     </h3>
-    <form (ngSubmit)="onSubmit(imgUrl)">
-
+    <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+    <form (ngSubmit)="onSubmit(imgUrl)" *ngIf="!isLoading">
         <div class="title-and-img">
             <div class="row">
                 <h3>Add a title to your blog!</h3>

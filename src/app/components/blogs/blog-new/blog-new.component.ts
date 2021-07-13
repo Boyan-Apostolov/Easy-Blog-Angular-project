@@ -17,6 +17,8 @@ export class BlogNewComponent implements OnInit {
 
   private subscriptions: Array<Subscription> = [];
 
+  isLoading: boolean = false;
+
   blog: any = {
     title: '',
     imgUrl: '',
@@ -39,6 +41,7 @@ export class BlogNewComponent implements OnInit {
   }
 
   onSubmit(blogImg: HTMLInputElement) {
+    this.isLoading = true;
     if (this.blog.title != '' && this.blog.content != '') {
       this.uploadImage(this.blog.title, blogImg, 'BlogImages');
       this.subscriptions.push(
@@ -52,6 +55,7 @@ export class BlogNewComponent implements OnInit {
               this.blog.content,
               this.blog.tags
             );
+            this.isLoading = false;
             this.router.navigateByUrl('blogs/all');
           })
       );

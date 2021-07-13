@@ -5,10 +5,11 @@ import { HeaderComponent } from './header/header.component';
 
 import { AppRoutingModule } from '../../app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent, NotFoundComponent],
-  imports: [CommonModule, AppRoutingModule],
+  imports: [CommonModule, AppRoutingModule, MatProgressSpinnerModule],
   exports: [HeaderComponent, FooterComponent],
 })
 export class SharedModule {}

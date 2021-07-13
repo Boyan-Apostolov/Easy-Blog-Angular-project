@@ -46,3 +46,6 @@ input {
 .tags-row input {
   width: 100%;
 }
+mat-spinner {
+  margin: 0 auto;
+}

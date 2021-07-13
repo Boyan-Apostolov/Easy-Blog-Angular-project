@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
           bio,
           this.fileLink
         );
+
         this.router.navigateByUrl('/');
         window.location.reload();
       });

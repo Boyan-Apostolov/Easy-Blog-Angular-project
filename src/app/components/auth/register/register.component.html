@@ -1,5 +1,6 @@
 <section class="register-section">
-    <form>
+    <div #loader class="loader"></div>
+    <form #form>
         <h2>Register</h2>
         <div class="illustration">
             <i class="fas fa-user-plus"></i>
@@ -31,7 +32,7 @@
 
         <div>
             <button class="btn"
-                (click)="onRegister(username.value,email.value,password.value,confirmPassword.value,bio.value,userPhoto)"
+                (click)="onRegister(username.value,email.value,password.value,confirmPassword.value,bio.value,userPhoto); loader.style.display='block'; form.style.display='none';"
                 type="button">Register</button>
         </div>
     </form>
