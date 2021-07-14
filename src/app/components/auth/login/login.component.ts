@@ -13,7 +13,5 @@ export class LoginComponent implements OnInit {
 
   onLogin(email: string, password: string) {
     this.userService.login(email, password);
-    this.router.navigateByUrl('/');
-    window.location.reload();
   }
 }

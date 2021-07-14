@@ -1,5 +1,5 @@
 <section class="login-section">
-    <form method="get">
+    <form method="post">
         <h2>Login</h2>
         <div class="illustration">
             <i class="fas fa-user-lock"></i>
@@ -11,7 +11,7 @@
             <input #password type="password" name="password" placeholder="Password">
         </div>
         <div>
-            <button class="login-btn" (click)="onLogin(email.value, password.value)" type="btn">Log In</button>
+            <button class="login-btn" (click)="onLogin(email.value, password.value)" type="button">Log In</button>
         </div>
     </form>
 </section>

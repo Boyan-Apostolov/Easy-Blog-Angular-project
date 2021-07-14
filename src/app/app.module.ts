@@ -12,6 +12,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
@@ -58,11 +59,18 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'easy-blog'),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AngularFireStorageModule,
     MatChipsModule,
     MatProgressSpinnerModule,
   ],
-  providers: [BlogService, AuthGuard, UserService, ImageUploadService],
+  providers: [
+    BlogService,
+    AuthGuard,
+    UserService,
+    ImageUploadService,
+    AngularFireAuthModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

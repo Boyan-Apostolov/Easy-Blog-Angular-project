@@ -2,12 +2,38 @@ import { Injectable } from '@angular/core';
 import { Blog } from '../../models/blog/blog';
 import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 @Injectable()
 export class UserService {
   public achievmentImgUrl: string =
     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
 
-  constructor() {}
+  constructor(private fireAuth: AngularFireAuth, private router: Router) {}
+
+  //WORKING REGISTRATION
+  // this.fireAuth.auth
+  //   .createUserWithEmailAndPassword('bobi@abv.bg', '123123')
+  //   .then((userData) => {
+  //     let user = userData.user;
+  //     console.log(user);
+  //   })
+  //   .catch((err) => alert(err.message));
+  //WORKING LOGIN
+  // this.fireAuth.auth
+  //   .signInWithEmailAndPassword('bobi@abv.bg', '1231235')
+  //   .then((userData) => {
+  //     let user = userData.user;
+  //     console.log(user);
+  //   })
+  //   .catch((err) => alert(err.message));
+  //WORKING LOGOUT
+  // this.fireAuth.auth
+  //   .signOut()
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch((err) => alert(err.message));
 
   private achievment: Achievment = {
     imgUrl: this.achievmentImgUrl,
@@ -27,12 +53,21 @@ export class UserService {
   };
 
   get isLogged(): boolean {
-    return localStorage['isLogged'] != undefined;
+    return localStorage['user_data'] != undefined;
   }
 
   login(email: string, password: string) {
-    console.log('logging in...');
-    localStorage.setItem('isLogged', email);
+    return this.fireAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userData) => {
+        alert('Login successfully');
+        this.addUserToLocalStorage(userData);
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => {
+        window.location.reload();
+        this.router.navigateByUrl('/');
+      });
   }
 
   register(
@@ -42,6 +77,16 @@ export class UserService {
     bio: string,
     imgUrl: string
   ) {
+    return this.fireAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userData) => {
+        alert('registred successfully');
+        this.addUserToLocalStorage(userData);
+      })
+      .finally(() => {
+        window.location.reload();
+        this.router.navigateByUrl('/');
+      });
     // id: string;
     // username: string;
     // email: string;
@@ -52,15 +97,25 @@ export class UserService {
     // comments?: string[];
     // views?: string[];
     // blogs?: string[];
-
-    console.log('registering...');
-    localStorage.setItem('userImg', imgUrl);
-    localStorage.setItem('isLogged', email);
   }
 
   logout() {
-    console.log('logging out...');
-    localStorage.removeItem('isLogged');
+    return this.fireAuth.auth
+      .signOut()
+      .then((data) => {
+        alert('logged out');
+        console.log(data);
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => {
+        localStorage.removeItem('user_data');
+        window.location.reload();
+        this.router.navigateByUrl('/');
+      });
+  }
+
+  addUserToLocalStorage(userData: any) {
+    localStorage['user_data'] = userData;
   }
 
   get getUserPic(): string {
