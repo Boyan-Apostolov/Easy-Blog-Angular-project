@@ -14,7 +14,7 @@ import { UserService } from 'src/app/core/services/user/user-service.service';
 export class BlogArticleComponent implements OnInit {
   editState: boolean = false;
   commentingState: boolean = false;
-
+  isOwner: boolean = false;
   error: any;
 
   blogToEdit!: Blog;
@@ -35,6 +35,12 @@ export class BlogArticleComponent implements OnInit {
     this.blogService.getAllBlogs().subscribe((blogs) => {
       this.blog = blogs.filter((x) => x.id === this.id)[0];
     });
+  }
+
+  ngAfterContentChecked() {
+    if (this.blog) {
+      this.isOwner = this.userService.currentUser.id == this.blog.user.id;
+    }
   }
 
   deteleBlog(event: MouseEvent, blog: Blog) {
@@ -87,6 +93,7 @@ export class BlogArticleComponent implements OnInit {
     } else {
       this.addAlert('Error', 'Comment cannot be empty!', 'danger');
     }
+    this.clearState();
   }
 
   clearState() {

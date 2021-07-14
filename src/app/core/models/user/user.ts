@@ -1,4 +1,5 @@
 import { Blog } from '../blog/blog';
+import { Achievment } from './achievment';
 
 export interface User {
   id: string;
@@ -11,4 +12,5 @@ export interface User {
   comments?: string[];
   views?: string[];
   blogs?: Blog[];
+  achievements?: Achievment[];
 }

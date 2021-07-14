@@ -33,6 +33,7 @@ import { BlogArticleComponent } from './components/blogs/blog-article/blog-artic
 import { BlogNewComponent } from './components/blogs/blog-new/blog-new.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { BlogsByTagComponent } from './components/blogs/blogs-by-tag/blogs-by-tag.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { BlogsByTagComponent } from './components/blogs/blogs-by-tag/blogs-by-ta
     BlogNewComponent,
     PrivacyComponent,
     BlogsByTagComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

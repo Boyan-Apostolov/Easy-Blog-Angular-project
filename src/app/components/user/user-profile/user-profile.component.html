@@ -1,0 +1,31 @@
+<section class="user-profile">
+    <section class="profile-holder">
+        <section class="profile-img-holder">
+            <img [src]="user.imgUrl" alt="">
+        </section>
+        <h1>{{user.username}}</h1>
+    </section>
+
+    <section class="bio-holder">
+        <h2 class="bio-heading">User Bio:</h2>
+        <p>{{user.bio}}</p>
+    </section>
+
+    <h2 class="bordered-heading">Achievements:</h2>
+    <ul class="achievements-holder">
+        <li *ngFor="let achievment of user.achievements">
+            <article class="img-holder">
+                <img [src]="achievment.imgUrl" alt="">
+            </article>
+            <article class="achievment-content">
+                {{achievment.content}}
+            </article>
+        </li>
+    </ul>
+
+    <h2 class="bordered-heading">Blogs:</h2>
+    <div class="blog-cards">
+        <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>
+    </div>
+
+</section>

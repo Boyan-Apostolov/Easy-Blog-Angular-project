@@ -73,8 +73,9 @@ export class BlogService {
       likes: [],
       views: [],
     };
-    this.userService.currentUser.blogs?.push(blog);
+
     this.blogsCollection.add(blog);
+    //this.userService.addBlogToUser(blog);
   }
 
   addComment(blog: Blog, content: string) {

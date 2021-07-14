@@ -1,6 +1,6 @@
 <section class="blog-page" *ngIf="blog">
     <app-alert [alert]="error" *ngIf="error"></app-alert>
-    <button class="btn edit-btn" (click)="editBlog($event,blog)">
+    <button *ngIf="isOwner" class="btn edit-btn" (click)="editBlog($event,blog)">
         <i class="fas fa-edit">Edit</i>
     </button>
     <button *ngIf="this.editState && this.blogToEdit.id === blog.id" class="cancel-btn" (click)="clearState()">
@@ -47,7 +47,7 @@
         <article class="blog-content-holder" [innerHTML]="blog.content">
         </article>
 
-        <a routerLink="../../../users/{{blog.user.id}}" class="author">
+        <a routerLink="../../../user/{{blog.user.id}}" class="author">
             Author: {{blog.user.username}}
         </a>
         <button (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you like

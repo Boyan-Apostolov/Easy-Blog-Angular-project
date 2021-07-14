@@ -20,7 +20,6 @@ export class BlogsByTagComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.tag);
     this.route.params.subscribe((routeParams) => {
       this.tag = Object.values(routeParams)[0];
       this.blogService.getAllBlogs().subscribe((blogs) => {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-import { interval, Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ImageUploadService {
