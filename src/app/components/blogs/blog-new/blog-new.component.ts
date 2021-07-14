@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { delay, finalize } from 'rxjs/operators';
 import { interval, Observable, Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
+import { ImageUploadService } from 'src/app/core/services/image-upload/image-upload.service';
 
 @Component({
   selector: 'app-blog-new',
@@ -13,9 +14,6 @@ import { BlogService } from 'src/app/core/services/blog/blog.service';
 })
 export class BlogNewComponent implements OnInit {
   error: any;
-  fileLink: any;
-  downloadURL!: Observable<string>;
-
   private subscriptions: Array<Subscription> = [];
 
   isLoading: boolean = false;
@@ -31,23 +29,30 @@ export class BlogNewComponent implements OnInit {
   constructor(
     private storage: AngularFireStorage,
     private blogService: BlogService,
-    private router: Router
+    private router: Router,
+    private imageUploadService: ImageUploadService
   ) {}
 
   ngOnInit(): void {}
+
   public ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => {
       subscription.unsubscribe();
     });
   }
 
-  onSubmit(blogImg: HTMLInputElement) {
+  async onSubmit(blogImg: HTMLInputElement) {
     this.isLoading = true;
     if (
       (this.blog.title != '' && this.blog.content != '') ||
       blogImg == undefined
     ) {
-      this.uploadImage(this.blog.title, blogImg, 'BlogImages');
+      await this.imageUploadService.uploadImage(
+        this.blog.title,
+        blogImg,
+        'BlogImages'
+      );
+
       this.subscriptions.push(
         interval(3000)
           .pipe()
@@ -55,7 +60,7 @@ export class BlogNewComponent implements OnInit {
             this.blog.tags = this.tags.replace(' ', '').split(',');
             this.blogService.addNewBlog(
               this.blog.title,
-              (this.blog.imgUrl = this.fileLink),
+              (this.blog.imgUrl = this.imageUploadService.fileLink),
               this.blog.content,
               this.blog.tags
             );
@@ -75,25 +80,5 @@ export class BlogNewComponent implements OnInit {
         this.error = {};
       });
     }
-  }
-
-  uploadImage(fileName: string, image: HTMLInputElement, path: string) {
-    const file = image.files![0];
-    const filePath = `${path}/${fileName}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`${path}/${fileName}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url) => {
-            if (url) {
-              this.fileLink = url;
-            }
-          });
-        })
-      )
-      .subscribe();
   }
 }

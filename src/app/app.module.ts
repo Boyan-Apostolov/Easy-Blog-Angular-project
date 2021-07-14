@@ -25,6 +25,7 @@ import { BlogsRoutingModule } from './components/blogs/blogs-routing.module';
 
 import { BlogService } from './core/services/blog/blog.service';
 import { UserService } from './core/services/user/user-service.service';
+import { ImageUploadService } from './core/services/image-upload/image-upload.service';
 
 import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
@@ -59,7 +60,7 @@ import { BlogsByTagComponent } from './components/blogs/blogs-by-tag/blogs-by-ta
     MatChipsModule,
     MatProgressSpinnerModule,
   ],
-  providers: [BlogService, AuthGuard, UserService],
+  providers: [BlogService, AuthGuard, UserService, ImageUploadService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
