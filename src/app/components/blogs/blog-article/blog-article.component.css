@@ -197,3 +197,11 @@ li span {
 .comment-buttons {
   margin-top: 10px;
 }
+.comment-user span {
+  display: inline-block;
+}
+.comment-user-username {
+  font-weight: 500;
+  margin-left: 10px;
+  font-style: normal;
+}

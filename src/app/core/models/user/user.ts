@@ -1,3 +1,5 @@
+import { Blog } from '../blog/blog';
+
 export interface User {
   id: string;
   username: string;
@@ -8,5 +10,5 @@ export interface User {
   likes?: string[];
   comments?: string[];
   views?: string[];
-  blogs?: string[];
+  blogs?: Blog[];
 }

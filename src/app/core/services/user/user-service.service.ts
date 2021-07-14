@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { User } from '../../models/user/user';
 
-import { BlogService } from '../../services/blog/blog.service';
+// import { BlogService } from '../../services/blog/blog.service';
 
 @Injectable()
 export class UserService {
-  constructor(private blogService: BlogService) {}
+  constructor() {}
 
   get isLogged(): boolean {
     //see if user is logged in
@@ -46,6 +47,19 @@ export class UserService {
 
   get getUserPic(): string {
     //get user imageUrl
-    return localStorage['userImg'];
+    return this.currentUser.imgUrl;
+  }
+
+  get currentUser(): User {
+    let user: User = {
+      id: 'default-user-id',
+      username: 'default-user',
+      email: 'default-user@email.com',
+      bio: 'Im a default user!',
+      password: 'default-user-password',
+      imgUrl:
+        'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80',
+    };
+    return user;
   }
 }

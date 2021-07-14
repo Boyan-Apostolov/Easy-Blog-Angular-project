@@ -7,12 +7,15 @@ import { UserService } from '../../../core/services/user/user-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isLogged = this.userService.isLogged;
-  public userPic = this.userService.getUserPic;
+  public isLogged: boolean = false;
+  public userPic: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLogged = this.userService.isLogged;
+    this.userPic = this.userService.getUserPic;
+  }
 
   logout() {
     this.userService.logout();

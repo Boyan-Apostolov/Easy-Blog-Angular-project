@@ -4,6 +4,7 @@ import { BlogService } from '../../../core/services/blog/blog.service';
 import { Blog } from '../../../core/models/blog/blog';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
+import { UserService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
   selector: 'app-blog-article',
@@ -25,7 +26,8 @@ export class BlogArticleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +61,9 @@ export class BlogArticleComponent implements OnInit {
   }
 
   likeBlog(blog: Blog) {
-    if (!this.blog.likes?.includes('userID')) {
-      blog.likes?.push('userID');
+    let userId = this.userService.currentUser.id;
+    if (!this.blog.likes?.includes(userId)) {
+      blog.likes?.push(userId);
       this.updateBlog(blog);
       this.addAlert('Success', 'Comment liked succesfully!', 'success');
     } else {
@@ -78,8 +81,7 @@ export class BlogArticleComponent implements OnInit {
 
   postComment(blog: Blog) {
     if (this.commentToAdd != '') {
-      this.blog.comments?.push(`${this.commentToAdd}#@$userID`);
-      this.updateBlog(blog);
+      this.blogService.addComment(blog, this.commentToAdd);
       this.commentToAdd = '';
       this.addAlert('Success', 'Comment added succesfully!', 'success');
     } else {

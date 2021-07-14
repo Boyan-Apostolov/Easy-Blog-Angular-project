@@ -47,8 +47,8 @@
         <article class="blog-content-holder" [innerHTML]="blog.content">
         </article>
 
-        <a routerLink="../../../users/{{blog.creatorId}}" class="author">
-            Author: {{blog.creatorId}}
+        <a routerLink="../../../users/{{blog.user.id}}" class="author">
+            Author: {{blog.user.username}}
         </a>
         <button (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you like
             this blog?</button>
@@ -77,10 +77,10 @@
             <ul>
                 <li *ngFor="let comment of blog.comments">
                     <span class="comment-user">
-                        Written by: {{comment.split('#@$')[1]}}:
+                        <span>Written by </span><span class="comment-user-username">{{comment.user.username}}</span>
                     </span>
                     <span class="comment-title">
-                        {{comment.split('#@$')[0]}}
+                        {{comment.content}}
                     </span>
                 </li>
             </ul>

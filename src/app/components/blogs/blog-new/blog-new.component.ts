@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { delay, finalize } from 'rxjs/operators';
-import { interval, Observable, Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
@@ -12,7 +11,7 @@ import { ImageUploadService } from 'src/app/core/services/image-upload/image-upl
   templateUrl: './blog-new.component.html',
   styleUrls: ['./blog-new.component.css'],
 })
-export class BlogNewComponent implements OnInit {
+export class BlogNewComponent {
   error: any;
   private subscriptions: Array<Subscription> = [];
 
@@ -32,8 +31,6 @@ export class BlogNewComponent implements OnInit {
     private router: Router,
     private imageUploadService: ImageUploadService
   ) {}
-
-  ngOnInit(): void {}
 
   public ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => {

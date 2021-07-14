@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Blog } from '../../models/blog/blog';
+import { BlogComment } from '../../models/blog/comment';
+
+import { UserService } from '../user/user-service.service';
 
 import {
   AngularFirestore,
@@ -17,7 +20,7 @@ export class BlogService {
   blogs!: Observable<Blog[]>;
   tags: string[] = [];
 
-  constructor(public afs: AngularFirestore) {
+  constructor(public afs: AngularFirestore, private userService: UserService) {
     this.initiateBlogsCollection();
     this.loadAllBlogs();
     this.loadAllTags();
@@ -63,14 +66,26 @@ export class BlogService {
       title: title,
       imgUrl: imgUrl,
       content: content, //Sanitize
-      creatorId: 'default-user', //Get Current User ID
+      user: this.userService.currentUser, //Get Current User ID
       createdOn: new Date().toLocaleString(), //Current DateTime
       tags: tags,
       comments: [],
       likes: [],
       views: [],
     };
+    this.userService.currentUser.blogs?.push(blog);
     this.blogsCollection.add(blog);
+  }
+
+  addComment(blog: Blog, content: string) {
+    let comment: BlogComment = {
+      content: content,
+      postId: blog.id!,
+      createdOn: new Date().toLocaleString(),
+      user: this.userService.currentUser,
+    };
+    blog.comments?.push(comment);
+    this.updateBlog(blog);
   }
 
   deteleBlog(blog: Blog) {
