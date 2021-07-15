@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog/blog';
+import { Achievment } from 'src/app/core/models/user/achievment';
 import { User } from 'src/app/core/models/user/user';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 import { UserService } from 'src/app/core/services/user/user-service.service';
@@ -14,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   blogs!: Blog[];
   userId!: string;
   user!: User;
+  achievements!: Achievment[];
 
   constructor(
     private blogService: BlogService,
@@ -28,6 +30,9 @@ export class UserProfileComponent implements OnInit {
       this.userId = Object.values(routeParams)[0];
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blogs = blogs.filter((x) => x.user.id == this.userId);
+        this.achievements = this.userService.loadProfileAchievments(
+          this.blogs.length
+        );
       });
     });
   }

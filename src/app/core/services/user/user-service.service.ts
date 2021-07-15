@@ -36,10 +36,6 @@ export class UserService {
         });
       })
     );
-
-    if (localStorage['user_data']) {
-      this.userInfo = JSON.parse(localStorage['user_data']);
-    }
   }
 
   get isLogged(): boolean {
@@ -106,7 +102,10 @@ export class UserService {
         window.location.reload();
       });
   }
-
+  incrementUserBlogs(blog: Blog) {
+    this.currentUser.blogs?.push(blog);
+    this.updateUser();
+  }
   addUserToLocalStorage(userData: any) {
     localStorage['user_data'] = userData;
   }
@@ -119,48 +118,56 @@ export class UserService {
     user.achievements?.push({ content: text, imgUrl: this.achievmentImgUrl });
   }
 
-  checkIfUserIsEligbleForAchievement(user: User) {
-    var blogsWritten = user.blogs!.length;
-
-    switch (blogsWritten) {
-      case 1:
-        this.addAchievmentIsNotYetEarned(user, 'First blog written!');
-        break;
-      case 5:
-        this.addAchievmentIsNotYetEarned(user, '5 blog written!');
-        break;
-      case 10:
-        this.addAchievmentIsNotYetEarned(user, '10 blog written!');
-        break;
-      case 20:
-        this.addAchievmentIsNotYetEarned(user, '20 blog written!');
-        break;
-      case 50:
-        this.addAchievmentIsNotYetEarned(user, '50 blog written!');
-        break;
-      case 100:
-        this.addAchievmentIsNotYetEarned(user, '100 blog written!');
-        break;
-    }
-  }
-
-  addAchievmentIsNotYetEarned(user: User, content: string) {
-    if (!user.achievements?.some((x) => x.content.includes(content))) {
-      user.achievements?.push({
-        content: content,
+  checkIfUserIsEligbleForAchievement(blogsWritten: number) {
+    let achievments = Array<Achievment>();
+    if (blogsWritten >= 1)
+      achievments.push({
+        content: '1 blog written!',
         imgUrl: this.achievmentImgUrl,
       });
-    }
+    if (blogsWritten >= 5)
+      achievments.push({
+        content: '5 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 10)
+      achievments.push({
+        content: '10 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 20)
+      achievments.push({
+        content: '20 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 50)
+      achievments.push({
+        content: '50 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 100)
+      achievments.push({
+        content: '100 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+
+    return achievments;
   }
 
   updateUser() {
-    //this.checkIfUserIsEligbleForAchievement(this.currentUser);
-
+    this.currentUser.bio = 'test';
     this.userDoc = this.afs.doc(`users/${this.currentUser.id}`);
     this.userDoc.update(this.currentUser);
   }
 
+  loadProfileAchievments(blogsCount: number) {
+    let achievments = this.checkIfUserIsEligbleForAchievement(blogsCount);
+    return achievments;
+  }
+
   get currentUser(): User {
+    this.userInfo = JSON.parse(localStorage['user_data']);
+
     return this.userInfo as User;
   }
 }
