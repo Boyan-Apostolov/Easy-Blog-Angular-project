@@ -75,7 +75,6 @@ export class BlogService {
     };
 
     this.blogsCollection.add(blog);
-    //this.userService.addBlogToUser(blog);
   }
 
   addComment(blog: Blog, content: string) {

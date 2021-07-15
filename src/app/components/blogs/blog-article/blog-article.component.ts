@@ -68,8 +68,8 @@ export class BlogArticleComponent implements OnInit {
 
   likeBlog(blog: Blog) {
     let userId = this.userService.currentUser.id;
-    if (!this.blog.likes?.includes(userId)) {
-      blog.likes?.push(userId);
+    if (!this.blog.likes?.includes(userId!)) {
+      blog.likes?.push(userId!);
       this.updateBlog(blog);
       this.addAlert('Success', 'Comment liked succesfully!', 'success');
     } else {

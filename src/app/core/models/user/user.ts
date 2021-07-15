@@ -2,9 +2,10 @@ import { Blog } from '../blog/blog';
 import { Achievment } from './achievment';
 
 export interface User {
-  id: string;
+  id?: string;
+  firebaseId?: string;
   username: string;
-  password: string;
+  // password: string;
   email: string;
   bio: string;
   imgUrl: string;
