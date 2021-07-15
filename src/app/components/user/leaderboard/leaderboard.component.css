@@ -1,0 +1,77 @@
+.leaderboard-holder {
+  height: 84.9vh;
+  background-color: #ccc;
+}
+
+h1 {
+  font-weight: 400;
+  text-align: center;
+  font-size: 35px;
+  padding-top: 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  width: 80px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 3px solid rgb(182, 162, 162);
+}
+
+.img-holder img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  flex-basis: 25%;
+}
+li {
+  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
+  border-radius: 6px;
+  padding: 10px 20px;
+  width: 60%;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  text-align: center;
+  background-color: white;
+}
+
+li:nth-child(1) {
+  border: 2px solid gold;
+}
+li:nth-child(1) .place {
+  color: gold;
+}
+li:nth-child(2) {
+  border: 2px solid rgb(110, 108, 108);
+}
+li:nth-child(2) .place {
+  color: rgb(110, 108, 108);
+}
+li:nth-child(3) {
+  border: 2px solid #a56136;
+}
+li:nth-child(3) .place {
+  color: #a56136;
+}
+
+.place {
+  flex-basis: 0%;
+}
+.place h2 {
+  font-size: 50px;
+  margin: 0;
+}
+li h2 {
+  flex-basis: 20%;
+}

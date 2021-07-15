@@ -1,0 +1,15 @@
+<section class="leaderboard-holder">
+    <h1>Site Leaderboard</h1>
+    <ul>
+        <li *ngFor="let userBlog of userBlogList; let i = index" routerLink="/user/{{userBlog.user.id}}">
+            <section class="place">
+                <h2>{{i+1}}</h2>
+            </section>
+            <section class="img-holder">
+                <img [src]="userBlog.user.imgUrl" alt="">
+            </section>
+            <h2>User: {{userBlog.user.username}}</h2>
+            <h2>Blogs written: {{userBlog.blogs}}</h2>
+        </li>
+    </ul>
+</section>
