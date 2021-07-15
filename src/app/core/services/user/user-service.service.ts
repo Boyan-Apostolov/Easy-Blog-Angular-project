@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Blog } from '../../models/blog/blog';
 import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -9,7 +8,7 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
-import { interval, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Injectable()
 export class UserService {
@@ -72,10 +71,6 @@ export class UserService {
           username: username,
           email: email,
           bio: bio,
-          likes: [],
-          blogs: [],
-          comments: [],
-          views: [],
           imgUrl: imgUrl,
         };
 
@@ -102,20 +97,13 @@ export class UserService {
         window.location.reload();
       });
   }
-  incrementUserBlogs(blog: Blog) {
-    this.currentUser.blogs?.push(blog);
-    this.updateUser();
-  }
+
   addUserToLocalStorage(userData: any) {
     localStorage['user_data'] = userData;
   }
 
   get getUserPic(): string {
     return this.currentUser.imgUrl;
-  }
-
-  addAchievmentToUser(user: User, text: string) {
-    user.achievements?.push({ content: text, imgUrl: this.achievmentImgUrl });
   }
 
   checkIfUserIsEligbleForAchievement(blogsWritten: number) {
@@ -155,19 +143,12 @@ export class UserService {
   }
 
   updateUser() {
-    this.currentUser.bio = 'test';
     this.userDoc = this.afs.doc(`users/${this.currentUser.id}`);
     this.userDoc.update(this.currentUser);
   }
 
-  loadProfileAchievments(blogsCount: number) {
-    let achievments = this.checkIfUserIsEligbleForAchievement(blogsCount);
-    return achievments;
-  }
-
   get currentUser(): User {
     this.userInfo = JSON.parse(localStorage['user_data']);
-
     return this.userInfo as User;
   }
 }

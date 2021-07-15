@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
       this.userId = Object.values(routeParams)[0];
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blogs = blogs.filter((x) => x.user.id == this.userId);
-        this.achievements = this.userService.loadProfileAchievments(
+        this.achievements = this.userService.checkIfUserIsEligbleForAchievement(
           this.blogs.length
         );
       });
