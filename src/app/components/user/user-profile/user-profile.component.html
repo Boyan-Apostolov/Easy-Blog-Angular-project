@@ -1,4 +1,4 @@
-<section class="user-profile">
+<section *ngIf="user" class="user-profile">
     <section class="profile-holder">
         <section class="profile-img-holder">
             <img [src]="user.imgUrl" alt="">
@@ -12,7 +12,7 @@
     </section>
 
     <h2 class="bordered-heading">Achievements:</h2>
-    <ul class="achievements-holder">
+    <ul class="achievements-holder" *ngIf="achievements.length > 0">
         <li *ngFor="let achievment of achievements">
             <article class="img-holder">
                 <img [src]="achievment.imgUrl" alt="">
@@ -22,10 +22,12 @@
             </article>
         </li>
     </ul>
+    <p *ngIf="achievements.length == 0">No earned achievemnts yet!</p>
 
     <h2 class="bordered-heading">Blogs:</h2>
-    <div class="blog-cards">
+    <div class="blog-cards" *ngIf="blogs.length > 0">
         <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>
     </div>
+    <p *ngIf="blogs.length == 0">No blogs written yet!</p>
 
 </section>

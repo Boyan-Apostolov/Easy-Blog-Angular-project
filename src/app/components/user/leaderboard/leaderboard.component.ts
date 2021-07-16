@@ -26,7 +26,7 @@ export class LeaderboardComponent implements OnInit {
       this.blogs = blogs;
     });
 
-    this.userService.users.subscribe((users) => {
+    this.userService.getAllUsers().subscribe((users) => {
       users.forEach((user) => {
         this.userBlogList.push({
           user: user,

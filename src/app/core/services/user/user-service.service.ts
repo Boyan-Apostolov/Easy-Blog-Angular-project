@@ -53,6 +53,7 @@ export class UserService {
       .catch((err) => alert(err.message))
       .finally(() => {
         this.router.navigateByUrl('/');
+        window.location.reload();
       });
   }
 
@@ -83,6 +84,7 @@ export class UserService {
       })
       .finally(() => {
         this.router.navigateByUrl('/');
+        window.location.reload();
       });
   }
 
@@ -150,5 +152,9 @@ export class UserService {
   get currentUser(): User {
     this.userInfo = JSON.parse(localStorage['user_data']);
     return this.userInfo as User;
+  }
+
+  getAllUsers() {
+    return this.users;
   }
 }

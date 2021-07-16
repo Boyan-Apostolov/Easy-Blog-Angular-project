@@ -76,7 +76,10 @@ hr {
 }
 .blog-card {
   margin: 15px;
-  flex-basis: 20%;
+  flex-basis: 30%;
   box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
   border-radius: 5px;
+}
+.user-profile {
+  min-height: 85vh;
 }

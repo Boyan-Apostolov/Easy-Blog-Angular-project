@@ -42,6 +42,7 @@ input {
 .card {
   width: 80%;
   margin: 50px auto;
+  height: 74.2vh;
 }
 .tags-row input {
   width: 100%;

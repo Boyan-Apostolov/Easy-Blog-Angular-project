@@ -15,6 +15,7 @@ export class BlogArticleComponent implements OnInit {
   editState: boolean = false;
   commentingState: boolean = false;
   isOwner: boolean = false;
+  isLogged: boolean = false;
   error: any;
 
   blogToEdit!: Blog;
@@ -34,11 +35,15 @@ export class BlogArticleComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') as string;
     this.blogService.getAllBlogs().subscribe((blogs) => {
       this.blog = blogs.filter((x) => x.id === this.id)[0];
+      this.blog.comments?.sort((a, b) =>
+        b.createdOn.localeCompare(a.createdOn)
+      );
     });
   }
 
   ngAfterContentChecked() {
-    if (this.blog) {
+    this.isLogged = this.userService.isLogged;
+    if (this.blog && this.isLogged) {
       this.isOwner = this.userService.currentUser.id == this.blog.user.id;
     }
   }

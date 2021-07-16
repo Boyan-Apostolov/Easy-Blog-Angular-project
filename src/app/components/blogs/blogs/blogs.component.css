@@ -1,5 +1,5 @@
 .blogs-wrapper {
-  min-height: 83.2vh;
+  min-height: 84.9vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -19,7 +19,7 @@ h1 {
 }
 .blog-card {
   margin: 15px;
-  flex-basis: 20%;
+  flex-basis: 30%;
   box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
   border-radius: 5px;
 }

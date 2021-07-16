@@ -24,8 +24,6 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.userService.currentUser;
-
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
       this.blogService.getAllBlogs().subscribe((blogs) => {
@@ -34,6 +32,10 @@ export class UserProfileComponent implements OnInit {
           this.blogs.length
         );
       });
+    });
+
+    this.userService.getAllUsers().subscribe((users) => {
+      this.user = users.filter((x) => x.id == this.userId)[0];
     });
   }
 }
