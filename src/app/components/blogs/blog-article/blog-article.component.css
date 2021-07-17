@@ -207,3 +207,41 @@ li span {
   margin-left: 10px;
   font-style: normal;
 }
+.share-buttons-holder {
+  margin-bottom: 10px;
+}
+
+.share-buttons-holder button {
+  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 10px;
+  padding: 5px 25px;
+  font-size: 20px;
+  color: white;
+}
+.facebook {
+  background-color: #4267b2;
+}
+.pinterest {
+  background-color: #bd091d;
+}
+.twitter {
+  background-color: #00acee;
+}
+.linkedin {
+  background-color: #006fa6;
+}
+.tumblr {
+  background-color: #36465d;
+}
+.reddit {
+  background: #ff4006;
+}
+.copy-to-clipboard {
+  background-color: #607d8b;
+}
+.isClicked {
+  background-color: #00b900;
+}

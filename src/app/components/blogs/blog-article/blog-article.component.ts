@@ -12,6 +12,7 @@ import { UserService } from 'src/app/core/services/user/user-service.service';
   styleUrls: ['./blog-article.component.css'],
 })
 export class BlogArticleComponent implements OnInit {
+  isClicked = false;
   editState: boolean = false;
   commentingState: boolean = false;
   isOwner: boolean = false;
@@ -99,6 +100,11 @@ export class BlogArticleComponent implements OnInit {
       this.addAlert('Error', 'Comment cannot be empty!', 'danger');
     }
     this.clearState();
+  }
+
+  copyToClipboard() {
+    this.isClicked = true;
+    navigator.clipboard.writeText(window.location.href);
   }
 
   clearState() {

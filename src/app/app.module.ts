@@ -18,6 +18,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
+import { ShareModule } from 'ngx-sharebuttons';
+
 import { environment } from '../environments/environment';
 import { AuthGuard } from './core/guards/auth.guard';
 
@@ -65,6 +67,7 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     AngularFireStorageModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    ShareModule,
   ],
   providers: [
     BlogService,

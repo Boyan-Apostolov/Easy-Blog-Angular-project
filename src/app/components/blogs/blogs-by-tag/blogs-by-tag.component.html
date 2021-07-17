@@ -1,4 +1,4 @@
-<section class="blogs-wrapper">
+<section class="blogs-wrapper" *ngIf="this.blogs">
     <h1>All blogs with tag '{{tag}}'</h1>
     <button class="sort-btn" (click)="backToAll()">Back to all</button>
     <mat-spinner class="spinner" *ngIf="this.blogs.length <= 0"></mat-spinner>
