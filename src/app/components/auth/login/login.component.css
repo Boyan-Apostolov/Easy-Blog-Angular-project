@@ -31,6 +31,8 @@
 }
 
 .login-section form {
+  flex-direction: column;
+  display: flex;
   max-width: 320px;
   width: 90%;
   background-color: #1e2833;
@@ -67,12 +69,14 @@
   margin: 5px;
 }
 .login-section button {
+  cursor: pointer;
   color: #fff;
   background: #3777cc;
   outline: none;
   margin: 20px;
   width: 90%;
   font-weight: bold;
+  margin-left: 12px;
 }
 .login-section a {
   display: block;
@@ -81,4 +85,22 @@
   color: #6f7a85;
   text-decoration: none;
   margin: 5px;
+}
+.google-login img {
+  width: 25px;
+  background-color: white;
+}
+.google-login {
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 3px !important;
+}
+.google-login-disclaimer {
+  color: gray;
+  margin-top: 0px;
+  font-size: 13px;
 }

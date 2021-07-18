@@ -12,6 +12,13 @@
         </div>
         <div>
             <button class="login-btn" (click)="onLogin(email.value, password.value)" type="button">Log In</button>
+
+            <button type="button" class="google-login" (click)="googleAuth()">
+                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                    alt="Google-Logo">
+                Sign in with Google
+            </button>
+            <p class="google-login-disclaimer">Works only for registered users</p>
         </div>
     </form>
 </section>

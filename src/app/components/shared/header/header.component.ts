@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
     if (this.isLogged) {
       this.user = this.userService.currentUser;
     }
-    console.log(this.user);
   }
 
   ngOnInit() {}

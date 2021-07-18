@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import {
   AngularFirestore,
@@ -14,6 +15,8 @@ import { map } from 'rxjs/operators';
 export class UserService {
   public achievmentImgUrl: string =
     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
+
+  private userFromGoogleLogin: any;
 
   userInfo!: any;
   usersCollection!: AngularFirestoreCollection<User>;
@@ -48,13 +51,11 @@ export class UserService {
         this.users.subscribe((users) => {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
+          this.router.navigateByUrl('/');
+          window.location.reload();
         });
       })
-      .catch((err) => alert(err.message))
-      .finally(() => {
-        this.router.navigateByUrl('/');
-        window.location.reload();
-      });
+      .catch((err) => alert(err.message));
   }
 
   register(
@@ -88,6 +89,23 @@ export class UserService {
       });
   }
 
+  googleAuth(usersArr: User[]) {
+    return this.authLogin(new auth.GoogleAuthProvider(), usersArr);
+  }
+
+  authLogin(provider: any, usersArr: User[]) {
+    return this.fireAuth.auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        this.addGoogleLoginToLocalStorage(Object.values(result), usersArr);
+        this.router.navigateByUrl('/');
+        window.location.reload();
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
   logout() {
     return this.fireAuth.auth
       .signOut()
@@ -104,8 +122,21 @@ export class UserService {
     localStorage['user_data'] = userData;
   }
 
-  get getUserPic(): string {
-    return this.currentUser.imgUrl;
+  addGoogleLoginToLocalStorage(dataFromGoogle: any, usersArr: User[]) {
+    this.userFromGoogleLogin = usersArr.filter(
+      (x) => x.firebaseId == dataFromGoogle[0].uid
+    )[0];
+
+    if (this.userFromGoogleLogin) {
+      localStorage['user_data'] = JSON.stringify({
+        id: this.userFromGoogleLogin.id,
+        bio: this.userFromGoogleLogin.bio,
+        email: dataFromGoogle[0].email,
+        firebaseId: dataFromGoogle[0].uid,
+        imgUrl: this.userFromGoogleLogin.imgUrl,
+        username: this.userFromGoogleLogin.username,
+      });
+    }
   }
 
   checkIfUserIsEligbleForAchievement(blogsWritten: number) {
