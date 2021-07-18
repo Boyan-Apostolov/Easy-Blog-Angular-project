@@ -1,1 +1,30 @@
-<p>admin-users works!</p>
+<section class="admin-users-page">
+    <h1>Users Administration:</h1>
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Profile Image:</th>
+                <th>Id:</th>
+                <th>FirebaseId:</th>
+                <th>Email:</th>
+                <th>Username:</th>
+                <th>View Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>
+                    <section class="img-holder">
+                        <img [src]="user.imgUrl" alt="">
+                    </section>
+                </td>
+                <td>{{user.id}}</td>
+                <td>{{user.firebaseId}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.username}}</td>
+                <td><a class="btn btn-primary" routerLink="/user/{{user.id}}">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

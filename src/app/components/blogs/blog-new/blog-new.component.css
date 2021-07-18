@@ -39,7 +39,7 @@ input {
   position: relative;
   margin: 20px auto;
 }
-.card {
+.card-holder {
   width: 80%;
   margin: 50px auto;
   height: 74.2vh;

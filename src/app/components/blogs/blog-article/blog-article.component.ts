@@ -15,7 +15,8 @@ export class BlogArticleComponent implements OnInit {
   isClicked = false;
   editState: boolean = false;
   commentingState: boolean = false;
-  isOwner: boolean = false;
+  canEdit: boolean = false;
+  isAdmin: boolean = false;
   isLogged: boolean = false;
   error: any;
 
@@ -44,8 +45,10 @@ export class BlogArticleComponent implements OnInit {
 
   ngAfterContentChecked() {
     this.isLogged = this.userService.isLogged;
+    this.isAdmin = this.userService.isAdmin;
     if (this.blog && this.isLogged) {
-      this.isOwner = this.userService.currentUser.id == this.blog.user.id;
+      this.canEdit =
+        this.userService.currentUser.id == this.blog.user.id || this.isAdmin;
     }
   }
 
