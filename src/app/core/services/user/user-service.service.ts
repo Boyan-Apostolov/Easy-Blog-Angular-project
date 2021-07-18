@@ -54,8 +54,7 @@ export class UserService {
           this.router.navigateByUrl('/');
           window.location.reload();
         });
-      })
-      .catch((err) => alert(err.message));
+      });
   }
 
   register(

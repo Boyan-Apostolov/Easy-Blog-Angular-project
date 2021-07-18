@@ -1,5 +1,6 @@
 <section class="login-section">
-    <form method="post">
+    <div #loader class="loader" [class.notDisplay]="!loaderDisplay"></div>
+    <form #form [class.notDisplay]="!formDisplay" method="post">
         <h2>Login</h2>
         <div class="illustration">
             <i class="fas fa-user-lock"></i>

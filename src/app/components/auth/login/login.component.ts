@@ -10,6 +10,8 @@ import { AuthRoutingModule } from '../auth-routing.module';
 })
 export class LoginComponent implements OnInit {
   private users!: User[];
+  formDisplay: boolean = true;
+  loaderDisplay: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {
     this.users = [];
@@ -22,10 +24,20 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(email: string, password: string) {
-    this.userService.login(email, password);
+    this.formDisplay = false;
+    this.loaderDisplay = true;
+
+    this.userService.login(email, password).catch((err) => {
+      alert(err.message);
+
+      this.formDisplay = true;
+      this.loaderDisplay = false;
+    });
   }
 
   googleAuth() {
+    this.formDisplay = false;
+    this.loaderDisplay = true;
     this.userService.googleAuth(this.users);
   }
 }
