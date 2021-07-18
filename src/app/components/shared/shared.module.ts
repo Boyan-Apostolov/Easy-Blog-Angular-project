@@ -7,7 +7,6 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlertComponent } from './alert/alert.component';
-
 @NgModule({
   declarations: [
     FooterComponent,

@@ -15,11 +15,20 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): boolean {
     const isLoggedFromData = childRoute.data.isLogged;
+    const isAdminFromData = childRoute.data.isAdmin;
     if (
       isLoggedFromData == this.userService.isLogged ||
       isLoggedFromData == undefined
     ) {
-      return true;
+      if (isAdminFromData) {
+        if (isAdminFromData == this.userService.isAdmin) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
     }
     const url = this.router.url;
     this.router.navigateByUrl(url);

@@ -5,4 +5,5 @@ export interface User {
   email: string;
   bio: string;
   imgUrl: string;
+  isAdmin?: boolean;
 }

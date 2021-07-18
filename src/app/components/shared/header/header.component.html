@@ -10,6 +10,17 @@
             <li><a routerLink="/chat">Open Discussion</a></li>
             <li><a routerLink="/leaderboard">Leaderboard</a></li>
             <li><a routerLink="/privacy">Privacy</a></li>
+            <span class="admin-holder">
+                <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>
+                </li>
+                <div *ngIf="isAdminDropdownShown" class="dropdown-content">
+                    <a routerLink="/admin/blogs">Blogs</a>
+                    <a routerLink="/admin/users">Users</a>
+                </div>
+            </span>
+
+
+
         </ul>
 
         <ul *ngIf="!this.isLogged">

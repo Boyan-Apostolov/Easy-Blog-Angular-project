@@ -43,6 +43,9 @@ export class UserService {
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
   }
+  get isAdmin(): boolean {
+    return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+  }
 
   login(email: string, password: string) {
     return this.fireAuth.auth
@@ -134,6 +137,7 @@ export class UserService {
         firebaseId: dataFromGoogle[0].uid,
         imgUrl: this.userFromGoogleLogin.imgUrl,
         username: this.userFromGoogleLogin.username,
+        isAdmin: this.userFromGoogleLogin.isAdmin,
       });
     }
   }

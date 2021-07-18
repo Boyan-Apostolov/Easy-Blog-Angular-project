@@ -24,6 +24,8 @@ import { environment } from '../environments/environment';
 import { AuthGuard } from './core/guards/auth.guard';
 
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
+import { AdminRoutingModule } from './components/admin/admin-routing.module';
+
 import { BlogsRoutingModule } from './components/blogs/blogs-routing.module';
 
 import { BlogService } from './core/services/blog/blog.service';
@@ -38,6 +40,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { BlogsByTagComponent } from './components/blogs/blogs-by-tag/blogs-by-tag.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
+import { AdminBlogsComponent } from './components/admin/admin-blogs/admin-blogs.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     BrowserModule,
     AppRoutingModule,
     AuthRoutingModule,
+    AdminRoutingModule,
     BlogsRoutingModule,
     SharedModule,
     BrowserAnimationsModule,

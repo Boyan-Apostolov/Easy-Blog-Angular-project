@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminBlogsComponent } from './components/admin/admin-blogs/admin-blogs.component';
 import { HomeComponent } from './components/home/home.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
