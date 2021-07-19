@@ -6,6 +6,8 @@ import { BlogComment } from '../../models/blog/comment';
 
 import { UserService } from '../user/user-service.service';
 
+import { badWords } from '../../models/bad-words-list';
+
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -65,7 +67,7 @@ export class BlogService {
     let blog: Blog = {
       title: title,
       imgUrl: imgUrl,
-      content: content, //Sanitize
+      content: this.filterContent(content), //Sanitize
       user: this.userService.currentUser, //Get Current User ID
       createdOn: new Date().toLocaleString(), //Current DateTime
       tags: tags,
@@ -104,5 +106,12 @@ export class BlogService {
 
   getAllBlogs() {
     return this.blogs;
+  }
+
+  filterContent(content: string): string {
+    badWords.forEach(
+      (x) => (content = content.replace(x, '*'.repeat(x.length)))
+    );
+    return content;
   }
 }
