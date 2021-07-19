@@ -1,4 +1,4 @@
-import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -44,7 +44,10 @@ export class UserService {
     return localStorage['user_data'] != undefined;
   }
   get isAdmin(): boolean {
-    return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    if (this.isLogged) {
+      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    }
+    return false;
   }
 
   login(email: string, password: string) {

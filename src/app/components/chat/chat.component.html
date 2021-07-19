@@ -1,0 +1,29 @@
+<section class="chat-holder">
+    <section *ngIf="isLogged" class="chat">
+        <app-alert [alert]="error" *ngIf="error"></app-alert>
+        <h1>Welcome to the public discussion chat!</h1>
+
+        <form (ngSubmit)="postHandler()">
+            <article class="send">
+                <textarea rows="3" cols="40" type="text" placeholder="Do you think robots wil take over the world?"
+                    name="message" [(ngModel)]="this.messageContent"></textarea>
+                <button type="submit" class="btn btn-success">Post message</button>
+            </article>
+
+            <ul>
+                <li *ngFor="let message of this.messages" routerLink="/user/{{message.user.id}}">
+                    <section class="img-holder">
+                        <img [src]="message.user.imgUrl" alt="">
+                    </section>
+                    <span class="comment-user-username">{{message.user.username}}</span>:
+                    <span class="post-title">{{message.content}}</span>
+                    <span class="createdOn">{{message.createdOn}}</span>
+                </li>
+            </ul>
+        </form>
+    </section>
+
+    <section class="not-logged" *ngIf="!isLogged">
+        <h1>You must be logged in to access the chat!</h1>
+    </section>
+</section>

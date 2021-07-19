@@ -6,8 +6,8 @@
         <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">Start Reading</a></li>
-            <li><a routerLink="/blogs/new">Start Writing</a></li>
-            <li><a routerLink="/chat">Open Discussion</a></li>
+            <li><a *ngIf="isLogged" routerLink="/blogs/new">Start Writing</a></li>
+            <li><a *ngIf="isLogged" routerLink="/chat">Open Discussion</a></li>
             <li><a routerLink="/leaderboard">Leaderboard</a></li>
             <li><a routerLink="/privacy">Privacy</a></li>
             <span class="admin-holder">
@@ -18,9 +18,6 @@
                     <a routerLink="/admin/users">Users</a>
                 </div>
             </span>
-
-
-
         </ul>
 
         <ul *ngIf="!this.isLogged">

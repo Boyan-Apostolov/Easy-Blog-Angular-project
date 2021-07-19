@@ -40,6 +40,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { BlogsByTagComponent } from './components/blogs/blogs-by-tag/blogs-by-tag.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatService } from './core/services/chat/chat.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     BlogsByTagComponent,
     UserProfileComponent,
     LeaderboardComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     BlogService,
     AuthGuard,
     UserService,
+    ChatService,
     ImageUploadService,
     AngularFireAuthModule,
   ],
