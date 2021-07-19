@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { AdminBlogsComponent } from './admin-blogs/admin-blogs.component';
+import { AdminChatComponent } from './admin-chat/admin-chat.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
       {
         path: 'blogs',
         component: AdminBlogsComponent,
+        data: { isLogged: true, isAdmin: true },
+      },
+      {
+        path: 'chat',
+        component: AdminChatComponent,
         data: { isLogged: true, isAdmin: true },
       },
       {

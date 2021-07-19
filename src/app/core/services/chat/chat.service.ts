@@ -46,6 +46,11 @@ export class ChatService {
     );
   }
 
+  deleteMessage(message: ChatMessage) {
+    this.chatMessageDoc = this.afs.doc(`chat-messages/${message.id}`);
+    this.chatMessageDoc.delete();
+  }
+
   postMessage(content: string) {
     let message: ChatMessage = {
       content: content,
