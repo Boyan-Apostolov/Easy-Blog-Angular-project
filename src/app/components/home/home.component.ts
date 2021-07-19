@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
+import { UserService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -28,8 +29,11 @@ import { interval } from 'rxjs';
 })
 export class HomeComponent {
   position: string = '';
+  isLogged: boolean = false;
 
-  constructor() {}
+  constructor(private userService: UserService) {
+    this.isLogged = this.userService.isLogged;
+  }
 
   ngAfterViewInit() {
     interval(1000)

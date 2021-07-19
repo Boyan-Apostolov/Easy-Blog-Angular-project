@@ -1,4 +1,4 @@
-<section class="leaderboard-holder">
+<section class="leaderboard-holder" *ngIf="isLogged">
     <h1>Site Leaderboard</h1>
     <ul>
         <li *ngFor="let userBlog of userBlogList; let i = index" routerLink="/user/{{userBlog.user.id}}">
@@ -12,4 +12,7 @@
             <h2>Blogs written: {{userBlog.blogs}}</h2>
         </li>
     </ul>
+</section>
+<section class="not-logged" *ngIf="!isLogged">
+    <h1>You must be logged in to access the leaderboard!</h1>
 </section>

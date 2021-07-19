@@ -76,3 +76,7 @@ li:nth-child(3) .place {
 li h2 {
   flex-basis: 20%;
 }
+
+.not-logged {
+  color: red;
+}

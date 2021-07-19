@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from '../../models/chat/chat';
-import { User } from '../../models/user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import {
   AngularFirestore,

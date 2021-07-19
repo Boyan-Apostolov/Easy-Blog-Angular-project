@@ -13,7 +13,8 @@
         <article class="start-writing">
             <h3>Are you ready to impress people?</h3>
             <h3>Show the world how great your writing skills are!</h3>
-            <a class="btn writing-btn" routerLink="/blogs/new">START WRITING</a>
+            <a *ngIf="isLogged" class="btn writing-btn" routerLink="/blogs/new">START WRITING</a>
+            <a *ngIf="!isLogged" class="btn writing-btn" routerLink="/auth/login">START WRITING</a>
         </article>
     </section>
 </section>

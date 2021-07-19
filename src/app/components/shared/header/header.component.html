@@ -8,7 +8,7 @@
             <li><a routerLink="/blogs/all">Start Reading</a></li>
             <li><a *ngIf="isLogged" routerLink="/blogs/new">Start Writing</a></li>
             <li><a *ngIf="isLogged" routerLink="/chat">Open Discussion</a></li>
-            <li><a routerLink="/leaderboard">Leaderboard</a></li>
+            <li><a *ngIf="isLogged" routerLink="/leaderboard">Leaderboard</a></li>
             <li><a routerLink="/privacy">Privacy</a></li>
             <span class="admin-holder">
                 <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>

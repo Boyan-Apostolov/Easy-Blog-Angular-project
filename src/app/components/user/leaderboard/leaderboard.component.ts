@@ -13,12 +13,14 @@ export class LeaderboardComponent implements OnInit {
   blogs!: Blog[];
   users!: User[];
   userBlogList!: Array<UserBlogs>;
+  isLogged: boolean = false;
 
   constructor(
     private userService: UserService,
     private blogService: BlogService
   ) {
     this.userBlogList = [];
+    this.isLogged = this.userService.isLogged;
   }
 
   ngOnInit(): void {
