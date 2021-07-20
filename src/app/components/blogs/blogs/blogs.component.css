@@ -59,11 +59,20 @@ ul li a {
 }
 .sort-btn {
   cursor: pointer;
-  width: 10%;
+  width: fit-content;
   outline: none;
   background-color: #e5e8ed;
   color: #4a4e53;
   border: 1px solid #696f79;
   padding: 5px 10px;
   border-radius: 6px;
+}
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .content {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+  .blog-cards {
+    flex-direction: column;
+  }
 }

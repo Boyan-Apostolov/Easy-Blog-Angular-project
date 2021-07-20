@@ -50,3 +50,8 @@ input {
 mat-spinner {
   margin: 0 auto;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .editor {
+    width: 100%;
+  }
+}

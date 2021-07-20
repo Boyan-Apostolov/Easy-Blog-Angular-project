@@ -17,3 +17,8 @@ h1 {
   font-weight: 500;
   font-size: 40px;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  h1 {
+    line-height: 1;
+  }
+}

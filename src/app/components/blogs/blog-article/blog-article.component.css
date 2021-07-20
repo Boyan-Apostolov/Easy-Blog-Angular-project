@@ -246,3 +246,11 @@ li span {
 .isClicked {
   background-color: #00b900;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .img-holder {
+    width: 100%;
+  }
+  .editor {
+    width: 100%;
+  }
+}

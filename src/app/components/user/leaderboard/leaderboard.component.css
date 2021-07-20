@@ -80,3 +80,22 @@ li h2 {
 .not-logged {
   color: red;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  li {
+    width: 80%;
+  }
+  h2 {
+    font-size: 15px;
+    line-height: 1;
+  }
+  .img-holder img {
+    width: 60px;
+    height: 60px;
+  }
+  .place h2 {
+    font-size: 35px;
+  }
+  li h2 {
+    flex-basis: 25%;
+  }
+}

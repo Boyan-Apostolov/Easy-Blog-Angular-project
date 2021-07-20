@@ -67,3 +67,8 @@ img {
   font-size: 18px;
   margin-left: 20px;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .send {
+    width: 85%;
+  }
+}

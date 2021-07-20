@@ -13,8 +13,23 @@ h1 {
   font-size: 30px;
   text-align: center;
 }
+.table {
+  vertical-align: middle;
+}
+
 table {
   width: 90%;
   margin: 0 auto;
   text-align: center;
+}
+@media all and (min-width: 395px) and (max-width: 660px) {
+  tr > td:nth-child(2),
+  tr > td:nth-child(3),
+  tr th:nth-child(2),
+  tr th:nth-child(3) {
+    display: none;
+  }
+  .img-col {
+    display: none;
+  }
 }

@@ -18,3 +18,16 @@ table {
   margin: 0 auto;
   text-align: center;
 }
+.table {
+  vertical-align: middle;
+}
+
+@media all and (min-width: 395px) and (max-width: 660px) {
+  tr > td:nth-child(1),
+  tr th:nth-child(1) {
+    display: none;
+  }
+  .img-col {
+    display: none;
+  }
+}

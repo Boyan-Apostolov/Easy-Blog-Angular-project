@@ -65,3 +65,18 @@ a {
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(114, 111, 111);
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  nav,
+  .nav-ul {
+    padding-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  li {
+    margin: 5px;
+  }
+  nav > .logo-holder {
+    display: none;
+  }
+}

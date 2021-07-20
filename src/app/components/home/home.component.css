@@ -67,3 +67,33 @@ h3:nth-child(2) {
   position: relative;
   top: 38px;
 }
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .wrapper {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    margin-left: 20px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 0px !important;
+  }
+  h4 {
+    font-size: 14px;
+  }
+  .btn {
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+  .writing-btn {
+    position: unset;
+  }
+  .reading-btn {
+    top: 10px;
+  }
+}
