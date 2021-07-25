@@ -87,14 +87,18 @@
                 Add a comment</button>
             <p *ngIf="!this.isLogged">Please login to add a comment!</p>
             <div *ngIf="this.commentingState">
-                <form (ngSubmit)="postComment(blog)">
+                <form #form='ngForm' (ngSubmit)="postComment(blog)">
                     <div class="posting-comment">
                         <div class="row">
                             <h3>Add you comment to this blog!</h3>
                             <textarea rows="5" cols="30" type="text" placeholder="I like your opinion" name="comment"
-                                #commentInput [(ngModel)]="this.commentToAdd"></textarea>
+                                #commentInput [(ngModel)]="this.commentToAdd" #comment='ngModel' required></textarea>
+                            <div *ngIf="comment.touched &&comment.errors?.required" class="validation-error">You cannot
+                                post and empty comment!</div>
+
                             <section class="comment-buttons">
-                                <button type="submit" class="comments-btn">Post</button>
+                                <button type="submit" class="comments-btn"
+                                    [disabled]="!comment.touched || comment.errors?.required">Post</button>
                                 <button *ngIf="this.commentingState" class="cancel-btn" (click)="clearState()">
                                     <i class="fas fa-undo">Cancel</i>
                                 </button>
@@ -103,7 +107,7 @@
                     </div>
                 </form>
             </div>
-            <ul>
+            <ul class='comments-ul'>
                 <li *ngFor="let comment of blog.comments">
                     <span class="comment-user">
                         <span>Written by <span class="comment-user-username">{{comment.user.username}}</span></span>

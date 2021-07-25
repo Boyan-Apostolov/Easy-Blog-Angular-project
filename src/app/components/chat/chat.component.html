@@ -3,10 +3,11 @@
         <app-alert [alert]="error" *ngIf="error"></app-alert>
         <h1>Welcome to the public discussion chat!</h1>
 
-        <form (ngSubmit)="postHandler()">
+        <form #form='ngForm' (ngSubmit)="postHandler()">
             <article class="send">
                 <textarea rows="3" cols="40" type="text" placeholder="Do you think robots wil take over the world?"
-                    name="message" [(ngModel)]="this.messageContent"></textarea>
+                    name="message" [(ngModel)]="this.messageContent" #message='ngModel' required ngModel></textarea>
+
                 <button type="submit" class="btn btn-success">Post message</button>
             </article>
 

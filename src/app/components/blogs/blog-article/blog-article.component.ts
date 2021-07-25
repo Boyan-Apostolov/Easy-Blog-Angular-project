@@ -97,8 +97,8 @@ export class BlogArticleComponent implements OnInit {
   postComment(blog: Blog) {
     if (this.commentToAdd != '') {
       this.blogService.addComment(blog, this.commentToAdd);
-      this.commentToAdd = '';
       this.addAlert('Success', 'Comment added succesfully!', 'success');
+      this.commentToAdd = '';
     } else {
       this.addAlert('Error', 'Comment cannot be empty!', 'danger');
     }

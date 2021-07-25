@@ -254,3 +254,10 @@ li span {
     width: 100%;
   }
 }
+.validation-error {
+  color: red;
+  text-align: center;
+}
+.comments-ul {
+  margin-top: 10px;
+}
