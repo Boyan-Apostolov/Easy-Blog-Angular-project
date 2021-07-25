@@ -85,8 +85,8 @@ The administrator can see ALL sent messages.Ever. The admin can also delete mess
 ![Admin chat dashboard](https://i.ibb.co/znznXz2/admin-chat-oage.png)
 
 **Blogs dashboard**
-Here the administrator can see a more detailed info about the blogs, such as their ID's, creation dates, likes and other.
-![Admin blogs dashboard](https://i.ibb.co/cD0V2hM/admin-blogs-page.png)
+Here the administrator can see a more detailed info about the blogs, such as their ID's, creation dates, likes and other. From here, the admin can also delete the blogs.
+![Admin blogs dashboard](https://i.ibb.co/PCNfZ3r/blogs-admin.png)
 
 
 **Users dashboard**
