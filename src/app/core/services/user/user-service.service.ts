@@ -58,7 +58,6 @@ export class UserService {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
           this.router.navigateByUrl('/');
-          window.location.reload();
         });
       });
   }
@@ -90,7 +89,6 @@ export class UserService {
       })
       .finally(() => {
         this.router.navigateByUrl('/');
-        window.location.reload();
       });
   }
 
@@ -104,7 +102,6 @@ export class UserService {
       .then((result) => {
         this.addGoogleLoginToLocalStorage(Object.values(result), usersArr);
         this.router.navigateByUrl('/');
-        window.location.reload();
       })
       .catch((error) => {
         alert(error.message);
@@ -119,7 +116,6 @@ export class UserService {
       .finally(() => {
         localStorage.removeItem('user_data');
         this.router.navigateByUrl('/');
-        window.location.reload();
       });
   }
 

@@ -1,18 +1,30 @@
 <section class="login-section">
     <div #loader class="loader" [class.notDisplay]="!loaderDisplay"></div>
-    <form #form [class.notDisplay]="!formDisplay" method="post">
+    <form #form='ngForm' [class.notDisplay]="!formDisplay" ngForm method="post">
         <h2>Login</h2>
         <div class="illustration">
             <i class="fas fa-user-lock"></i>
         </div>
         <div>
-            <input #email type="email" name="email" placeholder="Email">
+            <input type="email" name="email" placeholder="Email" #emailInput='ngModel' ngModel required email>
+
+            <div *ngIf="emailInput.touched &&emailInput.errors?.required" class="validation-error">Email is required!
+            </div>
+
+            <div *ngIf="emailInput.touched &&emailInput.errors?.email" class="validation-error">Email is invalid!</div>
+        </div>
+
+        <div>
+            <input #passwordInput="ngModel" type="password" name="password" placeholder="Password" ngModel required>
+
+            <div *ngIf="passwordInput.touched &&passwordInput.errors?.required" class="validation-error">Password is
+                required!
+            </div>
         </div>
         <div>
-            <input #password type="password" name="password" placeholder="Password">
-        </div>
-        <div>
-            <button class="login-btn" (click)="onLogin(email.value, password.value)" type="button">Log In</button>
+            <button class="login-btn" (click)="onLogin(form.value)" type="button" [disabled]="
+            emailInput.errors?.required || emailInput.errors?.email || passwordInput.errors?.required
+            ">Log In</button>
 
             <button type="button" class="google-login" (click)="googleAuth()">
                 <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"

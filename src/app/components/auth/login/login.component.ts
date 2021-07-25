@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user/user-service.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user/user';
-import { AuthRoutingModule } from '../auth-routing.module';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,16 +23,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onLogin(email: string, password: string) {
+  onLogin(formData: NgForm) {
     this.formDisplay = false;
     this.loaderDisplay = true;
 
-    this.userService.login(email, password).catch((err) => {
-      alert(err.message);
+    const email = Object.values(formData)[0];
+    const password = Object.values(formData)[1];
 
-      this.formDisplay = true;
-      this.loaderDisplay = false;
-    });
+    if (email != '' && password != '') {
+      this.userService.login(email, password).catch((err) => {
+        alert(err.message);
+      });
+    }
+    this.formDisplay = true;
+    this.loaderDisplay = false;
   }
 
   googleAuth() {

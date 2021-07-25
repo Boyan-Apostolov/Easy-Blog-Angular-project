@@ -42,6 +42,7 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatService } from './core/services/chat/chat.service';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ChatService } from './core/services/chat/chat.service';
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     AuthRoutingModule,
     AdminRoutingModule,

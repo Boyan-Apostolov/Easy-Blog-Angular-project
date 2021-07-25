@@ -9,13 +9,15 @@ import { UserService } from '../../../core/services/user/user-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isLogged: boolean = false;
   public isAdmin: boolean = false;
   public isAdminDropdownShown: boolean = false;
   public user!: User;
 
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
+
   constructor(private userService: UserService, private router: Router) {
-    this.isLogged = this.userService.isLogged;
     this.isAdmin = this.userService.isAdmin;
 
     if (this.isLogged) {
@@ -28,7 +30,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('/');
-    window.location.reload();
   }
 
   toggleAdminDropdown() {

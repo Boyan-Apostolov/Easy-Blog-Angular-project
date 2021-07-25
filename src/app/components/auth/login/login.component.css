@@ -127,3 +127,6 @@
 .notDisplay {
   display: none !important;
 }
+.validation-error {
+  color: red;
+}

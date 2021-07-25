@@ -5,6 +5,7 @@ import {
   CanActivateChild,
   Router,
   RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
 
 @Injectable()
@@ -13,7 +14,7 @@ export class AuthGuard implements CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
+  ): UrlTree | boolean {
     const isLoggedFromData = childRoute.data.isLogged;
     const isAdminFromData = childRoute.data.isAdmin;
     if (
@@ -30,8 +31,6 @@ export class AuthGuard implements CanActivateChild {
         return true;
       }
     }
-    const url = this.router.url;
-    this.router.navigateByUrl(url);
-    return false;
+    return this.router.parseUrl('/auth/login');
   }
 }

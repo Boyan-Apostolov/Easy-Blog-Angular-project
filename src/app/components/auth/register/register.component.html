@@ -1,39 +1,57 @@
 <section class="register-section">
     <div #loader class="loader" [class.notDisplay]="!loaderDisplay"></div>
-    <form #form [class.notDisplay]="!formDisplay">
+    <form #form='ngForm' [class.notDisplay]="!formDisplay">
         <h2>Register</h2>
         <div class="illustration">
             <i class="fas fa-user-plus"></i>
         </div>
         <div>
-            <input type="text" #username name="username" placeholder="Username">
+            <input type="text" #username='ngModel' name="username" placeholder="Username" ngModel required>
+            <div *ngIf="username.touched &&username.errors?.required" class="validation-error">Username is required!
+            </div>
         </div>
         <div>
-            <input type="email" #email name="email" placeholder="Email">
+            <input type="email" name="email" placeholder="Email" #emailInput='ngModel' ngModel required email>
+
+            <div *ngIf="emailInput.touched &&emailInput.errors?.required" class="validation-error">Email is required!
+            </div>
+
+            <div *ngIf="emailInput.touched &&emailInput.errors?.email" class="validation-error">Email is invalid!</div>
         </div>
         <div>
-            <input type="password" #password name="password" placeholder="Password">
+            <input type="password" #password='ngModel' name="password" placeholder="Password" required ngModel>
+            <div *ngIf="password.touched &&password.errors?.required" class="validation-error">Password is required!
+            </div>
         </div>
         <div>
-            <input type="password" #confirmPassword name="confirm-password" placeholder="Confirm password">
+            <input type="password" #confirmPassword='ngModel' name="confirm-password" placeholder="Confirm password"
+                ngModel required>
+            <div *ngIf="confirmPassword.touched &&confirmPassword.errors?.required" class="validation-error">Confirm
+                Password is required!
+            </div>
+            <div *ngIf="confirmPassword.touched &&confirmPassword.value != password.value" class="validation-error">
+                Passwords do not match!
+            </div>
         </div>
         <div class="bio-holder">
             <label>
                 <p>Tell us a bit about yourself:</p>
-                <textarea name="biography" #bio rows="4" cols="50"></textarea>
+                <textarea name="biography" #bio='ngModel' rows="4" cols="50" ngModel required></textarea>
             </label>
+            <div *ngIf="bio.touched &&bio.errors?.required" class="validation-error">Bio is required!
+            </div>
         </div>
         <div class="pic-holder">
             <label>
                 <p>Choose a profile picture:</p>
-                <input type="file" required id="file" #userPhoto name="image" />
+                <input type="file" required id="file" #userPhoto required name="userPhoto" required />
             </label>
         </div>
 
         <div>
-            <button class="btn"
-                (click)="onRegister(username.value,email.value,password.value,confirmPassword.value,bio.value,userPhoto)"
-                type="button">Register</button>
+            <button class="btn" (click)="onRegister(form.value, userPhoto)" type="button" [disabled]="
+            emailInput.errors?.required || emailInput.errors?.email || password.errors?.required || confirmPassword.errors?.required || bio.errors?.required
+            ">Register</button>
         </div>
     </form>
 </section>
