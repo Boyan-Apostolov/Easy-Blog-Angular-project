@@ -13,6 +13,7 @@
                 <th>Tags:</th>
                 <th>Created On:</th>
                 <th>View Blog</th>
+                <th>Delete Blog</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,11 @@
                 <td>{{blog.createdOn}}</td>
 
                 <td><a class="btn btn-primary" routerLink="/blogs/blog/{{blog.id}}">View</a></td>
+                <td>
+                    <button (click)="deleteBlog(blog)" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>

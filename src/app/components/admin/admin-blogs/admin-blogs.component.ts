@@ -16,4 +16,10 @@ export class AdminBlogsComponent implements OnInit {
       this.blogs = blogs;
     });
   }
+
+  deleteBlog(blog: Blog) {
+    if (confirm('Are you sure you want to delete this blog?')) {
+      this.blogService.deleteBlog(blog);
+    }
+  }
 }

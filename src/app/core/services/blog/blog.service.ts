@@ -90,7 +90,7 @@ export class BlogService {
     this.updateBlog(blog);
   }
 
-  deteleBlog(blog: Blog) {
+  deleteBlog(blog: Blog) {
     this.blogDoc = this.afs.doc(`blogs/${blog.id}`);
     this.blogDoc.delete();
   }
