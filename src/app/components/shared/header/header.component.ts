@@ -11,18 +11,16 @@ import { UserService } from '../../../core/services/user/user-service.service';
 export class HeaderComponent implements OnInit {
   public isAdmin: boolean = false;
   public isAdminDropdownShown: boolean = false;
-  public user!: User;
 
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
+  get user(): User {
+    return this.userService.currentUser;
+  }
 
   constructor(private userService: UserService, private router: Router) {
     this.isAdmin = this.userService.isAdmin;
-
-    if (this.isLogged) {
-      this.user = this.userService.currentUser;
-    }
   }
 
   ngOnInit() {}

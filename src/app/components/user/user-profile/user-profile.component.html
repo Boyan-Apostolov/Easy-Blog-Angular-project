@@ -12,7 +12,7 @@
     </section>
 
     <h2 class="bordered-heading">Achievements:</h2>
-    <ul class="achievements-holder" *ngIf="achievements.length > 0">
+    <ul class="achievements-holder" *ngIf="achievements">
         <li *ngFor="let achievment of achievements">
             <article class="img-holder">
                 <img [src]="achievment.imgUrl" alt="">
