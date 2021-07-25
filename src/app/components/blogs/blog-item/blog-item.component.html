@@ -1,6 +1,6 @@
-<article class="blog" *ngIf="blog">
+<article class="blog" *ngIf="blog" (mouseover)="zoomIn()" (mouseout)="zoomOut()">
     <section class="img-holder">
-        <img [src]="blog.imgUrl" alt="">
+        <img [src]="blog.imgUrl" [@imageState]="[position]">
     </section>
     <section class="blog-content">
         <h2>{{blog.title}}</h2>
