@@ -17,4 +17,14 @@ export class AdminUsersComponent implements OnInit {
       this.users = users;
     });
   }
+  freezeUser(user: User) {
+    if (confirm('Are you sure you want to freeze this user?')) {
+      this.userService.freezeUser(user);
+    }
+  }
+  unFreezeUser(user: User) {
+    if (confirm('Are you sure you want to unFreeze this user?')) {
+      this.userService.unFreezeUser(user);
+    }
+  }
 }

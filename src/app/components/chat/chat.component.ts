@@ -28,6 +28,10 @@ export class ChatComponent {
     });
   }
 
+  get isFrozen(): boolean {
+    return this.userService.currentUser.isFrozen!;
+  }
+
   getToday(d = new Date()) {
     return new Date(+d).setHours(0, 0, 0, 0);
   }

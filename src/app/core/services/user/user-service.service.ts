@@ -137,6 +137,7 @@ export class UserService {
         imgUrl: this.userFromGoogleLogin.imgUrl,
         username: this.userFromGoogleLogin.username,
         isAdmin: this.userFromGoogleLogin.isAdmin,
+        isFrozen: this.userFromGoogleLogin.isFrozen,
       });
     }
   }
@@ -177,9 +178,9 @@ export class UserService {
     return achievments;
   }
 
-  updateUser() {
-    this.userDoc = this.afs.doc(`users/${this.currentUser.id}`);
-    this.userDoc.update(this.currentUser);
+  updateUser(user: User) {
+    this.userDoc = this.afs.doc(`users/${user.id}`);
+    this.userDoc.update(user);
   }
 
   get currentUser(): User {
@@ -189,5 +190,14 @@ export class UserService {
 
   getAllUsers() {
     return this.users;
+  }
+
+  freezeUser(user: User) {
+    user.isFrozen = true;
+    this.updateUser(user);
+  }
+  unFreezeUser(user: User) {
+    user.isFrozen = false;
+    this.updateUser(user);
   }
 }

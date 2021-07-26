@@ -6,4 +6,5 @@ export interface User {
   bio: string;
   imgUrl: string;
   isAdmin?: boolean;
+  isFrozen?: boolean;
 }

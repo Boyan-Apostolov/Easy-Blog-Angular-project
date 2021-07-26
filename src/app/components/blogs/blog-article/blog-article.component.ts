@@ -33,6 +33,10 @@ export class BlogArticleComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  get isFrozen(): boolean {
+    return this.userService.currentUser.isFrozen!;
+  }
+
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string;
     this.blogService.getAllBlogs().subscribe((blogs) => {

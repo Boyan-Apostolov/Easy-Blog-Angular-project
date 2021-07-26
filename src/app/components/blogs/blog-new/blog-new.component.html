@@ -4,7 +4,7 @@
         <h1>Add a new blog!</h1>
     </h3>
     <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
-    <form (ngSubmit)="onSubmit(imgUrl)" *ngIf="!isLoading">
+    <form (ngSubmit)="onSubmit(imgUrl)" *ngIf="!isLoading && !isFrozen">
         <div class="title-and-img">
             <div class="row">
                 <h3>Add a title to your blog!</h3>
@@ -34,4 +34,8 @@
         </section>
 
     </form>
+
+    <section class="frozen" *ngIf="isFrozen">
+        <p>You have been frozen by the administrator and therefore cannot write blogs!</p>
+    </section>
 </article>

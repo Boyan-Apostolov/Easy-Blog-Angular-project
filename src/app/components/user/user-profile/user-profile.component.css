@@ -93,3 +93,9 @@ hr {
     width: 80%;
   }
 }
+.frozen {
+  color: red;
+}
+.isFrozen {
+  margin-left: 20px;
+}

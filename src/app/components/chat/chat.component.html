@@ -3,7 +3,7 @@
         <app-alert [alert]="error" *ngIf="error"></app-alert>
         <h1>Welcome to the public discussion chat!</h1>
 
-        <form #form='ngForm' (ngSubmit)="postHandler()">
+        <form #form='ngForm' *ngIf="!isFrozen" (ngSubmit)="postHandler()">
             <article class="send">
                 <textarea rows="3" cols="40" type="text" placeholder="Do you think robots wil take over the world?"
                     name="message" [(ngModel)]="this.messageContent" #message='ngModel' required ngModel></textarea>
@@ -22,6 +22,10 @@
                 </li>
             </ul>
         </form>
+
+        <section class="frozen" *ngIf="isFrozen">
+            <p>You have been frozen by the administrator and therefore cannot access the chat!</p>
+        </section>
     </section>
 
     <section class="not-logged" *ngIf="!isLogged">

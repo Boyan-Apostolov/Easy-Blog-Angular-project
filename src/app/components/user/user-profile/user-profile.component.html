@@ -3,7 +3,10 @@
         <section class="profile-img-holder">
             <img [src]="user.imgUrl" alt="">
         </section>
-        <h1>{{user.username}}</h1>
+        <section class="isFrozen">
+            <h1>{{user.username}}</h1>
+            <p *ngIf="user.isFrozen" class="frozen">USER IS FROZEN BY ADMIN</p>
+        </section>
     </section>
 
     <section class="bio-holder">

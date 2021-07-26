@@ -261,3 +261,9 @@ li span {
 .comments-ul {
   margin-top: 10px;
 }
+.frozen {
+  text-align: center;
+  color: red;
+  font-weight: 400;
+  font-size: 19px;
+}

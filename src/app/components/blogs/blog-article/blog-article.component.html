@@ -68,6 +68,7 @@
         <article class="img-holder">
             <img [src]="blog.imgUrl" alt="">
         </article>
+        <p><i class="far fa-clock"></i> {{blog.createdOn}}</p>
         <article class="blog-content-holder" [innerHTML]="blog.content">
         </article>
 
@@ -83,9 +84,13 @@
 
         <article class="comments-section">
             <h2>Comments:</h2>
-            <button *ngIf="!this.commentingState && this.isLogged" (click)="enableCommenting()" class="comments-btn">+
+            <button *ngIf="!this.commentingState && this.isLogged && !isFrozen" (click)="enableCommenting()"
+                class="comments-btn">+
                 Add a comment</button>
             <p *ngIf="!this.isLogged">Please login to add a comment!</p>
+            <section class="frozen" *ngIf="isFrozen">
+                <p>You have been frozen by the administrator and therefore cannot write comments!</p>
+            </section>
             <div *ngIf="this.commentingState">
                 <form #form='ngForm' (ngSubmit)="postComment(blog)">
                     <div class="posting-comment">

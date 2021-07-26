@@ -10,6 +10,7 @@
                 <th>Email:</th>
                 <th>Username:</th>
                 <th>View Profile</th>
+                <th>(Un)Freeze User</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,15 @@
                 <td>{{user.firebaseId}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.username}}</td>
-                <td><a class="btn btn-primary" routerLink="/user/{{user.id}}">View</a></td>
+                <td><a class="btn btn-success" routerLink="/user/{{user.id}}">View</a></td>
+                <td *ngIf="!user.isFrozen">
+                    <a class="btn btn-primary" (click)="freezeUser(user)"><i class="far fa-snowflake"></i>
+                        Freeze</a>
+                </td>
+                <td *ngIf="user.isFrozen">
+                    <a class="btn btn-warning" (click)="unFreezeUser(user)"><i class="fas fa-sun"></i>
+                        Unfreeze</a>
+                </td>
             </tr>
         </tbody>
     </table>
