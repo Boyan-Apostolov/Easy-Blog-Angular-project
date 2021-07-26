@@ -90,6 +90,6 @@ Here the administrator can see a more detailed info about the blogs, such as the
 
 
 **Users dashboard**
-In this table the admin can see more info about the users, such as their ID's,  emails and other.
-![Admin users dashboard](https://i.ibb.co/dDWV72M/admin-users-page.png)
+In this table the admin can see more info about the users, such as their ID's,  emails and other. From here the admin can also freeze and unfreeze users. Frozen users cannot acces the chat, cannot write blogs and comment on existing blogs.
+![Admin users dashboard](https://i.ibb.co/BwVsKYw/users-admin.png)
 
