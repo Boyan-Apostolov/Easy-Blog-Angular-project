@@ -27,6 +27,32 @@
     </ul>
     <p *ngIf="achievements.length == 0">No earned achievemnts yet!</p>
 
+    <section *ngIf="isUserOwnerOfProfile" class="visit-history">
+        <button class="btn btn-success" (click)="toggleUserVisitations()">Visitation history</button>
+        <section class="visits-holder" *ngIf="areVisitationsVisitble">
+            <p>Latest 10 visits of your profile</p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Visited On:</th>
+                        <th>Visited By:</th>
+                        <th>See visiter profile: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let visitation of user.visitations">
+                        <td>{{visitation.visitedOn}}</td>
+                        <td>{{visitation.visitedBy.username}}</td>
+                        <td><button class="btn btn-info" routerLink="/user/{{visitation.visitedBy.id}}">View
+                                Profile</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </section>
+
     <h2 class="bordered-heading">Blogs:</h2>
     <div class="blog-cards" *ngIf="blogs.length > 0">
         <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>

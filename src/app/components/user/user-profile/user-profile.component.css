@@ -36,6 +36,7 @@ h1 {
   text-align: center;
   border-top: 1px solid #ccc;
   padding-top: 10px;
+  margin-top: 10px;
 }
 hr {
   width: 90%;
@@ -98,4 +99,15 @@ hr {
 }
 .isFrozen {
   margin-left: 20px;
+}
+
+.visit-history {
+  display: flex;
+  flex-direction: column;
+}
+.visits-holder {
+  text-align: center;
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
 }

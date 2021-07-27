@@ -11,6 +11,7 @@ import {
 } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Visitation } from '../../models/user/visitation';
 @Injectable()
 export class UserService {
   public achievmentImgUrl: string =
@@ -78,6 +79,7 @@ export class UserService {
           email: email,
           bio: bio,
           imgUrl: imgUrl,
+          visitations: [],
         };
 
         this.usersCollection.add(user);
@@ -199,5 +201,15 @@ export class UserService {
   unFreezeUser(user: User) {
     user.isFrozen = false;
     this.updateUser(user);
+  }
+
+  addProfileVisitation(user: User) {
+    if (this.currentUser.id != user.id) {
+      let visitation: Visitation = {
+        visitedOn: new Date().toLocaleString(),
+        visitedBy: this.currentUser,
+      };
+      user.visitations?.push(visitation);
+    }
   }
 }

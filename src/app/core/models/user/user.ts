@@ -1,3 +1,5 @@
+import { Visitation } from './visitation';
+
 export interface User {
   id?: string;
   firebaseId?: string;
@@ -7,4 +9,5 @@ export interface User {
   imgUrl: string;
   isAdmin?: boolean;
   isFrozen?: boolean;
+  visitations?: Visitation[];
 }

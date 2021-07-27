@@ -16,6 +16,14 @@ export class UserProfileComponent implements OnInit {
   userId!: string;
   user!: User;
   achievements!: Achievment[];
+  areVisitationsVisitble: boolean = false;
+
+  get isUserOwnerOfProfile(): boolean {
+    return (
+      this.userService.currentUser.id == this.userId ||
+      this.userService.currentUser.isAdmin!
+    );
+  }
 
   constructor(
     private blogService: BlogService,
@@ -26,16 +34,27 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
+
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blogs = blogs.filter((x) => x.user.id == this.userId);
         this.achievements = this.userService.checkIfUserIsEligbleForAchievement(
           this.blogs.length
         );
       });
+      this.userService.getAllUsers().subscribe((users) => {
+        this.user = users.filter((x) => x.id == this.userId)[0];
+        this.userService.addProfileVisitation(this.user);
+        this.user.visitations
+          ?.sort((a, b) => b.visitedOn!.localeCompare(a.visitedOn!))
+          .slice(0, 10);
+      });
     });
-
-    this.userService.getAllUsers().subscribe((users) => {
-      this.user = users.filter((x) => x.id == this.userId)[0];
-    });
+  }
+  toggleUserVisitations() {
+    console.log(this.user);
+    this.areVisitationsVisitble = !this.areVisitationsVisitble;
+  }
+  ngOnDestroy() {
+    this.userService.updateUser(this.user);
   }
 }
