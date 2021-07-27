@@ -45,51 +45,63 @@ You can check it out on: http://easy-blog-angular.github.io/
 # Pages:
 ## Public Pages:
 **Home page**
+
 This is the landing page of the application, from here you can view the blogs or write a new blog after you register. The page title also moves using the angular animations.
 ![Home Page](https://i.ibb.co/2nFYfjz/home-page.png)
 
 **All Blogs**
+
 In this page, all written blogs are displayed, here you can get brief information about the blog (such as likes, comments, views etc.). The page also allows you to sort the blogs by the number of views each one has. You can also search blogs by category (or tag) using the buttons on the right side of the page.
 ![All Blogs](https://i.ibb.co/ysJL8B9/blogs-all-page.png)
 
 **Writing a blog**
+
 From this page, you can create a new blog. After choosing an apropriate title and tags, you can add a heading image for the blog, This image will be uploaded to the Fireabase Image storage. Using the **CKEditor**, you have a great opportunity  while writing your content. You can place hyperlinks, bullets, and other text editor magic. But beware: all curse and bad words you write in the content will be replaced by asterics '*'. Upon clicking the blue save button, your blog will be created.
 
 ![Writing a blog](https://i.ibb.co/qxzhjgx/blogs-new-page.png)
 
 **Blog Article page**
+
 After clicking 'Read More' on the all blogs page, you will be redirected to the blog article page. Here you can view the whole blog article, as well as see it's image in it's whole beauty. With the help of the **ngx-sharebuttons**, you can share the blog to all your favourite social media websites, and you can also copy the link to the article in your clipboard using the last 'link' button (this is done using the html5 clipboard api). The blog writer and the administrator can edit/or delete/ a blog once it is written. On this page you can also see all the comments the other users have posted. After you login you will also be able to post comments and like the blog using the heart button.
 
 ![Blog Article](https://i.ibb.co/jGy0WcP/blog-article-page.png)
 
 **User profile page**
-After you click on the author of a blog article, you will be redirected to their profile. Here you can see all the blogs they have written, their bio, and their achievements. For now the achievements are are given after the user surpasses a certain amount of blogs written (currently ; 1, 5, 10, 20, 50 and 100).
+
+After you click on the author of a blog article, you will be redirected to their profile. Here you can see all the blogs they have written, their bio, and their achievements. For now the achievements are are given after the user surpasses a certain amount of blogs written (currently ; 1, 5, 10, 20, 50 and 100). The owner of the profile, as well as the admin, can see the last 10 people who visited that profile, something like how you can see who visited you profile on LinkedIn.
 ![User profile page](https://i.ibb.co/ckYZYPY/profile-page.png)
+![User Profile page 2](https://i.ibb.co/bKz89K3/visitations.png)
 
 **Leaderboard page**
+
 Here you can see the platform's top supporters the bloggers with the most blogs written.
 ![Leaderboard page](https://i.ibb.co/94dz3MH/leaderboard.png)
 
 **Open Chat**
+
 On this page everyone in the website can openly chat with the others. Their messages will be hidden after one day. Clicking on a message will take you to the writer's profile page.
 ![Chat](https://i.ibb.co/XJYvS9s/chat.png)
 
 **Login and Register pages**
+
 Here the guest can register and login. If they already have a profile, they can you the google sign in button!
 *DISCLAIMER: This photo shows two pages, I just didn't want to upload two pictures here :))*
 ![Register/Login pages](https://i.ibb.co/6Ft8xGg/login-reg.png)
 ## Admin Pages:
 
 **Chat dashboard**
+
 The administrator can see ALL sent messages.Ever. The admin can also delete messages, if they sound too inappropriate :)
 ![Admin chat dashboard](https://i.ibb.co/znznXz2/admin-chat-oage.png)
 
 **Blogs dashboard**
+
 Here the administrator can see a more detailed info about the blogs, such as their ID's, creation dates, likes and other. From here, the admin can also delete the blogs.
 ![Admin blogs dashboard](https://i.ibb.co/PCNfZ3r/blogs-admin.png)
 
 
 **Users dashboard**
+
 In this table the admin can see more info about the users, such as their ID's,  emails and other. From here the admin can also freeze and unfreeze users. Frozen users cannot acces the chat, cannot write blogs and comment on existing blogs.
 ![Admin users dashboard](https://i.ibb.co/BwVsKYw/users-admin.png)
 
