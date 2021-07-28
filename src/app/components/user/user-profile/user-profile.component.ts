@@ -51,7 +51,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
   toggleUserVisitations() {
-    console.log(this.user);
     this.areVisitationsVisitble = !this.areVisitationsVisitble;
   }
   ngOnDestroy() {

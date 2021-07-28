@@ -30,11 +30,10 @@ export class RegisterComponent implements OnInit {
     this.formDisplay = false;
     this.loaderDisplay = true;
 
-    const data = Object.values(formData);
-    const username = data[0];
-    const email = data[1];
-    const password = data[2];
-    const bio = data[4];
+    const username = formData.controls.username.value;
+    const email = formData.controls.email.value;
+    const password = formData.controls.password.value;
+    const bio = formData.controls.biography.value;
 
     if (!profilePic.value) {
       alert('Profile picture is required!');

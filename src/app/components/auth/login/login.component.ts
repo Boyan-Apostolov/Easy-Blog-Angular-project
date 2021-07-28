@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
     this.formDisplay = false;
     this.loaderDisplay = true;
 
-    const email = Object.values(formData)[0];
-    const password = Object.values(formData)[1];
+    const email = formData.controls.email.value;
+    const password = formData.controls.password.value;
 
     if (email != '' && password != '') {
       this.userService.login(email, password).catch((err) => {

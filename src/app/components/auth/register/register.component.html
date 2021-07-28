@@ -33,7 +33,8 @@
             <div *ngIf="confirmPassword.touched &&confirmPassword.errors?.required" class="validation-error">Confirm
                 Password is required!
             </div>
-            <div *ngIf="password.touched &&password.errors?.minlength" class="validation-error">Confirm Password needs
+            <div *ngIf="confirmPassword.touched &&confirmPassword.errors?.minlength" class="validation-error">Confirm
+                Password needs
                 to be at
                 least 6 characters!
             </div>
@@ -57,7 +58,7 @@
         </div>
 
         <div>
-            <button class="btn" (click)="onRegister(form.value, userPhoto)" type="button" [disabled]="
+            <button class="btn" (click)="onRegister(form, userPhoto)" type="button" [disabled]="
             emailInput.errors?.required || emailInput.errors?.email || password.errors?.required || confirmPassword.errors?.required || bio.errors?.required
             ">Register</button>
         </div>
