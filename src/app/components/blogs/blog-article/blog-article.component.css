@@ -261,14 +261,6 @@ li span {
 .isClicked {
   background-color: #00b900;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
-  .img-holder {
-    width: 100%;
-  }
-  .editor {
-    width: 100%;
-  }
-}
 .validation-error {
   color: red;
   text-align: center;
@@ -296,4 +288,25 @@ li span {
 }
 .reset-margin-right {
   margin-right: 0px;
+}
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .blog-page {
+    flex-direction: column;
+  }
+  .blog-holder {
+    margin: 5px auto;
+  }
+  .img-holder {
+    width: 100%;
+  }
+  .editor {
+    width: 100%;
+  }
+  .relevant-blogs {
+    margin: 5px auto;
+  }
+  .blog-cards {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
