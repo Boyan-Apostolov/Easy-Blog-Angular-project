@@ -19,15 +19,23 @@
             <div *ngIf="emailInput.touched &&emailInput.errors?.email" class="validation-error">Email is invalid!</div>
         </div>
         <div>
-            <input type="password" #password='ngModel' name="password" placeholder="Password" required ngModel>
+            <input type="password" #password='ngModel' name="password" placeholder="Password" required ngModel
+                [minlength]="6">
             <div *ngIf="password.touched &&password.errors?.required" class="validation-error">Password is required!
+            </div>
+            <div *ngIf="password.touched &&password.errors?.minlength" class="validation-error">Password needs to be at
+                least 6 characters!
             </div>
         </div>
         <div>
             <input type="password" #confirmPassword='ngModel' name="confirm-password" placeholder="Confirm password"
-                ngModel required>
+                ngModel required [minlength]="6">
             <div *ngIf="confirmPassword.touched &&confirmPassword.errors?.required" class="validation-error">Confirm
                 Password is required!
+            </div>
+            <div *ngIf="password.touched &&password.errors?.minlength" class="validation-error">Confirm Password needs
+                to be at
+                least 6 characters!
             </div>
             <div *ngIf="confirmPassword.touched &&confirmPassword.value != password.value" class="validation-error">
                 Passwords do not match!

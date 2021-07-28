@@ -31,7 +31,8 @@
         <button class="btn btn-success" (click)="toggleUserVisitations()">Visitation history</button>
         <section class="visits-holder" *ngIf="areVisitationsVisitble">
             <p>Latest 10 visits of your profile</p>
-            <table class="table table-striped">
+            <p *ngIf="user.visitations?.length == 0">No one has visited your profile yet!</p>
+            <table *ngIf="user.visitations?.length! > 0" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Visited On:</th>
