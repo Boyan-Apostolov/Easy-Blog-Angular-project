@@ -1,131 +1,144 @@
 <section class="blog-page" *ngIf="blog">
-    <app-alert [alert]="error" *ngIf="error"></app-alert>
-    <button *ngIf="canEdit" class="btn edit-btn" (click)="editBlog($event,blog)">
-        <i class="fas fa-edit">Edit</i>
-    </button>
-    <button *ngIf="this.editState && this.blogToEdit.id === blog.id" class="cancel-btn" (click)="clearState()">
-        <i class="fas fa-undo">Cancel</i>
-    </button>
+    <section [class.whole-blog]="relevantBlog.length">
+        <app-alert [alert]="error" *ngIf="error"></app-alert>
 
-    <section class="blog-holder">
-
-        <div *ngIf="this.editState && this.blogToEdit.id === blog.id">
-            <form (ngSubmit)="updateBlog(blog)">
-                <button class="btn delete-btn" (click)="deteleBlog($event,blog)">
-                    Delete
+        <section class="blog-holder" [class.reset-margin-right]="relevantBlog.length">
+            <section class="buttons">
+                <button *ngIf="canEdit" class="btn edit-btn" (click)="editBlog($event,blog)">
+                    <i class="fas fa-edit">Edit</i>
                 </button>
-                <div class="title-and-img">
-                    <div class="row">
-                        <h3>Add a title to your blog!</h3>
-                        <input type="text" placeholder="I like cats!" name="title" [(ngModel)]="this.blog.title">
-                    </div>
-
-                    <div class="row">
-                        <h3>Add an image your blog!</h3>
-                        <input type="text" placeholder="www.cats.com/cat1.png" name="imgUrl"
-                            [(ngModel)]="this.blog.imgUrl">
-                    </div>
-                </div>
-                <section class="editor">
-                    <ckeditor [(ngModel)]="this.blog.content" name="ckeditorContent">
-                    </ckeditor>
-                    <button class="save-btn" type="submit"><i class="fas fa-save"></i></button>
-                </section>
-            </form>
-        </div>
-
-        <h1>{{blog.title}}</h1>
-
-        <section class="popularity-markers">
-            <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
-            <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
-            <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
-        </section>
-
-        <section class="share-buttons-holder">
-            <button class="facebook" shareButton="facebook">
-                <i class="fab fa-facebook-f"></i>
-            </button>
-            <button class="twitter" shareButton="twitter">
-                <i class="fab fa-twitter"></i>
-            </button>
-            <button class="linkedin" shareButton="linkedin">
-                <i class="fab fa-linkedin-in"></i>
-            </button>
-            <button class="pinterest" shareButton="pinterest">
-                <i class="fab fa-pinterest-p"></i>
-            </button>
-            <button class="tumblr" shareButton="tumblr">
-                <i class="fab fa-tumblr"></i>
-            </button>
-            <button class="reddit" shareButton="reddit">
-                <i class="fab fa-reddit"></i>
-            </button>
-            <button (click)="copyToClipboard()" class="copy-to-clipboard" [class.isClicked]="isClicked">
-                <i class="fas fa-link"></i>
-            </button>
-        </section>
-        <article class="img-holder">
-            <img [src]="blog.imgUrl" alt="">
-        </article>
-        <p><i class="far fa-clock"></i> {{blog.createdOn}}</p>
-        <article class="blog-content-holder" [innerHTML]="blog.content">
-        </article>
-
-        <a routerLink="../../../user/{{blog.user.id}}" class="author">
-            Author: {{blog.user.username}}
-        </a>
-        <button *ngIf="this.isLogged" (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you
-            like
-            this blog?</button>
-        <button *ngIf="!this.isLogged" class="like-btn"><i class="fas fa-heart"></i> Please login to like the
-            blog!</button>
-
-
-        <article class="comments-section">
-            <h2>Comments:</h2>
-            <button *ngIf="!this.commentingState && this.isLogged && !isFrozen" (click)="enableCommenting()"
-                class="comments-btn">+
-                Add a comment</button>
-            <p *ngIf="!this.isLogged">Please login to add a comment!</p>
-            <section class="frozen" *ngIf="isFrozen">
-                <p>You have been frozen by the administrator and therefore cannot write comments!</p>
+                <button *ngIf="this.editState && this.blogToEdit.id === blog.id" class="cancel-btn"
+                    (click)="clearState()">
+                    <i class="fas fa-undo">Cancel</i>
+                </button>
             </section>
-            <div *ngIf="this.commentingState">
-                <form #form='ngForm' (ngSubmit)="postComment(blog)">
-                    <div class="posting-comment">
-                        <div class="row">
-                            <h3>Add you comment to this blog!</h3>
-                            <textarea rows="5" cols="30" type="text" placeholder="I like your opinion" name="comment"
-                                #commentInput [(ngModel)]="this.commentToAdd" #comment='ngModel' required></textarea>
-                            <div *ngIf="comment.touched &&comment.errors?.required" class="validation-error">You cannot
-                                post and empty comment!</div>
 
-                            <section class="comment-buttons">
-                                <button type="submit" class="comments-btn"
-                                    [disabled]="!comment.touched || comment.errors?.required">Post</button>
-                                <button *ngIf="this.commentingState" class="cancel-btn" (click)="clearState()">
-                                    <i class="fas fa-undo">Cancel</i>
-                                </button>
-                            </section>
+            <div *ngIf="this.editState && this.blogToEdit.id === blog.id">
+                <form (ngSubmit)="updateBlog(blog)">
+                    <button class="btn delete-btn" (click)="deteleBlog($event,blog)">
+                        Delete
+                    </button>
+                    <div class="title-and-img">
+                        <div class="row">
+                            <h3>Add a title to your blog!</h3>
+                            <input type="text" placeholder="I like cats!" name="title" [(ngModel)]="this.blog.title">
+                        </div>
+
+                        <div class="row">
+                            <h3>Add an image your blog!</h3>
+                            <input type="text" placeholder="www.cats.com/cat1.png" name="imgUrl"
+                                [(ngModel)]="this.blog.imgUrl">
                         </div>
                     </div>
+                    <section class="editor">
+                        <ckeditor [(ngModel)]="this.blog.content" name="ckeditorContent">
+                        </ckeditor>
+                        <button class="save-btn" type="submit"><i class="fas fa-save"></i></button>
+                    </section>
                 </form>
             </div>
-            <ul class='comments-ul'>
-                <li *ngFor="let comment of blog.comments">
-                    <span class="comment-user">
-                        <span>Written by <span class="comment-user-username">{{comment.user.username}}</span></span>
 
-                    </span>
-                    <span class="comment-title">
-                        {{comment.content}}
-                    </span>
-                    <span>{{comment.createdOn}}</span>
-                </li>
-            </ul>
-        </article>
+            <h1>{{blog.title}}</h1>
 
+            <section class="popularity-markers">
+                <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>
+                <i class="fas fa-comments"> {{blog.comments?.length || 0}}</i>
+                <i class="fas fa-heart"> {{blog.likes?.length || 0}}</i>
+            </section>
+
+            <section class="share-buttons-holder">
+                <button class="facebook" shareButton="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="twitter" shareButton="twitter">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button class="linkedin" shareButton="linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </button>
+                <button class="pinterest" shareButton="pinterest">
+                    <i class="fab fa-pinterest-p"></i>
+                </button>
+                <button class="tumblr" shareButton="tumblr">
+                    <i class="fab fa-tumblr"></i>
+                </button>
+                <button class="reddit" shareButton="reddit">
+                    <i class="fab fa-reddit"></i>
+                </button>
+                <button (click)="copyToClipboard()" class="copy-to-clipboard" [class.isClicked]="isClicked">
+                    <i class="fas fa-link"></i>
+                </button>
+            </section>
+            <article class="img-holder">
+                <img [src]="blog.imgUrl" alt="">
+            </article>
+            <p><i class="far fa-clock"></i> {{blog.createdOn}}</p>
+            <article class="blog-content-holder" [innerHTML]="blog.content">
+            </article>
+
+            <a routerLink="../../../user/{{blog.user.id}}" class="author">
+                Author: {{blog.user.username}}
+            </a>
+            <button *ngIf="this.isLogged" (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you
+                like
+                this blog?</button>
+            <button *ngIf="!this.isLogged" class="like-btn"><i class="fas fa-heart"></i> Please login to like the
+                blog!</button>
+
+
+            <article class="comments-section">
+                <h2>Comments:</h2>
+                <button *ngIf="!this.commentingState && this.isLogged && !isFrozen" (click)="enableCommenting()"
+                    class="comments-btn">+
+                    Add a comment</button>
+                <p *ngIf="!this.isLogged">Please login to add a comment!</p>
+                <section class="frozen" *ngIf="isFrozen">
+                    <p>You have been frozen by the administrator and therefore cannot write comments!</p>
+                </section>
+                <div *ngIf="this.commentingState">
+                    <form #form='ngForm' (ngSubmit)="postComment(blog)">
+                        <div class="posting-comment">
+                            <div class="row">
+                                <h3>Add you comment to this blog!</h3>
+                                <textarea rows="5" cols="30" type="text" placeholder="I like your opinion"
+                                    name="comment" #commentInput [(ngModel)]="this.commentToAdd" #comment='ngModel'
+                                    required></textarea>
+                                <div *ngIf="comment.touched &&comment.errors?.required" class="validation-error">You
+                                    cannot
+                                    post and empty comment!</div>
+
+                                <section class="comment-buttons">
+                                    <button type="submit" class="comments-btn"
+                                        [disabled]="!comment.touched || comment.errors?.required">Post</button>
+                                    <button *ngIf="this.commentingState" class="cancel-btn" (click)="clearState()">
+                                        <i class="fas fa-undo">Cancel</i>
+                                    </button>
+                                </section>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ul class='comments-ul'>
+                    <li *ngFor="let comment of blog.comments">
+                        <span class="comment-user">
+                            <span>Written by <span class="comment-user-username">{{comment.user.username}}</span></span>
+
+                        </span>
+                        <span class="comment-title">
+                            {{comment.content}}
+                        </span>
+                        <span>{{comment.createdOn}}</span>
+                    </li>
+                </ul>
+            </article>
+
+        </section>
+    </section>
+    <section *ngIf="relevantBlog.length" class="relevant-blogs">
+        <h2>Continue reading...</h2>
+        <div class="blog-cards">
+            <app-blog-item class="blog-card" *ngFor="let blog of relevantBlog" [blog]="blog"></app-blog-item>
+        </div>
     </section>
 </section>
 <h1 *ngIf="!blog">Blog with that ID does not exist!</h1>

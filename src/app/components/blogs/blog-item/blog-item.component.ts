@@ -44,7 +44,7 @@ export class BlogItemComponent implements OnInit {
     let userId = this.userService.currentUser.id;
     if (!this.blog.views?.includes(userId!)) {
       blog.views?.push(userId!);
+      this.blogService.updateBlog(blog);
     }
-    this.blogService.updateBlog(blog);
   }
 }

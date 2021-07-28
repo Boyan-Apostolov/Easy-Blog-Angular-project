@@ -2,8 +2,19 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
 }
-
+.whole-blog {
+  margin-right: 0px !important;
+  flex-basis: 90%;
+}
+.relevant-blogs {
+  flex-basis: 15%;
+  margin-top: 30px;
+  margin-right: 60px;
+}
 .save-btn {
   top: 10px;
   left: 81px;
@@ -19,6 +30,10 @@
 h1 {
   text-align: center;
   font-size: 30px;
+}
+h2 {
+  text-align: center;
+  font-size: 25px;
 }
 h3 {
   font-weight: 500;
@@ -266,4 +281,19 @@ li span {
   color: red;
   font-weight: 400;
   font-size: 19px;
+}
+
+.blog-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+.blog-card {
+  margin: 15px;
+  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
+  border-radius: 5px;
+}
+.reset-margin-right {
+  margin-right: 0px;
 }

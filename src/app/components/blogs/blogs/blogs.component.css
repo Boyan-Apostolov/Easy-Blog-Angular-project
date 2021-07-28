@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 50px;
 }
 
 h1 {
@@ -75,4 +76,7 @@ ul li a {
   .blog-cards {
     flex-direction: column;
   }
+}
+article.blog-content-holder img {
+  max-width: 100% !important;
 }

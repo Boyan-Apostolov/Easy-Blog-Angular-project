@@ -24,6 +24,7 @@ export class BlogArticleComponent implements OnInit {
   commentToAdd!: string;
 
   blog!: Blog;
+  relevantBlog!: Blog[];
   id: string | null = '';
 
   constructor(
@@ -38,12 +39,21 @@ export class BlogArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') as string;
-    this.blogService.getAllBlogs().subscribe((blogs) => {
-      this.blog = blogs.filter((x) => x.id === this.id)[0];
-      this.blog.comments?.sort((a, b) =>
-        b.createdOn.localeCompare(a.createdOn)
-      );
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      this.blogService.getAllBlogs().subscribe((blogs) => {
+        this.blog = blogs.filter((x) => x.id === this.id)[0];
+        this.blog.comments?.sort((a, b) =>
+          b.createdOn.localeCompare(a.createdOn)
+        );
+        this.relevantBlog = blogs
+          .filter(
+            (blog) =>
+              blog.tags?.some((tag) => this.blog.tags?.includes(tag)) &&
+              blog.id != this.id
+          )
+          .slice(0, 2);
+      });
     });
   }
 
