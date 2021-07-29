@@ -69,9 +69,11 @@
                     <i class="fas fa-link"></i>
                 </button>
             </section>
+
             <article class="img-holder">
                 <img [src]="blog.imgUrl" alt="">
             </article>
+
             <p><i class="far fa-clock"></i> {{blog.createdOn}}</p>
             <article class="blog-content-holder" [innerHTML]="blog.content">
             </article>
@@ -84,7 +86,6 @@
                 this blog?</button>
             <button *ngIf="!this.isLogged" class="like-btn"><i class="fas fa-heart"></i> Please login to like the
                 blog!</button>
-
 
             <article class="comments-section">
                 <h2>Comments:</h2>
@@ -109,7 +110,7 @@
 
                                 <section class="comment-buttons">
                                     <button type="submit" class="comments-btn"
-                                        [disabled]="!comment.touched || comment.errors?.required">Post</button>
+                                        [disabled]="comment.errors?.required">Post</button>
                                     <button *ngIf="this.commentingState" class="cancel-btn" (click)="clearState()">
                                         <i class="fas fa-undo">Cancel</i>
                                     </button>
@@ -119,15 +120,18 @@
                     </form>
                 </div>
                 <ul class='comments-ul'>
-                    <li *ngFor="let comment of blog.comments">
-                        <span class="comment-user">
-                            <span>Written by <span class="comment-user-username">{{comment.user.username}}</span></span>
+                    <li *ngFor="let comment of blog.comments" routerLink="/user/{{comment.user.id}}">
+                        <section class="img-holder">
+                            <img [src]="comment.user.imgUrl" alt="">
+                        </section>
 
-                        </span>
-                        <span class="comment-title">
-                            {{comment.content}}
-                        </span>
-                        <span>{{comment.createdOn}}</span>
+                        <section class="comment-auth-date-cont">
+                            <section class="comment-meta">
+                                <p class="comment-user">{{comment.user.username}}</p>
+                                <p>{{comment.createdOn}}</p>
+                            </section>
+                            <p class="comment-title">{{comment.content}}</p>
+                        </section>
                     </li>
                 </ul>
             </article>

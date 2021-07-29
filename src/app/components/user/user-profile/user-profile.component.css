@@ -72,13 +72,15 @@ hr {
 
 .blog-cards {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: center;
 }
 .blog-card {
+  flex-basis: 20% !important;
   margin: 15px;
-  flex-basis: 20%;
+  flex-basis: unset;
   box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
   border-radius: 5px;
 }
