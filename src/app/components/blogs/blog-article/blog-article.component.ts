@@ -27,6 +27,8 @@ export class BlogArticleComponent implements OnInit {
   relevantBlog!: Blog[];
   id: string | null = '';
 
+  url: string = `https://easy-blog-angular.github.io/blogs/blog/${this.id}`;
+
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,

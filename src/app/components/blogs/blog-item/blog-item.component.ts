@@ -41,10 +41,10 @@ export class BlogItemComponent implements OnInit {
   }
 
   incrementBlogViews(blog: Blog) {
-    let userId = this.userService.currentUser.id;
-    if (!this.blog.views?.includes(userId!)) {
-      blog.views?.push(userId!);
-      this.blogService.updateBlog(blog);
-    }
+    let userId = this.userService.isLogged
+      ? this.userService.currentUser.id
+      : 'guest-user';
+    blog.views?.push(userId!);
+    this.blogService.updateBlog(blog);
   }
 }

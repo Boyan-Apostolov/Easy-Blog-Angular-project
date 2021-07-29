@@ -11,7 +11,21 @@ import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { ShareButtonsConfig, ShareModule } from 'ngx-sharebuttons';
 
+const customConfig: ShareButtonsConfig = {
+  autoSetMeta: true,
+  include: [
+    'facebook',
+    'twitter',
+    'linkedin',
+    'reddit',
+    'whatsapp',
+    'telegram',
+    'print',
+    'email',
+  ],
+};
 @NgModule({
   declarations: [
     BlogArticleComponent,
@@ -23,7 +37,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
   imports: [
     CommonModule,
     BlogsRoutingModule,
-    SharedModule,
+    SharedModule, //Shared Module
+    ShareModule.withConfig(customConfig), //Share buttons
     FormsModule,
     MatChipsModule,
     MatProgressSpinnerModule,
