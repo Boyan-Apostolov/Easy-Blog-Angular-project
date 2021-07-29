@@ -35,7 +35,10 @@ export class BlogArticleComponent implements OnInit {
   ) {}
 
   get isFrozen(): boolean {
-    return this.userService.currentUser.isFrozen!;
+    if (this.isLogged) {
+      return this.userService.currentUser.isFrozen!;
+    }
+    return false;
   }
 
   ngOnInit(): void {
