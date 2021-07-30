@@ -1,7 +1,6 @@
 <section class="page-holder">
     <h1>Here are you bookmarked blogs!</h1>
 
-    <mat-spinner class="spinner" *ngIf="this.blogs.length <= 0"></mat-spinner>
     <section class="content" *ngIf="this.blogs.length > 0">
         <section class="cards">
             <div class="blog-cards">
@@ -10,10 +9,10 @@
                             class="fas fa-trash-alt"></i></button>
                 </app-blog-item>
             </div>
-            <div *ngIf="this.blogs.length < 0">
-                <hr>
-                <h1>There are currently no blogs to show!</h1>
-            </div>
         </section>
     </section>
+    <div *ngIf="this.blogs.length == 0">
+        <hr>
+        <h1>There are currently no blogs to show!</h1>
+    </div>
 </section>

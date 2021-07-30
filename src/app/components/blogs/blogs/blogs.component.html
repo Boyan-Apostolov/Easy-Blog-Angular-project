@@ -7,10 +7,6 @@
             <div class="blog-cards">
                 <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>
             </div>
-            <div *ngIf="this.blogs.length < 0">
-                <hr>
-                <h1>There are currently no blogs to show!</h1>
-            </div>
         </section>
         <section class="aside">
             <aside>

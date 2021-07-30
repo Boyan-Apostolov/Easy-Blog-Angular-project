@@ -19,10 +19,10 @@ export class UserProfileComponent implements OnInit {
   areVisitationsVisitble: boolean = false;
 
   get isUserOwnerOfProfile(): boolean {
-    return (
-      this.userService.currentUser.id == this.userId ||
-      this.userService.currentUser.isAdmin!
-    );
+    return this.userService.isLogged
+      ? this.userService.currentUser.id == this.userId ||
+          this.userService.currentUser.isAdmin!
+      : false;
   }
 
   constructor(

@@ -9,9 +9,9 @@
             <li><a *ngIf="isLogged" routerLink="/blogs/new">Start Writing</a></li>
             <li><a *ngIf="isLogged" routerLink="/chat">Open Discussion</a></li>
             <li><a *ngIf="isLogged" routerLink="/leaderboard">Leaderboard</a></li>
-            <li><a routerLink="/blogs/saved">Bookmarks</a></li>
+            <li><a *ngIf="isLogged" routerLink="/blogs/saved">Bookmarks</a></li>
             <span class="admin-holder">
-                <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>
+                <li *ngIf="isAdmin && isLogged"><a (click)="toggleAdminDropdown()">Administration</a>
                 </li>
                 <div (click)="toggleAdminDropdown()" *ngIf="isAdminDropdownShown" class="dropdown-content">
                     <a routerLink="/admin/blogs">Blogs</a>

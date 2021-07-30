@@ -1,5 +1,7 @@
 <section class="leaderboard-holder" *ngIf="isLogged">
     <h1>Site Leaderboard</h1>
+    <mat-spinner class="spinner" *ngIf="this.userBlogList.length <= 0"></mat-spinner>
+
     <ul>
         <li *ngFor="let userBlog of userBlogList; let i = index" routerLink="/user/{{userBlog.user.id}}">
             <section class="place">

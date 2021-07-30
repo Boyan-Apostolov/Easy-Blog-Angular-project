@@ -99,3 +99,6 @@ li h2 {
     flex-basis: 25%;
   }
 }
+.spinner {
+  margin: 0 auto;
+}

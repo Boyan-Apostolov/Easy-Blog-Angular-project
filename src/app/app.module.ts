@@ -32,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ShareModule,
     AppRoutingModule,
