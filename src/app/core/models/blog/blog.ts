@@ -12,4 +12,5 @@ export interface Blog {
   comments?: BlogComment[];
   views?: string[];
   tags?: string[];
+  saves?: string[];
 }

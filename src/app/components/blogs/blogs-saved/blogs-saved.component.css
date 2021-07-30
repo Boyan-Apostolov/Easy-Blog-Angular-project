@@ -1,0 +1,22 @@
+.page-holder {
+  padding: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+.blog-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+.blog-card {
+  margin: 15px;
+  flex-basis: 25%;
+  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
+  border-radius: 5px;
+}
+button {
+  width: fit-content !important;
+}

@@ -107,6 +107,34 @@ export class BlogService {
   getAllBlogs() {
     return this.blogs;
   }
+  likeBlog(blog: Blog, userId: string): boolean {
+    if (!blog.likes?.includes(userId!)) {
+      blog.likes?.push(userId!);
+      this.updateBlog(blog);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bookmarkBlog(blog: Blog, userId: string): boolean {
+    if (!blog.saves?.includes(userId!)) {
+      blog.saves?.push(userId!);
+      this.updateBlog(blog);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  removeFromBookmarks(blog: Blog, userId: string) {
+    if (blog.saves?.includes(userId!)) {
+      blog.saves?.splice(blog.saves?.indexOf(userId));
+      this.updateBlog(blog);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   filterContent(content: string): string {
     badWords.forEach(

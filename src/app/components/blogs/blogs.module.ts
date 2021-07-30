@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ShareButtonsConfig, ShareModule } from 'ngx-sharebuttons';
+import { BlogsSavedComponent } from './blogs-saved/blogs-saved.component';
 
 const customConfig: ShareButtonsConfig = {
   autoSetMeta: true,
@@ -33,6 +34,7 @@ const customConfig: ShareButtonsConfig = {
     BlogNewComponent,
     BlogsComponent,
     BlogsByTagComponent,
+    BlogsSavedComponent,
   ],
   imports: [
     CommonModule,

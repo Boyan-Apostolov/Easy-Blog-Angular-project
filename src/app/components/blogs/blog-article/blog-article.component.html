@@ -81,11 +81,24 @@
             <a routerLink="../../../user/{{blog.user.id}}" class="author">
                 Author: {{blog.user.username}}
             </a>
-            <button *ngIf="this.isLogged" (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did you
-                like
-                this blog?</button>
-            <button *ngIf="!this.isLogged" class="like-btn"><i class="fas fa-heart"></i> Please login to like the
-                blog!</button>
+            <div class="row-buttons">
+                <button *ngIf="this.isLogged" (click)="likeBlog(blog)" class="like-btn"><i class="fas fa-heart"></i> Did
+                    you
+                    like
+                    this blog?</button>
+                <button *ngIf="!this.isLogged" class="like-btn"><i class="fas fa-heart"></i> Please login to like the
+                    blog!</button>
+
+                <button *ngIf="this.isLogged" (click)="bookmarkBlog(blog)" class="bookmark-btn"><i
+                        class="fas fa-bookmark"></i>
+                    Want
+                    to save
+                    this blog?</button>
+                <button *ngIf="!this.isLogged" class="bookmark-btn"><i class="fas fa-bookmark"></i> Please login to save
+                    the
+                    blog!</button>
+            </div>
+
 
             <article class="comments-section">
                 <h2>Comments:</h2>

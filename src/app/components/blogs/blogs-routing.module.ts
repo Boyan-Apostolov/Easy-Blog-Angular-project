@@ -5,6 +5,7 @@ import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { BlogArticleComponent } from './blog-article/blog-article.component';
 import { BlogNewComponent } from './blog-new/blog-new.component';
 import { BlogsByTagComponent } from './blogs-by-tag/blogs-by-tag.component';
+import { BlogsSavedComponent } from './blogs-saved/blogs-saved.component';
 import { BlogsComponent } from './blogs/blogs.component';
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
       {
         path: 'byTag/:tag',
         component: BlogsByTagComponent,
+      },
+      {
+        path: 'saved',
+        component: BlogsSavedComponent,
+        data: { isLogged: true },
       },
       {
         path: 'new',
