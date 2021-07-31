@@ -1,0 +1,57 @@
+.dashboard-holder {
+  padding-bottom: 50px;
+  padding-top: 20px;
+  background-color: #181818;
+  min-height: 85.7vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+h1 {
+  text-align: center;
+  color: #fff;
+}
+.spinner {
+  margin: 0 auto;
+}
+.cards-holder {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  cursor: pointer;
+  flex-basis: 45%;
+  padding: 30px 20px;
+  border-radius: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 500;
+}
+.user-card {
+  background-color: #3b76ef;
+}
+.blogs-card {
+  background-color: #6dd4b1;
+}
+.logs-card {
+  background-color: #a66dd4;
+}
+.messages-card {
+  background-color: #63c7ff;
+}
+.card-title {
+  font-size: 16px;
+}
+.card-content {
+  font-size: 23px;
+  font-weight: bold;
+}
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .cards-holder {
+    flex-direction: column;
+  }
+}

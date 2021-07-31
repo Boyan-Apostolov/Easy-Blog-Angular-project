@@ -44,6 +44,7 @@ a {
   position: absolute;
   margin-top: 25px;
   width: 70%;
+  z-index: 1;
   box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
 }
 
@@ -62,7 +63,8 @@ a {
 }
 .dropdown-content a:nth-child(1),
 .dropdown-content a:nth-child(2),
-.dropdown-content a:nth-child(3) {
+.dropdown-content a:nth-child(3),
+.dropdown-content a:nth-child(4) {
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(114, 111, 111);
 }

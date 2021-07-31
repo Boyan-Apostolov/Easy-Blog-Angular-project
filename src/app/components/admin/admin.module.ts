@@ -6,10 +6,17 @@ import { AdminBlogsComponent } from './admin-blogs/admin-blogs.component';
 import { AdminChatComponent } from './admin-chat/admin-chat.component';
 import { AdminLogsComponent } from './admin-logs/admin-logs.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [AdminUsersComponent, AdminBlogsComponent, AdminChatComponent, AdminLogsComponent, AdminDashboardComponent],
-  imports: [CommonModule, AdminRoutingModule],
+  declarations: [
+    AdminUsersComponent,
+    AdminBlogsComponent,
+    AdminChatComponent,
+    AdminLogsComponent,
+    AdminDashboardComponent,
+  ],
+  imports: [CommonModule, AdminRoutingModule, MatProgressSpinnerModule],
   exports: [AdminUsersComponent, AdminBlogsComponent, AdminChatComponent],
 })
 export class AdminModule {}

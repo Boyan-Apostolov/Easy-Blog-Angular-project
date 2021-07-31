@@ -11,10 +11,10 @@
             <li><a *ngIf="isLogged" routerLink="/leaderboard">Leaderboard</a></li>
             <li><a *ngIf="isLogged" routerLink="/blogs/saved">Bookmarks</a></li>
             <span class="admin-holder">
-                <li *ngIf="isAdmin && isLogged"><a routerLink="/admin/dashboard"
-                        (click)="toggleAdminDropdown()">Administration</a>
+                <li *ngIf="isAdmin && isLogged"><a (click)="toggleAdminDropdown()">Administration</a>
                 </li>
                 <div (click)="toggleAdminDropdown()" *ngIf="isAdminDropdownShown" class="dropdown-content">
+                    <a routerLink="/admin/dashboard">Dashboard</a>
                     <a routerLink="/admin/blogs">Blogs</a>
                     <a routerLink="/admin/users">Users</a>
                     <a routerLink="/admin/chat">Chat</a>
