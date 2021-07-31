@@ -5,6 +5,7 @@ import { Blog } from '../../../core/models/blog/blog';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { UserService } from 'src/app/core/services/user/user-service.service';
+import { LogsService } from 'src/app/core/services/logs/logs.service';
 
 @Component({
   selector: 'app-blog-article',
@@ -33,8 +34,11 @@ export class BlogArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private blogService: BlogService,
     private router: Router,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private logsService: LogsService
+  ) {
+    this.logsService.addRecord('blog-article');
+  }
 
   get isFrozen(): boolean {
     if (this.isLogged) {

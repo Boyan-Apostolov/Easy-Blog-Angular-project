@@ -4,6 +4,7 @@ import { Blog } from 'src/app/core/models/blog/blog';
 import { Achievment } from 'src/app/core/models/user/achievment';
 import { User } from 'src/app/core/models/user/user';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
+import { LogsService } from 'src/app/core/services/logs/logs.service';
 import { UserService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
@@ -28,8 +29,11 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private logsService: LogsService
+  ) {
+    this.logsService.addRecord('user-profile');
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {

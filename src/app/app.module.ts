@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -33,6 +34,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LogsService } from './core/services/logs/logs.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     FormsModule,
@@ -67,6 +70,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AuthGuard,
     UserService,
     ChatService,
+    LogsService,
     ImageUploadService,
     AngularFireAuthModule,
   ],

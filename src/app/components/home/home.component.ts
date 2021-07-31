@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
+import { LogsService } from 'src/app/core/services/logs/logs.service';
 import { UserService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
@@ -31,8 +32,12 @@ export class HomeComponent {
   position: string = '';
   isLogged: boolean = false;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private logsService: LogsService
+  ) {
     this.isLogged = this.userService.isLogged;
+    this.logsService.addRecord('home-page');
   }
 
   ngAfterViewInit() {
