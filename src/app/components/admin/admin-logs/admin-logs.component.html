@@ -1,1 +1,34 @@
-<p>admin-logs works!</p>
+<section class="admin-users-page">
+    <h1>User Logs:</h1>
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Id:</th>
+                <th>IP Address:</th>
+                <th>Page:</th>
+                <th>City:</th>
+                <th>Country Code:</th>
+                <th>Continent Code:</th>
+                <th>CreatedOn:</th>
+                <th>Delete record</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logs">
+                <td>{{log.id}}</td>
+                <td>{{log.ip}}</td>
+                <td>{{log.page_location}}</td>
+                <td>{{log.city}}</td>
+                <td>{{log.country_code}}</td>
+                <td>{{log.continent_code}}</td>
+                <td>{{log.createdOn}}</td>
+                <td>
+                    <button (click)="deleteRecord(log)" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -40,6 +40,14 @@ export class LogsService {
     );
   }
 
+  getAllLogs() {
+    return this.records;
+  }
+
+  deleteRecord(log: IpRecord) {
+    this.recordsDoc = this.afs.doc(`ip-records/${log.id}`);
+    this.recordsDoc.delete();
+  }
   getIpData() {
     return this.http.get<IpRecord>(environment.ipdata.url);
   }
