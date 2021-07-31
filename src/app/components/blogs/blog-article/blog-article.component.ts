@@ -19,6 +19,7 @@ export class BlogArticleComponent implements OnInit {
   canEdit: boolean = false;
   isAdmin: boolean = false;
   isLogged: boolean = false;
+  blogNotFound: boolean = false;
   error: any;
 
   blogToEdit!: Blog;
@@ -52,6 +53,10 @@ export class BlogArticleComponent implements OnInit {
       this.id = params['id'];
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blog = blogs.filter((x) => x.id === this.id)[0];
+        if (!this.blog) {
+          this.blogNotFound = true;
+          return;
+        }
         this.blog.comments?.sort((a, b) =>
           b.createdOn.localeCompare(a.createdOn)
         );

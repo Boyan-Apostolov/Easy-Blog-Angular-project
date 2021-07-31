@@ -158,4 +158,5 @@
         </div>
     </section>
 </section>
-<h1 *ngIf="!blog">Blog with that ID does not exist!</h1>
+<mat-spinner class="spinner" *ngIf="!this.blog && !blogNotFound"></mat-spinner>
+<h1 *ngIf="blogNotFound">Blog with that ID does not exist!</h1>
