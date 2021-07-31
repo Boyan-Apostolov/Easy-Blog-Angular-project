@@ -16,8 +16,9 @@ h1 {
   margin: 0 auto;
 }
 .cards-holder {
+  margin-top: 10px;
   display: flex;
-  width: 90%;
+  width: 75%;
   flex-wrap: wrap;
   justify-content: center;
   /* 
