@@ -68,6 +68,11 @@ a {
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(114, 111, 111);
 }
+.fa-bars {
+  display: none;
+  color: white;
+  font-size: 25px;
+}
 @media all and (min-width: 395px) and (max-width: 660px) {
   nav,
   .nav-ul {
@@ -76,10 +81,16 @@ a {
     flex-wrap: wrap;
     flex-direction: row;
   }
+  .fa-bars {
+    display: block;
+  }
   li {
     margin: 5px;
   }
   nav > .logo-holder {
     display: none;
+  }
+  .isHidden {
+    display: none !important;
   }
 }

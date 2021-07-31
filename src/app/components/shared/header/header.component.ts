@@ -9,8 +9,9 @@ import { UserService } from '../../../core/services/user/user-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isAdmin: boolean = false;
-  public isAdminDropdownShown: boolean = false;
+  isAdmin: boolean = false;
+  isAdminDropdownShown: boolean = false;
+  isNavHidden: boolean = true;
 
   get isLogged(): boolean {
     return this.userService.isLogged;
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
   toggleAdminDropdown() {
     this.isAdminDropdownShown = !this.isAdminDropdownShown;
+  }
+
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
   }
 }

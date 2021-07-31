@@ -3,7 +3,7 @@
         <section class="logo-holder">
             <img src="../../../../assets/site_logo_Cropped.png" alt="">
         </section>
-        <ul class="nav-ul">
+        <ul class="nav-ul" [class.isHidden]="isNavHidden">
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">Start Reading</a></li>
             <li><a *ngIf="isLogged" routerLink="/blogs/new">Start Writing</a></li>
@@ -29,6 +29,9 @@
             <li><a routerLink="/auth/register">Register</a></li>
         </ul>
         <ul *ngIf="this.isLogged">
+            <li (click)="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </li>
             <li>
                 <a>
                     <section class="logo-holder">
