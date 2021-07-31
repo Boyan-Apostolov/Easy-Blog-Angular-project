@@ -39,9 +39,11 @@ You can check it out on: http://easy-blog-angular.github.io/
 |Bookmarks|✅|❌|✅
 |Profile page|✅|✅|✅
 |Chat|✅|❌|✅
-|Admin users dashboard |❌|❌|✅
-|Admin chat dashboard|❌|❌|✅
-|Admin blogs dashboard|❌|❌|✅
+|Admin Dashboard |❌|❌|✅
+|Admin users manage |❌|❌|✅
+|Admin chat manage|❌|❌|✅
+|Admin blogs manage|❌|❌|✅
+|Admin logs manage|❌|❌|✅
 
 # Pages:
 ## Public Pages:
@@ -95,19 +97,29 @@ Here the guest can register and login. If they already have a profile, they can 
 ![Register/Login pages](https://i.ibb.co/6Ft8xGg/login-reg.png)
 ## Admin Pages:
 
-**Chat dashboard**
+**Admin Dashboard**
+
+On this page the admin can see the count of blogs, user, messages and records save in the database. Upon clicking one of the cards, the admin will be redirected to the corresponding management page.
+![Admin dashboard](https://i.ibb.co/52d9H1L/admin-dashboard.png)
+
+**Chat Management**
 
 The administrator can see ALL sent messages.Ever. The admin can also delete messages, if they sound too inappropriate :)
-![Admin chat dashboard](https://i.ibb.co/ThJr7Dv/home.png)
+![Admin chat dashboard](https://i.ibb.co/G0HDKbS/admin-chat.png)
 
-**Blogs dashboard**
+**Blogs Management**
 
 Here the administrator can see a more detailed info about the blogs, such as their ID's, creation dates, likes and other. From here, the admin can also delete the blogs.
-![Admin blogs dashboard](https://i.ibb.co/K7HbvLM/home.png)
+![Admin blogs dashboard](https://i.ibb.co/syL7h2M/admin-blogs.png)
 
 
-**Users dashboard**
+**Users Management**
 
 In this table the admin can see more info about the users, such as their ID's,  emails and other. From here the admin can also freeze and unfreeze users. Frozen users cannot acces the chat, cannot write blogs and comment on existing blogs.
-![Admin users dashboard](https://i.ibb.co/FDtKBR9/home.png)
+![Admin users dashboard](https://i.ibb.co/jWsbS83/admin-users.png)
+
+**Logs Management**
+
+Here, the admin can see the saved logs. A log is saved when a user visits the Home, Blog or Profile pages. This info is collected only for statistical reasons. The admin can also delete the logs if they choose to.
+![Admin logs dashboard](https://i.ibb.co/vjxJwLc/admin-logs.png)
 
