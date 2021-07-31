@@ -100,6 +100,11 @@ export class BlogService {
     this.blogDoc.update(blog);
   }
 
+  incrementBlogViews(blog: Blog, userId: string) {
+    blog.views?.push(userId!);
+    this.updateBlog(blog);
+  }
+
   getAllTags() {
     return this.tags;
   }

@@ -44,7 +44,6 @@ export class BlogItemComponent implements OnInit {
     let userId = this.userService.isLogged
       ? this.userService.currentUser.id
       : 'guest-user';
-    blog.views?.push(userId!);
-    this.blogService.updateBlog(blog);
+    this.blogService.incrementBlogViews(blog, userId!);
   }
 }

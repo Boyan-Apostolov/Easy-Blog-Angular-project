@@ -113,7 +113,6 @@ export class UserService {
   logout() {
     return this.fireAuth.auth
       .signOut()
-      .then((data) => {})
       .catch((err) => alert(err.message))
       .finally(() => {
         localStorage.removeItem('user_data');
