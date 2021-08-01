@@ -22,6 +22,7 @@ You can check it out on: http://easy-blog-angular.github.io/
 - Custom profanity filter
 - ngx-sharebuttons
 - HTML5 Clipboard API
+- IpData API
 - Angular animations
 
 # Permissions:
