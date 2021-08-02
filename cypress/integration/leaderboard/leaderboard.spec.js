@@ -1,6 +1,5 @@
-describe('/leaderboard logged in user tests', () => {
+describe('/leaderboard tests', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:4200/leaderboard');
         cy.setLocalStorage('user_data', JSON.stringify({
             username: "Test-Username",
             imgUrl: "https://firebasestorage.googleapis.com/v0/b/easy-blog-ec21f.appspot.com/o/ProfileImages%2FTest-Username?alt=media&token=9ca78ef5-d41f-4ddc-b82b-24b6b40a18be",
@@ -11,6 +10,7 @@ describe('/leaderboard logged in user tests', () => {
             ],
             firebaseId: "qdtBoai9G8WLi06YUTDkmDq2jrp2",
         }));
+        cy.visit('http://localhost:4200/leaderboard');
     })
 
     it('spinner shows on loading', () => {
@@ -26,5 +26,11 @@ describe('/leaderboard logged in user tests', () => {
 
         cy.get('h2').contains('User: Test-Username').parent().get('.img-holder img').should('have.attr', 'src').should('include', 'https://firebasestorage.googleapis.com/v0/b/easy-blog-ec21f.appspot.com/o/ProfileImages%2Fboian4934?alt=media&token=59d71b86-513e-4f35-be13-6a97523dfcbf'); //User img loads correct img
 
+    })
+
+    it('guests cannot access the leaderboard', () => {
+        window.localStorage.removeItem('user_data');
+        cy.visit('http://localhost:4200/leaderboard');
+        cy.get('.not-logged h1').should('have.text', 'You must be logged in to access the leaderboard!');
     })
 })
