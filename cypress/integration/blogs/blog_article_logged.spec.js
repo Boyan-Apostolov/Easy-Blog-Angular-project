@@ -1,6 +1,6 @@
 describe('/blogs logged in user tests', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:4200/blogs/all');
+        cy.visit('http://localhost:4200/blogs/byTag/test');
         cy.setLocalStorage('user_data', JSON.stringify({
             username: "Test-Username",
             imgUrl: "https://firebasestorage.googleapis.com/v0/b/easy-blog-ec21f.appspot.com/o/ProfileImages%2FTest-Username?alt=media&token=9ca78ef5-d41f-4ddc-b82b-24b6b40a18be",
@@ -14,9 +14,7 @@ describe('/blogs logged in user tests', () => {
     })
 
     it('blog article page when user is logged in', () => {
-        cy.visit('http://localhost:4200/blogs/all')
-
-        cy.get('a[href="/blogs/byTag/test"]').click();
+        cy.wait(3000);
         cy.contains('Read More...').click();
 
         cy.contains(' Did you like this blog?').should('exist');
@@ -26,9 +24,7 @@ describe('/blogs logged in user tests', () => {
     })
 
     it('blog article comment validation', () => {
-        cy.visit('http://localhost:4200/blogs/all')
-
-        cy.get('a[href="/blogs/byTag/test"]').click();
+        cy.wait(3000);
         cy.contains('Read More...').click();
 
         cy.contains('Add a comment').click();
@@ -44,6 +40,8 @@ describe('/blogs logged in user tests', () => {
 
         cy.get('div.validation-error')
             .should('not.exist');
+
+        cy.contains('Post').should('not.be.disabled')
 
     })
 })
