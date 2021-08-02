@@ -31,12 +31,10 @@ describe('/Auth/Login tests', () => {
         cy.get('input[type=password]').type('123456');
 
         cy.contains('Log In').click();
-
+        cy.wait(3000);
         cy.contains('Start Writing').should('exist'); //Articles have loaded
         cy.contains('Open Discussion').should('exist'); //Articles have loaded
         cy.contains('Leaderboard').should('exist'); //Articles have loaded
         cy.contains('Bookmarks').should('exist'); //Articles have loaded
-
-
     })
 })

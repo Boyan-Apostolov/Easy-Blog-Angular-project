@@ -35,6 +35,10 @@ export class UserProfileComponent implements OnInit {
     this.logsService.addRecord('user-profile');
   }
 
+  get isFrozen(): boolean {
+    return this.userService.currentUser.isFrozen!;
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
@@ -47,6 +51,7 @@ export class UserProfileComponent implements OnInit {
       });
       this.userService.getAllUsers().subscribe((users) => {
         this.user = users.filter((x) => x.id == this.userId)[0];
+        console.log(this.user);
         this.userService.addProfileVisitation(this.user);
         this.user.visitations
           ?.sort((a, b) => b.visitedOn!.localeCompare(a.visitedOn!))

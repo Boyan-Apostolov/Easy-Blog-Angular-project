@@ -20,7 +20,6 @@ describe('/blogs/new logged in user tests', () => {
         cy.get('input[name=image]').should('exist');
         cy.get('input[name=tags]').should('exist');
         cy.get('ckeditor').should('exist');
-        // cy.get('.spinner').should('have.length', 1)
     })
 
     it('data validation shows error on empty fields', () => {
@@ -45,7 +44,6 @@ describe('/blogs/new logged in user tests', () => {
             .then(win => {
                 win.CKEDITOR.instances["editor1"].setData("<p>HTML body</p>");
             });
-        cy.get('.save-btn').click();
         cy.get('.danger').should('not.exist');
 
 
@@ -61,7 +59,7 @@ describe('/blogs/new logged in user tests', () => {
 
         cy.window()
             .then(win => {
-                win.CKEDITOR.instances["editor1"].setData("<p>HTML body</p>");
+                win.CKEDITOR.instances["editor1"].setData("<p>HTML body from new blog</p>");
             });
 
         cy.wait(2000);
@@ -73,8 +71,10 @@ describe('/blogs/new logged in user tests', () => {
         cy.contains('Read More...').click();
         cy.visit('http://localhost:4200/blogs/byTag/testTemp');
         cy.contains('Read More...').click();
+
         cy.contains('Edit').click();
         cy.contains('Delete').click();
+        cy.wait(2000);
         cy.on('window:confirm', () => true);
     })
 
@@ -88,7 +88,7 @@ describe('/blogs/new logged in user tests', () => {
 
         cy.window()
             .then(win => {
-                win.CKEDITOR.instances["editor1"].setData("<p>HTML body</p>");
+                win.CKEDITOR.instances["editor1"].setData("<p>HTML body from editing</p>");
             });
 
         cy.wait(2000);
@@ -112,7 +112,6 @@ describe('/blogs/new logged in user tests', () => {
         cy.on('window:confirm', () => true);
     })
 
-
     it('frozen users cannot write blogs', () => {
         cy.setLocalStorage('user_data', JSON.stringify({
             username: "Test-Username",
@@ -125,6 +124,7 @@ describe('/blogs/new logged in user tests', () => {
             firebaseId: "qdtBoai9G8WLi06YUTDkmDq2jrp2",
             isFrozen: "true",
         }));
+        cy.visit('http://localhost:4200/blogs/new');
         cy.get('.frozen p').should('have.text', 'You have been frozen by the administrator and therefore cannot write blogs!');
     })
 

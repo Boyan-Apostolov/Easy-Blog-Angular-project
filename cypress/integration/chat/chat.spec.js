@@ -20,6 +20,22 @@ describe('/chat tests', () => {
         cy.get('.not-logged h1').should('have.text', 'You must be logged in to access the chat!');
     })
 
+    it('frozen users dont\'t have access to the chat', () => {
+        cy.setLocalStorage('user_data', JSON.stringify({
+            username: "Test-Username",
+            imgUrl: "https://firebasestorage.googleapis.com/v0/b/easy-blog-ec21f.appspot.com/o/ProfileImages%2FTest-Username?alt=media&token=9ca78ef5-d41f-4ddc-b82b-24b6b40a18be",
+            id: "6p7t4ul0tIVkeL9yRqzV",
+            bio: "This is just a test!",
+            email: "test-email@gmail.com",
+            visitations: [
+            ],
+            firebaseId: "qdtBoai9G8WLi06YUTDkmDq2jrp2",
+            isFrozen: "true",
+        }));
+        cy.visit('http://localhost:4200/chat');
+        cy.get('.frozen p').should('have.text', 'You have been frozen by the administrator and therefore cannot access the chat!');
+    })
+
     it('logged users have access to the chat', () => {
         cy.get('.not-logged h1').should('not.exist');
     })

@@ -45,7 +45,7 @@ describe('/blogs logged in user tests', () => {
 
     })
 
-    it.only('frozen users cannot write comments', () => {
+    it('frozen users cannot write comments', () => {
         cy.setLocalStorage('user_data', JSON.stringify({
             username: "Test-Username",
             imgUrl: "https://firebasestorage.googleapis.com/v0/b/easy-blog-ec21f.appspot.com/o/ProfileImages%2FTest-Username?alt=media&token=9ca78ef5-d41f-4ddc-b82b-24b6b40a18be",
@@ -60,5 +60,16 @@ describe('/blogs logged in user tests', () => {
         cy.wait(3000);
         cy.contains('Read More...').click();
         cy.get('.frozen p').should('have.text', 'You have been frozen by the administrator and therefore cannot write comments!');
+    })
+
+    it.only('user cannot add blog to bookmarks more than once', () => {
+        cy.wait(3000);
+        cy.contains('Read More...').click();
+
+        cy.contains(' Want to save this blog?').click();
+        cy.wait(1000)
+        cy.contains(' Want to save this blog?').click();
+        cy.get('div.alert')
+            .should('exist');
     })
 })
