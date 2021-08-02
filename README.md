@@ -23,6 +23,7 @@ You can check it out on: http://easy-blog-angular.github.io/
 - ngx-sharebuttons
 - HTML5 Clipboard API
 - IpData API
+- Cypress Integration tests
 - Angular animations
 
 # Permissions:
@@ -96,6 +97,7 @@ On this page the user can see the blogs they have bookmarked so that they can vi
 Here the guest can register and login. If they already have a profile, they can you the google sign in button!
 *DISCLAIMER: This photo shows two pages, I just didn't want to upload two pictures here :))*
 ![Register/Login pages](https://i.ibb.co/6Ft8xGg/login-reg.png)
+
 ## Admin Pages:
 
 **Admin Dashboard**
@@ -124,3 +126,8 @@ In this table the admin can see more info about the users, such as their ID's,  
 Here, the admin can see the saved logs. A log is saved when a user visits the Home, Blog or Profile pages. This info is collected only for statistical reasons. The admin can also delete the logs if they choose to.
 ![Admin logs dashboard](https://i.ibb.co/vjxJwLc/admin-logs.png)
 
+## Testing:
+
+**Cypress inregration tests results**
+
+![Cypress testing results](https://i.ibb.co/Jv31nRs/integration-tests.png)
