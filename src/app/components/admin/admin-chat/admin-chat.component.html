@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let message of messages">
+            <tr *ngFor="let message of (messages$ | async)">
                 <td>{{message.id}}</td>
                 <td>{{message.content}}</td>
                 <td><a class="btn btn-primary" routerLink="/user/{{message.user.id}}">{{message.user.username}}</a></td>

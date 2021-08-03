@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { IpRecord } from 'src/app/core/models/ipRecord/ipRecord';
 import { LogsService } from 'src/app/core/services/logs/logs.service';
 
@@ -7,15 +9,19 @@ import { LogsService } from 'src/app/core/services/logs/logs.service';
   templateUrl: './admin-logs.component.html',
   styleUrls: ['./admin-logs.component.css'],
 })
-export class AdminLogsComponent implements OnInit {
-  logs: IpRecord[] = [];
-  constructor(private logsService: LogsService) {}
+export class AdminLogsComponent {
+  logs$: Observable<IpRecord[]>;
 
-  ngOnInit(): void {
-    this.logsService.getAllLogs().subscribe((logs) => {
-      this.logs = logs.sort((a, b) => b.createdOn!.localeCompare(a.createdOn!));
-    });
+  constructor(private logsService: LogsService) {
+    this.logs$ = this.logsService
+      .getAllLogs()
+      .pipe(
+        tap((result) =>
+          result.sort((a, b) => b.createdOn!.localeCompare(a.createdOn!))
+        )
+      );
   }
+
   deleteRecord(log: IpRecord) {
     if (confirm('Are you sure you want to delete this log?')) {
       this.logsService.deleteRecord(log);

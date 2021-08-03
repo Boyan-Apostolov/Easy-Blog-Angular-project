@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Blog } from 'src/app/core/models/blog/blog';
 import { ChatMessage } from 'src/app/core/models/chat/chat';
 import { IpRecord } from 'src/app/core/models/ipRecord/ipRecord';
@@ -14,39 +15,22 @@ import { UserService } from 'src/app/core/services/user/user-service.service';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  logs!: IpRecord[];
-  users!: User[];
-  blogs!: Blog[];
-  messages!: ChatMessage[];
-
-  get allLoaded(): boolean {
-    return (
-      this.logs != undefined &&
-      this.users != undefined &&
-      this.blogs != undefined &&
-      this.messages != undefined
-    );
-  }
+  logs$: Observable<IpRecord[]>;
+  users$: Observable<User[]>;
+  blogs$: Observable<Blog[]>;
+  messages$: Observable<ChatMessage[]>;
 
   constructor(
     private logsService: LogsService,
     private userService: UserService,
     private blogService: BlogService,
     private chatService: ChatService
-  ) {}
-
-  ngOnInit(): void {
-    this.logsService.getAllLogs().subscribe((logs) => {
-      this.logs = logs;
-    });
-    this.userService.getAllUsers().subscribe((users) => {
-      this.users = users;
-    });
-    this.blogService.getAllBlogs().subscribe((blogs) => {
-      this.blogs = blogs;
-    });
-    this.chatService.getAllMessages().subscribe((messages) => {
-      this.messages = messages;
-    });
+  ) {
+    this.logs$ = this.logsService.getAllLogs();
+    this.users$ = this.userService.getAllUsers();
+    this.blogs$ = this.blogService.getAllBlogs();
+    this.messages$ = this.chatService.getAllMessages();
   }
+
+  ngOnInit(): void {}
 }

@@ -1,26 +1,28 @@
 <section class="dashboard-holder">
-    <mat-spinner class="spinner" *ngIf="!allLoaded"></mat-spinner>
-    <ng-container *ngIf="allLoaded">
+    <mat-spinner class="spinner"
+        *ngIf="!(users$ | async) && !(blogs$ | async) && !(logs$ | async) && !(messages$ | async)">
+    </mat-spinner>
+    <ng-container *ngIf="(users$ | async) && (blogs$ | async) && (logs$ | async) && (messages$ | async)">
         <h1>Admin Dashboard</h1>
 
         <section class="cards-holder">
             <article class="card user-card" routerLink='/admin/users'>
                 <p class="card-title">Users</p>
-                <p class="card-content">{{users.length}}</p>
+                <p class="card-content">{{(users$ | async)?.length}}</p>
             </article>
 
             <article class="card blogs-card" routerLink='/admin/blogs'>
                 <p class="card-title">Blogs</p>
-                <p class="card-content">{{blogs.length}}</p>
+                <p class="card-content">{{(blogs$| async)?.length}}</p>
             </article>
 
             <article class="card logs-card" routerLink='/admin/logs'>
                 <p class="card-title">IP Logs</p>
-                <p class="card-content">{{logs.length}}</p>
+                <p class="card-content">{{(logs$| async)?.length}}</p>
             </article>
             <article class="card messages-card" routerLink='/admin/chat'>
                 <p class="card-title">Chat messages</p>
-                <p class="card-content">{{messages.length}}</p>
+                <p class="card-content">{{(messages$| async)?.length}}</p>
             </article>
         </section>
 

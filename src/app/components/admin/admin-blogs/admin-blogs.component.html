@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let blog of blogs">
+            <tr *ngFor="let blog of blogs$ | async">
                 <td>
                     <section class="img-holder">
                         <img [src]="blog.imgUrl" alt="">

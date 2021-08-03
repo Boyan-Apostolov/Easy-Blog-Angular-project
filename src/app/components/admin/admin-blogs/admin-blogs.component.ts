@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Blog } from 'src/app/core/models/blog/blog';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 
@@ -8,13 +9,11 @@ import { BlogService } from 'src/app/core/services/blog/blog.service';
   styleUrls: ['./admin-blogs.component.css'],
 })
 export class AdminBlogsComponent implements OnInit {
-  blogs!: Blog[];
+  blogs$!: Observable<Blog[]>;
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.blogService.getAllBlogs().subscribe((blogs) => {
-      this.blogs = blogs;
-    });
+    this.blogs$ = this.blogService.getAllBlogs();
   }
 
   deleteBlog(blog: Blog) {

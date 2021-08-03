@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models/user/user';
 import { UserService } from 'src/app/core/services/user/user-service.service';
 
@@ -9,13 +10,11 @@ import { UserService } from 'src/app/core/services/user/user-service.service';
   styleUrls: ['./admin-users.component.css'],
 })
 export class AdminUsersComponent implements OnInit {
-  users!: User[];
+  users$!: Observable<User[]>;
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe((users) => {
-      this.users = users;
-    });
+    this.users$ = this.userService.getAllUsers();
   }
   freezeUser(user: User) {
     if (confirm('Are you sure you want to freeze this user?')) {

@@ -15,7 +15,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let log of logs">
+
+            <tr *ngFor="let log of (logs$ |async)">
                 <td>{{log.id}}</td>
                 <td>{{log.ip}}</td>
                 <td>{{log.page_location}}</td>

@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users">
+            <tr *ngFor="let user of users$ | async">
                 <td>
                     <section class="img-holder">
                         <img [src]="user.imgUrl" alt="">
