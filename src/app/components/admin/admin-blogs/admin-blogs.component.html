@@ -4,6 +4,7 @@
     <table class="table table-striped table-sm">
         <thead>
             <tr>
+                <th>#</th>
                 <th class="img-col">Image:</th>
                 <th>Title:</th>
                 <th>Id:</th>
@@ -17,7 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let blog of blogs$ | async">
+            <tr *ngFor="let blog of blogs$ | async; let i = index">
+                <td>{{i+1}}</td>
                 <td>
                     <section class="img-holder">
                         <img [src]="blog.imgUrl" alt="">

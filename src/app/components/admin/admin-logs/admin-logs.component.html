@@ -4,6 +4,7 @@
     <table class="table table-striped table-sm">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Id:</th>
                 <th>IP Address:</th>
                 <th>Page:</th>
@@ -16,7 +17,8 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let log of (logs$ |async)">
+            <tr *ngFor="let log of (logs$ |async); let i = index">
+                <td>{{i+1}}</td>
                 <td>{{log.id}}</td>
                 <td>{{log.ip}}</td>
                 <td>{{log.page_location}}</td>

@@ -52,7 +52,7 @@ export class ChatService {
   postMessage(content: string) {
     let message: ChatMessage = {
       content: content,
-      createdOn: new Date().toLocaleString(),
+      createdOn: new Date().toLocaleString('en-US'),
       user: this.userService.currentUser,
     };
     this.messagesCollection.add(message);

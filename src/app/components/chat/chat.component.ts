@@ -24,43 +24,13 @@ export class ChatComponent {
 
     this.chatService.getAllMessages().subscribe((messages) => {
       this.messages = messages
-        .filter((x) => this.filterMessages(x.createdOn))
-        .sort(this.sortFunction);
+        .sort((a, b) => b.createdOn.localeCompare(a.createdOn))
+        .filter((x) => Date.parse(x.createdOn) > this.getYesterday());
     });
-  }
-
-  sortFunction(a: any, b: any) {
-    var dateA = new Date(a.createdOn).getTime();
-    var dateB = new Date(b.createdOn).getTime();
-    return dateA > dateB ? -1 : 1;
   }
 
   get isFrozen(): boolean {
     return this.userService.currentUser.isFrozen!;
-  }
-
-  filterMessages(createdOn: string) {
-    let dateTokens = createdOn.split(', ');
-    let dateStr = dateTokens[0];
-    //02/08/2021, 11:55:15 //on other browsers
-    //7/29/2021, 6:28:03 PM //on chrome
-    if (!dateTokens[1].includes('AM') && !dateTokens[1].includes('PM')) {
-      let dateValues = dateStr.split('/');
-      dateStr = `${dateValues[1]}/${dateValues[0]}/${dateValues[2]}`;
-    }
-
-    let yesterday = new Date();
-    yesterday.setDate(new Date().getDate() - 1);
-    let date = new Date(dateStr);
-    if (date.getMonth() >= yesterday.getMonth()) {
-      if (date.getDate() >= yesterday.getDate()) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
   }
 
   getToday(d = new Date()) {

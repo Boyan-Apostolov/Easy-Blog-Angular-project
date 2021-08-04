@@ -69,7 +69,7 @@ export class BlogService {
       imgUrl: imgUrl,
       content: this.filterContent(content), //Sanitize
       user: this.userService.currentUser, //Get Current User ID
-      createdOn: new Date().toLocaleString(), //Current DateTime
+      createdOn: new Date().toLocaleString('en-US'), //Current DateTime
       tags: tags,
       comments: [],
       likes: [],
