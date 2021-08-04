@@ -36,7 +36,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   get isFrozen(): boolean {
-    return this.userService.currentUser.isFrozen!;
+    return this.user.isFrozen!;
   }
 
   ngOnInit(): void {
