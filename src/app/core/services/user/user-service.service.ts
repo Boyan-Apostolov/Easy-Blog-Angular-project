@@ -57,7 +57,6 @@ export class UserService {
       .then((userData) => {
         this.users.subscribe((users) => {
           let user = users.filter((x) => x.email === email)[0];
-          console.log(JSON.stringify(user));
           this.addUserToLocalStorage(JSON.stringify(user));
           this.router.navigateByUrl('/');
         });
