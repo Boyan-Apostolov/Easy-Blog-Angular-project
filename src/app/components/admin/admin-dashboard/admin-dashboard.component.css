@@ -47,8 +47,20 @@ h1 {
 .logs-card {
   background-color: #a66dd4;
 }
+.viewers-card {
+  background-color: #6c8770;
+}
+.city-card {
+  background-color: #380036;
+}
 .messages-card {
   background-color: #63c7ff;
+}
+.page-card {
+  background-color: #ff6b35;
+}
+.userip-card {
+  background-color: #6f584b;
 }
 .card-title {
   font-size: 16px;

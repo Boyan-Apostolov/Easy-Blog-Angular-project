@@ -1,28 +1,68 @@
 <section class="dashboard-holder">
     <mat-spinner class="spinner"
-        *ngIf="!(users$ | async) && !(blogs$ | async) && !(logs$ | async) && !(messages$ | async)">
+        *ngIf="!(users$ | async) && !(blogs$ | async) && !logs && !(messages$ | async) && !areLogsLoaded">
     </mat-spinner>
-    <ng-container *ngIf="(users$ | async) && (blogs$ | async) && (logs$ | async) && (messages$ | async)">
+    <ng-container *ngIf="(users$ | async) && (blogs$ | async) && logs && (messages$ | async) && areLogsLoaded">
         <h1>Admin Dashboard</h1>
 
         <section class="cards-holder">
             <article class="card user-card" routerLink='/admin/users'>
-                <p class="card-title">Users</p>
-                <p class="card-content">{{(users$ | async)?.length}}</p>
+                <p class="card-title">Users regsitered</p>
+                <p class="card-content">
+                    <i class="fas fa-users"></i>
+                    {{(users$ | async)?.length}}
+                </p>
             </article>
 
             <article class="card blogs-card" routerLink='/admin/blogs'>
-                <p class="card-title">Blogs</p>
-                <p class="card-content">{{(blogs$| async)?.length}}</p>
+                <p class="card-title">Blogs written</p>
+                <p class="card-content">
+                    <i class="fas fa-file-signature"></i>
+                    {{(blogs$| async)?.length}}
+                </p>
             </article>
 
             <article class="card logs-card" routerLink='/admin/logs'>
-                <p class="card-title">IP Logs</p>
-                <p class="card-content">{{(logs$| async)?.length}}</p>
+                <p class="card-title">IP Logs saved</p>
+                <p class="card-content">
+                    <i class="fas fa-sign-in-alt"></i>
+                    {{logs?.length}}
+                </p>
             </article>
             <article class="card messages-card" routerLink='/admin/chat'>
-                <p class="card-title">Chat messages</p>
-                <p class="card-content">{{(messages$| async)?.length}}</p>
+                <p class="card-title">Chat messages sent</p>
+                <p class="card-content">
+                    <i class="far fa-comment-dots"></i>
+                    {{(messages$| async)?.length}}
+                </p>
+            </article>
+            <article class="card viewers-card" routerLink='/admin/logs'>
+                <p class="card-title">Most visitors from country</p>
+                <p class="card-content">
+                    <i class="fas fa-globe"></i>
+                    {{mostViewsFromCountryName}}
+                </p>
+            </article>
+            <article class="card city-card" routerLink='/admin/logs'>
+                <p class="card-title">Most visitors from city</p>
+                <p class="card-content">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{mostViewsFromCityName}}
+                </p>
+            </article>
+            <article class="card page-card" routerLink='/admin/logs'>
+                <p class="card-title">Most viewed page</p>
+                <p class="card-content">
+                    <i class="fab fa-hotjar"></i>
+                    {{mostViewedPageName}}
+                </p>
+            </article>
+            <article class="card userip-card" routerLink='/admin/logs'>
+                <p class="card-title">Most active user IP</p>
+                <p class="card-content">
+                    <i class="far fa-address-card"></i>
+                    {{mostActiveUserIp}}
+                </p>
             </article>
         </section>
 

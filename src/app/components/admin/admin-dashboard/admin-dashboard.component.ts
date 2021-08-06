@@ -15,10 +15,24 @@ import { UserService } from 'src/app/core/services/user/user-service.service';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  logs$: Observable<IpRecord[]>;
+  logs: IpRecord[] = [];
   users$: Observable<User[]>;
   blogs$: Observable<Blog[]>;
   messages$: Observable<ChatMessage[]>;
+
+  mostViewsFromCountryName!: string;
+  mostViewsFromCityName!: string;
+  mostViewedPageName!: string;
+  mostActiveUserIp!: string;
+
+  get areLogsLoaded(): boolean {
+    return (
+      this.mostViewsFromCountryName != undefined &&
+      this.mostViewsFromCityName != undefined &&
+      this.mostViewedPageName != undefined &&
+      this.mostActiveUserIp != undefined
+    );
+  }
 
   constructor(
     private logsService: LogsService,
@@ -26,10 +40,36 @@ export class AdminDashboardComponent implements OnInit {
     private blogService: BlogService,
     private chatService: ChatService
   ) {
-    this.logs$ = this.logsService.getAllLogs();
     this.users$ = this.userService.getAllUsers();
     this.blogs$ = this.blogService.getAllBlogs();
     this.messages$ = this.chatService.getAllMessages();
+
+    this.loadLogs();
+  }
+
+  loadLogs() {
+    this.logsService.getAllLogs().subscribe((logs) => {
+      this.logs = logs;
+      let groupedLogs: any = this.groupBy('country_name')(this.logs);
+      let mostViewsFromCountryData = Object.values(groupedLogs).sort(
+        (a: any, b: any) => b.length - a.length
+      )[0] as any;
+      this.mostViewsFromCountryName = mostViewsFromCountryData[0].country_name;
+      this.mostViewsFromCityName = mostViewsFromCountryData[0].city;
+      this.mostViewedPageName = mostViewsFromCountryData[0].page_location;
+      this.mostActiveUserIp = mostViewsFromCountryData[0].ip;
+    });
+  }
+
+  groupBy(key: any) {
+    return function group(array: any) {
+      return array.reduce((acc: any, obj: any) => {
+        const property = obj[key];
+        acc[property] = acc[property] || [];
+        acc[property].push(obj);
+        return acc;
+      }, {});
+    };
   }
 
   ngOnInit(): void {}
