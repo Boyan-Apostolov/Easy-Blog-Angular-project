@@ -18,12 +18,7 @@ export class LogsService {
   recordsDoc!: AngularFirestoreDocument<IpRecord>;
   records!: Observable<IpRecord[]>;
 
-  constructor(
-    private http: HttpClient,
-    private fireAuth: AngularFireAuth,
-    private router: Router,
-    public afs: AngularFirestore
-  ) {
+  constructor(private http: HttpClient, public afs: AngularFirestore) {
     this.recordsCollection = this.afs.collection('ip-records');
     this.loadRecords();
   }

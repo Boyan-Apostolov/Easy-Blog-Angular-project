@@ -1,7 +1,7 @@
 <header>
     <nav>
         <section class="logo-holder">
-            <img src="../../../../assets/site_logo_Cropped.png" alt="">
+            <img (click)="increaseClicksCount()" src="../../../../assets/site_logo_Cropped.png" alt="">
         </section>
         <ul class="nav-ul" [class.isHidden]="isNavHidden">
             <li><a routerLink="/">Home</a></li>

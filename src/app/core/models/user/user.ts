@@ -1,3 +1,4 @@
+import { Achievment } from './achievment';
 import { Visitation } from './visitation';
 
 export interface User {
@@ -10,4 +11,5 @@ export interface User {
   isAdmin?: boolean;
   isFrozen?: boolean;
   visitations?: Visitation[];
+  achievements?: Achievment[];
 }

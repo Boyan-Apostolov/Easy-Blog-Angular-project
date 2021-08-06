@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
@@ -14,9 +13,6 @@ import { map } from 'rxjs/operators';
 import { Visitation } from '../../models/user/visitation';
 @Injectable()
 export class UserService {
-  public achievmentImgUrl: string =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
-
   private userFromGoogleLogin: any;
 
   userInfo!: any;
@@ -141,42 +137,6 @@ export class UserService {
         isFrozen: this.userFromGoogleLogin.isFrozen,
       });
     }
-  }
-
-  checkIfUserIsEligbleForAchievement(blogsWritten: number) {
-    let achievments = Array<Achievment>();
-    if (blogsWritten >= 1)
-      achievments.push({
-        content: '1 blog written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-    if (blogsWritten >= 5)
-      achievments.push({
-        content: '5 blogs written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-    if (blogsWritten >= 10)
-      achievments.push({
-        content: '10 blogs written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-    if (blogsWritten >= 20)
-      achievments.push({
-        content: '20 blogs written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-    if (blogsWritten >= 50)
-      achievments.push({
-        content: '50 blogs written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-    if (blogsWritten >= 100)
-      achievments.push({
-        content: '100 blogs written!',
-        imgUrl: this.achievmentImgUrl,
-      });
-
-    return achievments;
   }
 
   updateUser(user: User) {

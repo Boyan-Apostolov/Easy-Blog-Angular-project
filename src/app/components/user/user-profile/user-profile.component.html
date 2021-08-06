@@ -15,8 +15,8 @@
     </section>
 
     <h2 class="bordered-heading">Achievements:</h2>
-    <ul class="achievements-holder" *ngIf="achievements">
-        <li *ngFor="let achievment of achievements">
+    <ul class="achievements-holder" *ngIf="user.achievements">
+        <li *ngFor="let achievment of user.achievements">
             <article class="img-holder">
                 <img [src]="achievment.imgUrl" alt="">
             </article>
@@ -25,7 +25,7 @@
             </article>
         </li>
     </ul>
-    <p *ngIf="achievements.length == 0">No earned achievemnts yet!</p>
+    <p *ngIf="user.achievements?.length == 0">No earned achievemnts yet!</p>
 
     <section *ngIf="isUserOwnerOfProfile" class="visit-history">
         <button class="btn btn-success" (click)="toggleUserVisitations()">Visitation history</button>

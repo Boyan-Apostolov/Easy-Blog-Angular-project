@@ -35,6 +35,7 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogsService } from './core/services/logs/logs.service';
+import { AchievementService } from './core/services/achievement/achievement.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { LogsService } from './core/services/logs/logs.service';
     UserService,
     ChatService,
     LogsService,
+    AchievementService,
     ImageUploadService,
     AngularFireAuthModule,
   ],
