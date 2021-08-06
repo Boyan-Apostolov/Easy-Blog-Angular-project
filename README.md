@@ -102,8 +102,8 @@ Here the guest can register and login. If they already have a profile, they can 
 
 **Admin Dashboard**
 
-On this page the admin can see the count of blogs, user, messages and records save in the database. Upon clicking one of the cards, the admin will be redirected to the corresponding management page.
-![Admin dashboard](https://i.ibb.co/52d9H1L/admin-dashboard.png)
+On this page the admin can see general statistical info about the Easy-Blog platform. Upon clicking one of the cards, the admin will be redirected to the corresponding management page.
+![Admin dashboard](https://i.ibb.co/ZVLxCL3/admin-dashboard.png)
 
 **Chat Management**
 
@@ -123,8 +123,8 @@ In this table the admin can see more info about the users, such as their ID's,  
 
 **Logs Management**
 
-Here, the admin can see the saved logs. A log is saved when a user visits the Home, Blog or Profile pages. This info is collected only for statistical reasons. The admin can also delete the logs if they choose to.
-![Admin logs dashboard](https://i.ibb.co/vjxJwLc/admin-logs.png)
+Here, the admin can see the saved logs. A log is saved when a user visits the Home, Blog or Profile pages. This info is collected only for statistical reasons. The admin can also delete the logs if they choose to. By using the 'Purge' button, the admin can delete all the logs.
+![Admin logs dashboard](https://i.ibb.co/93WqfjS/admin-logs.png)
 
 ## Testing:
 
