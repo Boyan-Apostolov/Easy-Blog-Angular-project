@@ -49,17 +49,39 @@ export class LogsService {
 
   addRecord(page_location: string) {
     this.getIpData().subscribe((data) => {
-      let record: IpRecord = {
-        createdOn: new Date().toLocaleString(),
-        city: data.city,
-        continent_code: data.continent_code,
-        continent_name: data.continent_name,
-        country_code: data.country_code,
-        country_name: data.country_name,
-        ip: data.ip,
-        page_location: page_location,
-      };
-      this.recordsCollection.add(record);
+      this.getAllLogs().subscribe((logs) => {
+        let alreadyAdded = logs.some(
+          (log) =>
+            Date.parse(log.createdOn!) >= this.getToday() &&
+            log.ip == data.ip &&
+            log.page_location == page_location
+        );
+
+        if (alreadyAdded) {
+          return;
+        }
+        let record: IpRecord = {
+          createdOn: new Date().toLocaleString('en-US'),
+          city: data.city,
+          continent_code: data.continent_code,
+          continent_name: data.continent_name,
+          country_code: data.country_code,
+          country_name: data.country_name,
+          ip: data.ip,
+          page_location: page_location,
+        };
+        this.recordsCollection.add(record);
+      });
+    });
+  }
+
+  getToday(d = new Date()) {
+    return new Date(+d).setHours(0, 0, 0, 0);
+  }
+
+  purgeLogs() {
+    this.records.subscribe((records) => {
+      records.forEach((record) => this.deleteRecord(record));
     });
   }
 }

@@ -3,6 +3,14 @@
   min-height: 85.7vh;
   background-color: #181818;
 }
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  margin-left: 10px;
+}
 table {
   color: white !important;
   background-color: #343a40;
@@ -17,6 +25,7 @@ td .img-holder img {
   width: 100%;
 }
 h1 {
+  display: inline-block;
   color: white;
   padding-top: 20px;
   margin-bottom: 20px;

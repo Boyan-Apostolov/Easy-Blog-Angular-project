@@ -27,4 +27,14 @@ export class AdminLogsComponent {
       this.logsService.deleteRecord(log);
     }
   }
+
+  purgeLogs() {
+    if (
+      confirm(
+        'Are you sure you want to delete all logs? \n This action cannot be undone!'
+      )
+    ) {
+      this.logsService.purgeLogs();
+    }
+  }
 }
