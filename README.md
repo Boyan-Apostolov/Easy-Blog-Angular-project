@@ -11,7 +11,7 @@ Angular web application for reading and creating blogs, like and comment on blog
 You can check it out on: http://easy-blog-angular.github.io/
 
 # 🛠  Built with:
--  Angular
+- Angular
 - Firebase Firestore Database
 - Firestore Authentication
 - Firestore Image Storage
@@ -25,6 +25,7 @@ You can check it out on: http://easy-blog-angular.github.io/
 - IpData API
 - Cypress Integration tests
 - Angular animations
+- MomentJS
 
 # Permissions:
 |  **Permissions**              |Logged in User|Guest |Admin |
@@ -69,7 +70,7 @@ From this page, you can create a new blog. After choosing an apropriate title an
 
 After clicking 'Read More' on the all blogs page, you will be redirected to the blog article page. Here you can view the whole blog article, as well as see it's image in it's whole beauty. With the help of the **ngx-sharebuttons**, you can share the blog to all your favourite social media websites, and you can also copy the link to the article in your clipboard using the last 'link' button (this is done using the html5 clipboard api). The blog writer and the administrator can edit/or delete/ a blog once it is written. On this page you can also see all the comments the other users have posted. After you login you will also be able to post comments and like the blog using the heart button. From here, the reader can see relevent articles on the right and continue reading them.
 
-![Blog Article](https://i.ibb.co/sFkwQXf/blog-article.png)
+![Blog Article](https://i.ibb.co/Q8JS8MX/blog-article.png)
 
 **User profile page**
 
@@ -103,7 +104,7 @@ Here the guest can register and login. If they already have a profile, they can 
 **Admin Dashboard**
 
 On this page the admin can see general statistical info about the Easy-Blog platform. Upon clicking one of the cards, the admin will be redirected to the corresponding management page.
-![Admin dashboard](https://i.ibb.co/ZVLxCL3/admin-dashboard.png)
+![Admin dashboard](https://i.ibb.co/V06VgFB/admin-dashboard.png)
 
 **Chat Management**
 
