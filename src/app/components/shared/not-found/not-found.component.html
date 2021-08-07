@@ -1,5 +1,7 @@
 <section #page class="not-found-page">
-    <h1>Whoops! The page you were looking for couldn't be found! Please go back!</h1>
+    <h1>Whoops! The page you were looking for couldn't be found! Please go back!
+        <a routerLink='/'>Home Page</a>
+    </h1>
     <section class="img-holder">
         <img [src]="photoUrl" [@photoState]="[position]" class="photo" alt="404-photo">
     </section>

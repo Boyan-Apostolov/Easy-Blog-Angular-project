@@ -141,7 +141,7 @@
                         <section class="comment-auth-date-cont">
                             <section class="comment-meta">
                                 <p class="comment-user">{{comment.user.username}}</p>
-                                <p>{{comment.createdOn}}</p>
+                                <p>{{comment.createdOn | dateTimeFormatter }}</p>
                             </section>
                             <p class="comment-title">{{comment.content}}</p>
                         </section>

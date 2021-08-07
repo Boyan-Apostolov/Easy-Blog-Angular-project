@@ -27,9 +27,6 @@ export class ChatComponent {
       this.messages = messages
         .sort((a, b) => Date.parse(b.createdOn!) - Date.parse(a.createdOn!))
         .filter((x) => Date.parse(x.createdOn) > this.getYesterday());
-      this.messages.map(
-        (x) => (x.createdOn = moment(Date.parse(x.createdOn)).fromNow())
-      );
     });
   }
 

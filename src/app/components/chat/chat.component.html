@@ -19,7 +19,7 @@
                     </section>
                     <span class="comment-user-username">{{message.user.username}}</span>:
                     <span class="post-title">{{message.content}}</span>
-                    <span class="createdOn">{{message.createdOn}}</span>
+                    <span class="createdOn">{{message.createdOn | dateTimeFormatter}}</span>
                 </li>
             </ul>
         </form>
