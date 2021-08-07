@@ -17,7 +17,9 @@ export class AdminLogsComponent {
       .getAllLogs()
       .pipe(
         tap((result) =>
-          result.sort((a, b) => b.createdOn!.localeCompare(a.createdOn!))
+          result.sort(
+            (a, b) => Date.parse(b.createdOn!) - Date.parse(a.createdOn!)
+          )
         )
       );
   }

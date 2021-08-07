@@ -83,7 +83,7 @@ export class BlogService {
     let comment: BlogComment = {
       content: content,
       postId: blog.id!,
-      createdOn: new Date().toLocaleString(),
+      createdOn: new Date().toLocaleString('en-US'),
       user: this.userService.currentUser,
     };
     blog.comments?.push(comment);

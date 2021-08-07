@@ -25,6 +25,8 @@ export class AdminDashboardComponent implements OnInit {
   mostViewedPageName!: string;
   mostActiveUserIp!: string;
 
+  private mostActiveUserIpHolder!: string;
+
   get areLogsLoaded(): boolean {
     return (
       this.mostViewsFromCountryName != undefined &&
@@ -57,7 +59,10 @@ export class AdminDashboardComponent implements OnInit {
       this.mostViewsFromCountryName = mostViewsFromCountryData[0].country_name;
       this.mostViewsFromCityName = mostViewsFromCountryData[0].city;
       this.mostViewedPageName = mostViewsFromCountryData[0].page_location;
-      this.mostActiveUserIp = mostViewsFromCountryData[0].ip;
+      this.mostActiveUserIpHolder = mostViewsFromCountryData[0].ip;
+
+      this.mostActiveUserIp = this.mostActiveUserIpHolder;
+      this.hideIp();
     });
   }
 
@@ -73,4 +78,13 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  showIp() {
+    this.mostActiveUserIp = this.mostActiveUserIpHolder;
+  }
+  hideIp() {
+    this.mostActiveUserIp =
+      this.mostActiveUserIpHolder.substring(0, 3) +
+      '*'.repeat(this.mostActiveUserIpHolder.length - 3);
+  }
 }

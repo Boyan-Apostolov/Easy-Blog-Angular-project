@@ -62,7 +62,7 @@ export class LogsService {
         }
         let record: IpRecord = {
           createdOn: new Date().toLocaleString('en-US'),
-          city: data.city,
+          city: data.city ? data.city : '/-BOT-/',
           continent_code: data.continent_code,
           continent_name: data.continent_name,
           country_code: data.country_code,

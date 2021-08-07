@@ -23,7 +23,7 @@
             <tr *ngFor="let log of (logs$ |async); let i = index">
                 <td>{{i+1}}</td>
                 <td>{{log.id}}</td>
-                <td>{{log.ip}}</td>
+                <td (mouseover)="showIp()" (mouseout)="hideIp()">{{log.ip}}</td>
                 <td>{{log.page_location}}</td>
                 <td>{{log.city}}</td>
                 <td>{{log.country_code}}</td>

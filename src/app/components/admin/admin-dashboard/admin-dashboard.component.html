@@ -1,6 +1,6 @@
 <section class="dashboard-holder">
     <mat-spinner class="spinner"
-        *ngIf="!(users$ | async) && !(blogs$ | async) && !logs && !(messages$ | async) && !areLogsLoaded">
+        *ngIf="!(users$ | async) && !(blogs$ | async) && !(messages$ | async) && !areLogsLoaded">
     </mat-spinner>
     <ng-container *ngIf="(users$ | async) && (blogs$ | async) && logs && (messages$ | async) && areLogsLoaded">
         <h1>Admin Dashboard</h1>
@@ -59,7 +59,7 @@
             </article>
             <article class="card userip-card" routerLink='/admin/logs'>
                 <p class="card-title">Most active user IP</p>
-                <p class="card-content">
+                <p class="card-content" (mouseover)="showIp()" (mouseout)="hideIp()">
                     <i class="far fa-address-card"></i>
                     {{mostActiveUserIp}}
                 </p>
