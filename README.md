@@ -68,9 +68,9 @@ From this page, you can create a new blog. After choosing an apropriate title an
 
 **Blog Article page**
 
-After clicking 'Read More' on the all blogs page, you will be redirected to the blog article page. Here you can view the whole blog article, as well as see it's image in it's whole beauty. With the help of the **ngx-sharebuttons**, you can share the blog to all your favourite social media websites, and you can also copy the link to the article in your clipboard using the last 'link' button (this is done using the html5 clipboard api). The blog writer and the administrator can edit/or delete/ a blog once it is written. On this page you can also see all the comments the other users have posted. After you login you will also be able to post comments and like the blog using the heart button. From here, the reader can see relevent articles on the right and continue reading them.
+After clicking 'Read More' on the all blogs page, you will be redirected to the blog article page. Here you can view the whole blog article, as well as see it's image in it's whole beauty. With the help of the **ngx-sharebuttons**, you can share the blog to all your favourite social media websites, and you can also copy the link to the article in your clipboard using the last 'link' button (this is done using the html5 clipboard api). The blog writer and the administrator can edit/or delete/ a blog once it is written. On this page you can also see all the comments the other users have posted. The admin can delete them too. After you login you will also be able to post comments and like the blog using the heart button. From here, the reader can see relevent articles on the right and continue reading them.
 
-![Blog Article](https://i.ibb.co/Q8JS8MX/blog-article.png)
+![Blog Article](https://i.ibb.co/z5nq5MV/blog-article.png)
 
 **User profile page**
 
