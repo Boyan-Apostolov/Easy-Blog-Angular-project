@@ -81,7 +81,7 @@ li h2 {
 .not-logged {
   color: red;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   li {
     width: 80%;
   }

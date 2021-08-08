@@ -69,7 +69,7 @@ h1 {
   font-size: 23px;
   font-weight: bold;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   .cards-holder {
     flex-direction: column;
   }

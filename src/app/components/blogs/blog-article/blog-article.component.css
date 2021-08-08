@@ -301,7 +301,7 @@ li {
 .reset-margin-right {
   margin-right: 0px;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   .blog-page {
     flex-direction: column;
   }
@@ -334,6 +334,7 @@ li {
   border-radius: 50%;
 }
 .comments-ul li {
+  width: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;

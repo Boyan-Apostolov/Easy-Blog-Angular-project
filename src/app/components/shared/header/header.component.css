@@ -73,7 +73,7 @@ a {
   color: white;
   font-size: 25px;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   nav,
   .nav-ul {
     padding-top: 10px;

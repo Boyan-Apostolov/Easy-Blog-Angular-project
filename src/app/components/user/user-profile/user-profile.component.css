@@ -87,7 +87,7 @@ hr {
 .user-profile {
   min-height: 85vh;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   .blog-cards {
     flex-direction: column;
     align-items: center;
