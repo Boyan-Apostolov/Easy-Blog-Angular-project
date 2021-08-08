@@ -52,18 +52,28 @@ export class AdminDashboardComponent implements OnInit {
   loadLogs() {
     this.logsService.getAllLogs().subscribe((logs) => {
       this.logs = logs;
-      let groupedLogs: any = this.groupBy('country_name')(this.logs);
-      let mostViewsFromCountryData = Object.values(groupedLogs).sort(
-        (a: any, b: any) => b.length - a.length
-      )[0] as any;
-      this.mostViewsFromCountryName = mostViewsFromCountryData[0].country_name;
-      this.mostViewsFromCityName = mostViewsFromCountryData[0].city;
-      this.mostViewedPageName = mostViewsFromCountryData[0].page_location;
-      this.mostActiveUserIpHolder = mostViewsFromCountryData[0].ip;
+
+      this.mostViewsFromCountryName = this.getMostWithParameter('country_name');
+      this.mostViewsFromCityName = this.getMostWithParameter('city');
+      this.mostViewedPageName = this.getMostWithParameter('page_location');
+      this.mostActiveUserIpHolder = this.getMostWithParameter('ip');
 
       this.mostActiveUserIp = this.mostActiveUserIpHolder;
       this.hideIp();
     });
+  }
+
+  getMostWithParameter(parameterToGroupBy: string) {
+    //Groups the logs by a given parameter, sorts them descending and returns the parameter of the first value
+    //EXAMPLE: param=(country_name)
+    //Group them by country_name and get the result with the most records for the country_name
+    //Result: Bulgaria: {Array[x]}
+    //RETURN country_name ("Bulgaria")
+    return (
+      Object.values(this.groupBy(parameterToGroupBy)(this.logs)).sort(
+        (a: any, b: any) => b.length - a.length
+      )[0] as any
+    )[0][parameterToGroupBy];
   }
 
   groupBy(key: any) {
