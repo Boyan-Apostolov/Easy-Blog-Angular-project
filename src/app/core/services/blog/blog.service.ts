@@ -74,6 +74,7 @@ export class BlogService {
       comments: [],
       likes: [],
       views: [],
+      saves: [],
     };
 
     this.blogsCollection.add(blog);

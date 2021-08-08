@@ -76,6 +76,7 @@ export class UserService {
           bio: bio,
           imgUrl: imgUrl,
           visitations: [],
+          achievements: [],
         };
 
         this.usersCollection.add(user);

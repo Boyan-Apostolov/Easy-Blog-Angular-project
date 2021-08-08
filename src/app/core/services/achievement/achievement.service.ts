@@ -7,9 +7,6 @@ import { ChatService } from '../chat/chat.service';
 
 @Injectable()
 export class AchievementService {
-  private achievmentImgUrl: string =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
-
   constructor(
     private userService: UserService,
     private blogService: BlogService,
@@ -76,10 +73,12 @@ export class AchievementService {
 
   checkIfUserIsEligbleForCommenterAchievements(userId: string) {
     this.blogService.getAllBlogs().subscribe((blogs) => {
-      let commentsWritten = blogs.filter((x) =>
-        x.comments?.some((x) => x.user.id == userId)
-      ).length;
-
+      let commentsWritten = 0;
+      blogs.filter(
+        (x) =>
+          (commentsWritten += x.comments?.filter((x) => x.user.id == userId)
+            .length!)
+      );
       if (commentsWritten >= 5)
         this.addAchievementToUser(userId, 'Shy commenter', 'comment');
       if (commentsWritten >= 15)

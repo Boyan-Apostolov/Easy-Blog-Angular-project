@@ -1,6 +1,7 @@
 .leaderboard-holder {
   padding-bottom: 50px;
   background-color: #ccc;
+  min-height: 85vh;
 }
 
 h1 {
