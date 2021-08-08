@@ -55,9 +55,9 @@
     </section>
 
     <h2 class="bordered-heading">Blogs:</h2>
-    <div class="blog-cards" *ngIf="blogs.length > 0">
+    <div class="blog-cards" *ngIf="blogs">
         <app-blog-item class="blog-card" *ngFor="let blog of blogs" [blog]="blog"></app-blog-item>
     </div>
-    <p *ngIf="blogs.length == 0">No blogs written yet!</p>
+    <p *ngIf="!blogs">No blogs written yet!</p>
 
 </section>

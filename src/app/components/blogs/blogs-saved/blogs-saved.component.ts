@@ -23,6 +23,10 @@ export class BlogsSavedComponent implements OnInit {
     });
   }
   removeFromBookmarks(blog: Blog): void {
-    this.blogService.removeFromBookmarks(blog, this.userId);
+    if (
+      confirm('Are you sure you want to remove this blog from your bookmarks?')
+    ) {
+      this.blogService.removeFromBookmarks(blog, this.userId);
+    }
   }
 }
