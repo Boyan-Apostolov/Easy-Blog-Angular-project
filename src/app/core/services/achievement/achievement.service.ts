@@ -69,7 +69,7 @@ export class AchievementService {
         this.addAchievementToUser(userId, 'Conversation started', 'chat');
       if (messagesWritten >= 20)
         this.addAchievementToUser(userId, 'Casual talker', 'chat');
-      if (messagesWritten >= 20)
+      if (messagesWritten >= 50)
         this.addAchievementToUser(userId, 'Spammer', 'chat');
     });
   }

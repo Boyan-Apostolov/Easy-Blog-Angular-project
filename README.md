@@ -10,13 +10,14 @@ Angular web application for reading and creating blogs, like and comment on blog
 
 You can check it out on: http://easy-blog-angular.github.io/
 
-# 🛠  Built with:
+# 🛠 Built with:
+
 - Angular
 - Firebase Firestore Database
 - Firestore Authentication
 - Firestore Image Storage
 - Google Sign-In
-- CKEditor 
+- CKEditor
 - Custom validation alerts (toasts)
 - Custom loader spinner
 - Custom profanity filter
@@ -28,28 +29,31 @@ You can check it out on: http://easy-blog-angular.github.io/
 - MomentJS
 
 # Permissions:
-|  **Permissions**              |Logged in User|Guest |Admin |
-|----------------|-------------------------------|--------|----------|
-|Lading page  |✅|✅|✅
-|All Blogs   |✅|✅|✅
-|Blog Article   |✅|✅|✅
-|Blog Article -> likes   |✅|❌|✅
-|Blog Article -> comments|✅|❌|✅
-|Profile |✅|✅|✅
-|Login/ Register |❌|✅|❌
-|Writing a blog|✅|❌|✅
-|Leaderboard|✅|❌|✅
-|Bookmarks|✅|❌|✅
-|Profile page|✅|✅|✅
-|Chat|✅|❌|✅
-|Admin Dashboard |❌|❌|✅
-|Admin users manage |❌|❌|✅
-|Admin chat manage|❌|❌|✅
-|Admin blogs manage|❌|❌|✅
-|Admin logs manage|❌|❌|✅
+
+| **Permissions**          | Logged in User | Guest | Admin |
+| ------------------------ | -------------- | ----- | ----- |
+| Lading page              | ✅             | ✅    | ✅    |
+| All Blogs                | ✅             | ✅    | ✅    |
+| Blog Article             | ✅             | ✅    | ✅    |
+| Profile                  | ✅             | ✅    | ✅    |
+| Login/ Register          | ❌             | ✅    | ❌    |
+| Blog Article -> likes    | ✅             | ❌    | ✅    |
+| Blog Article -> comments | ✅             | ❌    | ✅    |
+| Writing a blog           | ✅             | ❌    | ✅    |
+| Leaderboard              | ✅             | ❌    | ✅    |
+| Bookmarks                | ✅             | ❌    | ✅    |
+| Chat                     | ✅             | ❌    | ✅    |
+| Admin pages:             |
+| Admin Dashboard          | ❌             | ❌    | ✅    |
+| Admin users manage       | ❌             | ❌    | ✅    |
+| Admin chat manage        | ❌             | ❌    | ✅    |
+| Admin blogs manage       | ❌             | ❌    | ✅    |
+| Admin logs manage        | ❌             | ❌    | ✅    |
 
 # Pages:
+
 ## Public Pages:
+
 **Home page**
 
 This is the landing page of the application, from here you can view the blogs or write a new blog after you register. The page title also moves using the angular animations.
@@ -62,7 +66,7 @@ In this page, all written blogs are displayed, here you can get brief informatio
 
 **Writing a blog**
 
-From this page, you can create a new blog. After choosing an apropriate title and tags, you can add a heading image for the blog, This image will be uploaded to the Fireabase Image storage. Using the **CKEditor**, you have a great opportunity  while writing your content. You can place hyperlinks, bullets, and other text editor magic. But beware: all curse and bad words you write in the content will be replaced by asterics '*'. Upon clicking the blue save button, your blog will be created.
+From this page, you can create a new blog. After choosing an apropriate title and tags, you can add a heading image for the blog, This image will be uploaded to the Fireabase Image storage. Using the **CKEditor**, you have a great opportunity while writing your content. You can place hyperlinks, bullets, and other text editor magic. But beware: all curse and bad words you write in the content will be replaced by asterics '\*'. Upon clicking the blue save button, your blog will be created.
 
 ![Writing a blog](https://i.ibb.co/zZpRX9Q/home.png)
 
@@ -77,6 +81,24 @@ After clicking 'Read More' on the all blogs page, you will be redirected to the 
 After you click on the author of a blog article, you will be redirected to their profile. Here you can see all the blogs they have written, their bio, and their achievements. For now the achievements are are given after the user surpasses a certain amount of blogs written (currently ; 1, 5, 10, 20, 50 and 100). The owner of the profile, as well as the admin, can see the last 10 people who visited that profile, something like how you can see who visited you profile on LinkedIn.
 ![User profile page](https://i.ibb.co/x6dpvP6/home.png)
 ![User Profile page 2](https://i.ibb.co/bKz89K3/visitations.png)
+
+These are the possible achievements:
+
+- Achievement hunter - click a secret object on one of the pages 20 times :)
+- 1 blog written! - Write a blog
+- 5 blogs written! - Write 5 blogs
+- 10 blogs written! - Write 10 blogs
+- 20 blogs written! - Write 20 blogs
+- 50 blogs written! - Write 50 blogs
+- 100 blogs written! - Write 100 blogs
+- Conversation started - Write 7 messages in the chat
+- Casual talker - Write 20 messages in the chat
+- Spammer - Write 50 messages in the chat
+- Shy commenter - Write 5 comments
+- Confident commenter - Write 15 comments
+- Experienced commenter - Write 30 comments
+
+![User achievements](https://i.ibb.co/2ZMRMQ6/achievements.png)
 
 **Leaderboard page**
 
@@ -96,7 +118,7 @@ On this page the user can see the blogs they have bookmarked so that they can vi
 **Login and Register pages**
 
 Here the guest can register and login. If they already have a profile, they can you the google sign in button!
-*DISCLAIMER: This photo shows two pages, I just didn't want to upload two pictures here :))*
+_DISCLAIMER: This photo shows two pages, I just didn't want to upload two pictures here :))_
 ![Register/Login pages](https://i.ibb.co/6Ft8xGg/login-reg.png)
 
 ## Admin Pages:
@@ -116,10 +138,9 @@ The administrator can see ALL sent messages.Ever. The admin can also delete mess
 Here the administrator can see a more detailed info about the blogs, such as their ID's, creation dates, likes and other. From here, the admin can also delete the blogs.
 ![Admin blogs dashboard](https://i.ibb.co/syL7h2M/admin-blogs.png)
 
-
 **Users Management**
 
-In this table the admin can see more info about the users, such as their ID's,  emails and other. From here the admin can also freeze and unfreeze users. Frozen users cannot acces the chat, cannot write blogs and comment on existing blogs.
+In this table the admin can see more info about the users, such as their ID's, emails and other. From here the admin can also freeze and unfreeze users. Frozen users cannot acces the chat, cannot write blogs and comment on existing blogs.
 ![Admin users dashboard](https://i.ibb.co/jWsbS83/admin-users.png)
 
 **Logs Management**
