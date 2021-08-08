@@ -192,18 +192,19 @@ li {
 .bookmark-btn i {
   color: blue;
 }
-.btn {
+.edit-btn {
   outline: none;
   border: none;
   background-color: white;
-}
-.edit-btn {
   color: #024094;
   background-color: #f47d05;
   border: 1px solid #024094;
   padding: 5px 10px;
 }
 .cancel-btn {
+  outline: none;
+  border: none;
+  background-color: white;
   color: #f47d05;
   background-color: #024094;
   border: 1px solid #f47d05;
@@ -211,10 +212,16 @@ li {
   margin-left: 10px;
 }
 .delete-btn {
+  outline: none;
+  border: none;
+  background-color: white;
   color: white;
   background-color: red;
   border: 1px solid white;
   padding: 5px 10px;
+}
+.btn-danger {
+  float: right;
 }
 .posting-comment .row {
   display: flex;

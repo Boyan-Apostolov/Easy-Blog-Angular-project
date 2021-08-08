@@ -90,6 +90,11 @@ export class BlogService {
     this.updateBlog(blog);
   }
 
+  deleteComment(blog: Blog, comment: BlogComment) {
+    blog.comments?.splice(blog.comments?.indexOf(comment), 1);
+    this.updateBlog(blog);
+  }
+
   deleteBlog(blog: Blog) {
     this.blogDoc = this.afs.doc(`blogs/${blog.id}`);
     this.blogDoc.delete();

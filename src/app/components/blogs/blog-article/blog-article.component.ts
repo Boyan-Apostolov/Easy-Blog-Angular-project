@@ -91,6 +91,12 @@ export class BlogArticleComponent implements OnInit {
     }
   }
 
+  deleteComment(blog: Blog, comment: BlogComment) {
+    if (confirm('Are you sure you want to delete this comment?')) {
+      this.blogService.deleteComment(blog, comment);
+    }
+  }
+
   editBlog(event: MouseEvent, blog: Blog) {
     this.editState = true;
     this.blogToEdit = blog;

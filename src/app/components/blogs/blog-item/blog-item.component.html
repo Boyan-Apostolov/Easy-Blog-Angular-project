@@ -4,7 +4,7 @@
     </section>
     <section class="blog-content">
         <h2>{{blog.title}}</h2>
-        <p class="text" [innerHTML]="blog.content.substring(0,200)"></p>
+        <p class="text" innerHTML="{{blog.content.trim()| shortenText : 150}}"></p>
 
         <section class="popularity-markers">
             <i class="fas fa-eye"> {{blog.views?.length || 0}}</i>

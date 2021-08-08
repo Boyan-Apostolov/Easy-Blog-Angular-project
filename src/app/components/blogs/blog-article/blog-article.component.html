@@ -143,6 +143,8 @@
                                 <p class="comment-user">{{comment.user.username}}</p>
                                 <p>{{comment.createdOn | dateTimeFormatter }}</p>
                             </section>
+                            <button class="btn btn-danger" (click)="deleteComment(blog,comment)"><i
+                                    class="fas fa-trash-alt"></i></button>
                             <p class="comment-title">{{comment.content}}</p>
                         </section>
                     </li>

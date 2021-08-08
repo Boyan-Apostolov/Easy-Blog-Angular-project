@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let visitation of user.visitations?.slice(0,10)">
-                        <td>{{visitation.visitedOn}}</td>
+                        <td>{{visitation.visitedOn! | dateTimeFormatter}}</td>
                         <td>{{visitation.visitedBy.username}}</td>
                         <td><button class="btn btn-info" routerLink="/user/{{visitation.visitedBy.id}}">View
                                 Profile</button>

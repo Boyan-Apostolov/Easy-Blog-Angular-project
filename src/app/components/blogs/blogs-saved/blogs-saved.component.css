@@ -24,3 +24,16 @@ button {
 .spinner {
   margin: 0 auto;
 }
+
+@media all and (min-width: 395px) and (max-width: 660px) {
+  .content {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+  .blog-cards {
+    flex-direction: column;
+  }
+}
+article.blog-content-holder img {
+  max-width: 100% !important;
+}

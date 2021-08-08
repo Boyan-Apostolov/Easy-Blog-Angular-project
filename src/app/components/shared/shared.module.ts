@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlertComponent } from './alert/alert.component';
 import { DateTimeFormatterPipe } from './pipes/date-time-formatter.pipe';
+import { ShortenTextPipe } from './pipes/shorten-text.pipe';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -15,6 +16,7 @@ import { DateTimeFormatterPipe } from './pipes/date-time-formatter.pipe';
     NotFoundComponent,
     AlertComponent,
     DateTimeFormatterPipe,
+    ShortenTextPipe,
   ],
   imports: [CommonModule, AppRoutingModule, MatProgressSpinnerModule],
   exports: [
@@ -22,6 +24,7 @@ import { DateTimeFormatterPipe } from './pipes/date-time-formatter.pipe';
     FooterComponent,
     AlertComponent,
     DateTimeFormatterPipe,
+    ShortenTextPipe,
   ],
 })
 export class SharedModule {}
