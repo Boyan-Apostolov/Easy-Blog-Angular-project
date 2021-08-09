@@ -70,3 +70,8 @@ p {
 button {
   width: fit-content;
 }
+@media all and (min-width: 250px) and (max-width: 660px) {
+  img {
+    height: unset;
+  }
+}

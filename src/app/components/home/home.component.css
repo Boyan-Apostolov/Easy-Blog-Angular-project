@@ -67,7 +67,7 @@ h3:nth-child(2) {
   position: relative;
   top: 38px;
 }
-@media all and (min-width: 395px) and (max-width: 660px) {
+@media all and (min-width: 250px) and (max-width: 660px) {
   .wrapper {
     text-align: center;
     width: 90%;
@@ -88,7 +88,7 @@ h3:nth-child(2) {
   .btn {
     font-weight: 500;
     font-size: 15px;
-    padding: 10px 14px;
+    padding: -1px 14px;
   }
   .writing-btn {
     position: unset;
