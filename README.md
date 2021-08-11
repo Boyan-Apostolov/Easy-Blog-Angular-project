@@ -78,7 +78,7 @@ After clicking 'Read More' on the all blogs page, you will be redirected to the 
 
 **User profile page**
 
-After you click on the author of a blog article, you will be redirected to their profile. Here you can see all the blogs they have written, their bio, and their achievements. For now the achievements are are given after the user surpasses a certain amount of blogs written (currently ; 1, 5, 10, 20, 50 and 100). The owner of the profile, as well as the admin, can see the last 10 people who visited that profile, something like how you can see who visited you profile on LinkedIn.
+After you click on the author of a blog article, you will be redirected to their profile. Here you can see all the blogs they have written, their bio, and their achievements.. The owner of the profile, as well as the admin, can see the last 10 people who visited that profile, something like how you can see who visited you profile on LinkedIn.
 ![User profile page](https://i.ibb.co/x6dpvP6/home.png)
 ![User Profile page 2](https://i.ibb.co/bKz89K3/visitations.png)
 
