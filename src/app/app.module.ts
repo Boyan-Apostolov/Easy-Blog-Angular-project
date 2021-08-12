@@ -33,10 +33,11 @@ import { HomeComponent } from './components/home/home.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogsService } from './core/services/logs/logs.service';
 import { AchievementService } from './core/services/achievement/achievement.service';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { AchievementService } from './core/services/achievement/achievement.serv
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
     FormsModule,
     ShareModule,
     AppRoutingModule,

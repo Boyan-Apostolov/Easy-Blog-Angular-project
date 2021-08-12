@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog/blog';
-import { Achievment } from 'src/app/core/models/user/achievment';
 import { User } from 'src/app/core/models/user/user';
 import { AchievementService } from 'src/app/core/services/achievement/achievement.service';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 import { LogsService } from 'src/app/core/services/logs/logs.service';
 import { UserService } from 'src/app/core/services/user/user-service.service';
-
+import { achievementsInfo } from 'src/app/core/models/achievements-guide';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -18,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   userId!: string;
   user!: User;
   areVisitationsVisitble: boolean = false;
+  achievementsInfo: any;
 
   get isUserOwnerOfProfile(): boolean {
     return this.userService.isLogged
@@ -34,6 +34,7 @@ export class UserProfileComponent implements OnInit {
     private achievementService: AchievementService
   ) {
     this.logsService.addRecord('user-profile');
+    this.achievementsInfo = achievementsInfo;
 
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
